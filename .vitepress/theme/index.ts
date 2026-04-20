@@ -68,7 +68,7 @@ export default {
         };
         onMounted(() => {
             initZoom();
-            initPet();
+            // initPet();
         });
         watch(
             () => route.path,

@@ -6,10 +6,10 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "types": ["vite/client"]     // 引入 Vite 内置的类型声明
+    "types": ["vite/client"]
   },
   "include": [
-    "env.d.ts",    // 新增这一行
+    "env.d.ts",
     "src",
     "docs",
     ".vitepress"

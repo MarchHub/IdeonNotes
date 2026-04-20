@@ -71,12 +71,8 @@ export default defineConfig({
         },
         nav: [
             { text: "主页", link: "/" },
-            { text: "内容", link: "/posts/" },
             { text: "指南", link: "/guide/" },
-            {
-                text: "分类",
-                items: ScanCurrentDir("../../posts/", "posts"),
-            },
+            // { text: "关于", link: "/about/" },
         ],
         sidebar: {
             "/guide/": [

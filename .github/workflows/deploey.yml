@@ -45,9 +45,6 @@ jobs:
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
 
-            - name: Generate Index Page
-              run: pnpm gen-index
-
             - name: Build with VitePress
               run: pnpm docs:build
 
