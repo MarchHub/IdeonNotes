@@ -1,6 +1,5 @@
 /* .vitepress\theme\style\blur.css */
 :root {
-
     /* 首页下滑后导航透明 */
     .VPNavBar:not(.has-sidebar):not(.home.top) {
         background-color: rgba(255, 255, 255, 0);
@@ -27,7 +26,6 @@
     }
 
     @media (min-width: 960px) {
-
         /* 文档页导航中间透明 */
         .VPNavBar:not(.home.top) .content-body {
             background-color: rgba(255, 255, 255, 0);
@@ -40,5 +38,4 @@
         background-color: rgba(255, 255, 255, 0);
         backdrop-filter: blur(10px);
     }
-
 }

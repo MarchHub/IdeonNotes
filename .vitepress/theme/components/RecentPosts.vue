@@ -1,0 +1,524 @@
+<!-- <script setup lang="ts">
+import { data as posts } from '../post.data'
+
+const formatDate = (timestamp: number) => {
+    if (!timestamp) return ''
+    // 转换为更具科技感的日期格式，例如 2023.10.05
+    const date = new Date(timestamp)
+    const y = date.getFullYear()
+    const m = String(date.getMonth() + 1).padStart(2, '0')
+    const d = String(date.getDate()).padStart(2, '0')
+    return `${y}.${m}.${d}`
+}
+</script>
+
+<template>
+    <section class="home-posts">
+        <div class="container">
+            <div class="title-wrapper">
+                <div class="title-deco"></div>
+                <h2 class="title">RECENT_UPDATES <span class="cn-title">最近更新</span></h2>
+            </div>
+            <div class="grid">
+                <a v-for="post in posts" :key="post.url" :href="post.url" class="card">
+                    <div class="card-top-line"></div>
+
+                    <div class="card-header">
+                        <div class="tech-dot"></div>
+                        <span class="date">{{ formatDate(post.date) }}</span>
+                    </div>
+
+                    <h3 class="card-title">{{ post.title }}</h3>
+                    <div class="card-excerpt" v-html="post.excerpt"></div>
+
+                    <div class="card-footer">
+                        <span class="link-text">READ_DATA //</span>
+                        <div class="icon-arrow"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+</template>
+
+<style scoped>
+.home-posts {
+
+    --yuuka-card-bg: rgba(255, 255, 255, 0.8);
+    --yuuka-card-border: rgba(23, 164, 212, 0.3);
+    --yuuka-card-hover: #17A4D4;
+    --yuuka-card-shadow: 0 12px 32px rgba(143, 139, 186, 0.12);
+
+    --yuuka-text-1: var(--vp-c-text-1);
+
+    --yuuka-text-2: var(--vp-c-text-2);
+
+    --yuuka-date-color: #7A74AB;
+
+    --yuuka-yellow: #E8B931;
+    --yuuka-gradient: linear-gradient(135deg, #8F8BBA 0%, #17A4D4 100%);
+
+    padding: 64px 24px;
+    background-color: transparent;
+}
+
+:global(.dark) .home-posts {
+    --yuuka-card-bg: rgba(13, 17, 23, 0.85);
+
+    --yuuka-card-border: rgba(77, 192, 232, 0.35);
+    --yuuka-card-hover: #4DC0E8;
+
+    --yuuka-card-shadow: 0 0 25px rgba(77, 192, 232, 0.15);
+
+
+    --yuuka-text-2: #000000;
+
+    --yuuka-text-1: #94A3B8;
+
+    --yuuka-date-color: #A5B4FC;
+
+    --yuuka-yellow: #FACC15;
+
+    --yuuka-gradient: linear-gradient(135deg, #A5B4FC 0%, #4DC0E8 100%);
+}
+
+.container {
+    max-width: 1152px;
+    margin: 0 auto;
+}
+
+.title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.title-deco {
+    width: 6px;
+    height: 28px;
+    background: var(--yuuka-gradient);
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(23, 164, 212, 0.3);
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 800;
+    font-family: var(--vp-font-family-mono);
+    color: var(--vp-c-brand-1);
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin: 0;
+}
+
+.cn-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--yuuka-text-2);
+    font-family: var(--vp-font-family-base);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px;
+    border-radius: 12px;
+    background: var(--yuuka-card-bg);
+    border: 1px solid var(--yuuka-card-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    text-decoration: none !important;
+    overflow: hidden;
+
+}
+
+.card-top-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--yuuka-gradient);
+
+    transform: scaleX(0);
+    transform-origin: right center;
+
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card:hover .card-top-line {
+    transform-origin: left center;
+
+    transform: scaleX(1);
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: var(--yuuka-card-hover);
+
+    box-shadow: var(--yuuka-card-shadow);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.tech-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--yuuka-date-color);
+    border-radius: 50%;
+}
+
+.date {
+    font-family: var(--vp-font-family-mono);
+    font-size: 13px;
+    color: var(--yuuka-date-color);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.card-title {
+    margin: 0 0 12px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--yuuka-text-1);
+
+    line-height: 1.4;
+    transition: color 0.3s;
+}
+
+.card-excerpt {
+    font-size: 14px;
+    color: var(--yuuka-text-2);
+
+    line-height: 1.6;
+    flex-grow: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.card:hover .card-title {
+    color: var(--yuuka-card-hover);
+}
+
+.card-footer {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--yuuka-card-hover);
+    font-family: var(--vp-font-family-mono);
+    font-weight: 800;
+    font-size: 12px;
+}
+
+.icon-arrow {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s;
+}
+
+.icon-arrow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    width: 12px;
+    height: 2px;
+    background-color: var(--yuuka-card-hover);
+    transform: translateY(-50%);
+}
+
+.icon-arrow::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 2px;
+    width: 7px;
+    height: 7px;
+    border-top: 2px solid var(--yuuka-card-hover);
+    border-right: 2px solid var(--yuuka-card-hover);
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.card:hover .icon-arrow {
+    transform: translateX(4px);
+}
+
+.card:hover .icon-arrow::before {
+    background-color: var(--yuuka-yellow);
+}
+
+.card:hover .icon-arrow::after {
+    border-color: var(--yuuka-yellow);
+}
+</style> -->
+<script setup lang="ts">
+import { data as posts } from '../post.data'
+
+const formatDate = (timestamp: number) => {
+    if (!timestamp) return ''
+    const date = new Date(timestamp)
+    return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`
+}
+</script>
+
+<template>
+    <section class="home-posts">
+        <div class="container">
+            <div class="title-wrapper">
+                <div class="title-deco"></div>
+                <h2 class="title">RECENT_UPDATES <span class="cn-title">最近更新</span></h2>
+            </div>
+            <div class="grid">
+                <a v-for="post in posts" :key="post.url" :href="post.url" class="card">
+                    <div class="card-top-line"></div>
+                    <div class="card-header">
+                        <div class="tech-dot"></div>
+                        <span class="date">{{ formatDate(post.date) }}</span>
+                    </div>
+                    <h3 class="card-title">{{ post.title }}</h3>
+                    <div class="card-excerpt" v-html="post.excerpt"></div>
+                    <div class="card-footer">
+                        <span class="link-text">READ_DATA //</span>
+                        <div class="icon-arrow"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+</template>
+
+<style>
+:root {
+    /* 亮色模式变量 */
+    --y-bg: rgba(255, 255, 255, 0.7);
+    --y-border: rgba(23, 164, 212, 0.25);
+    --y-title: #1e293b;
+    --y-desc: #475569;
+    --y-date: #7A74AB;
+    --y-accent: #17A4D4;
+    --y-yellow: #E8B931;
+    --y-shadow: 0 10px 30px rgba(143, 139, 186, 0.1);
+    --y-grad: linear-gradient(135deg, #8F8BBA 0%, #17A4D4 100%);
+}
+
+html.dark {
+    --y-bg: rgba(13, 17, 23, 0.9);
+    --y-border: rgba(77, 192, 232, 0.4);
+    --y-title: #F8FAFC;
+    --y-desc: #94A3B8;
+    --y-date: #A5B4FC;
+    --y-accent: #4DC0E8;
+    --y-yellow: #FACC15;
+    --y-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    --y-grad: linear-gradient(135deg, #A5B4FC 0%, #4DC0E8 100%);
+}
+</style>
+
+<style scoped>
+.home-posts {
+    padding: 64px 24px;
+    background-color: transparent;
+}
+
+.container {
+    max-width: 1152px;
+    margin: 0 auto;
+}
+
+
+.title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 40px;
+}
+
+.title-deco {
+    width: 4px;
+    height: 24px;
+    background: var(--y-grad);
+    box-shadow: 0 0 10px var(--y-accent);
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 800;
+    font-family: var(--vp-font-family-mono);
+    color: var(--y-accent);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cn-title {
+    font-size: 14px;
+    color: var(--y-desc);
+    letter-spacing: 0.1em;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 28px;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 32px 28px;
+    border-radius: 8px;
+    background: var(--y-bg);
+    border: 1px solid var(--y-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    text-decoration: none !important;
+    overflow: hidden;
+}
+
+.card-top-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--y-grad);
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card:hover .card-top-line {
+    transform-origin: left center;
+    transform: scaleX(1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--y-accent);
+    box-shadow: var(--y-shadow);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.tech-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--y-yellow);
+    box-shadow: 0 0 6px var(--y-yellow);
+}
+
+.date {
+    font-family: var(--vp-font-family-mono);
+    font-size: 12px;
+    color: var(--y-date);
+    font-weight: 700;
+}
+
+.card-title {
+    margin: 0 0 12px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--y-title);
+    line-height: 1.5;
+    transition: color 0.3s;
+}
+
+.card-excerpt {
+    font-size: 14px;
+    color: var(--y-desc);
+    line-height: 1.7;
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card:hover .card-title {
+    color: var(--y-accent);
+}
+
+/* 底部交互 */
+.card-footer {
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--y-accent);
+    font-family: var(--vp-font-family-mono);
+    font-weight: 800;
+    font-size: 12px;
+}
+
+.icon-arrow {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s;
+}
+
+.icon-arrow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    width: 12px;
+    height: 2px;
+    background-color: var(--y-accent);
+    transform: translateY(-50%);
+    transition: background-color 0.3s;
+}
+
+.icon-arrow::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 2px;
+    width: 6px;
+    height: 6px;
+    border-top: 2px solid var(--y-accent);
+    border-right: 2px solid var(--y-accent);
+    transform: translateY(-50%) rotate(45deg);
+    transition: border-color 0.3s;
+}
+
+.card:hover .icon-arrow {
+    transform: translateX(5px);
+}
+
+.card:hover .icon-arrow::before {
+    background-color: var(--y-yellow);
+}
+
+.card:hover .icon-arrow::after {
+    border-color: var(--y-yellow);
+}
+</style>

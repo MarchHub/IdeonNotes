@@ -15,8 +15,13 @@ import TwoslashFloatingVue from "@shikijs/vitepress-twoslash/client";
 import "@shikijs/vitepress-twoslash/style.css";
 import TagList from "./components/TagList.vue";
 import Layout from "./Layout.vue";
+import RecentPosts from "./components/RecentPosts.vue";
 export default {
-    Layout,
+    Layout: () => {
+        return h(DefaultTheme.Layout, null, {
+            "home-features-after": () => h(RecentPosts),
+        });
+    },
     extends: DefaultTheme,
     setup() {
         const route = useRoute();

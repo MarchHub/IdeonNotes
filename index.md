@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: Machillka's Blog
+  name: Idion Notes
   text: 学习记录 共享笔记库
   tagline: 与你的相遇就是奇迹
   image:
@@ -10,12 +10,14 @@ hero:
     # alt: VitePress
   actions:
     - theme: brand
-      text: Get Started
-      link: /posts/
+      text: About
+      link: /about/
     - theme: alt
       text: View on GitHub
       link: https://github.com/MarchHub/shared-blog
-features:
+footer: © 2025 Machillka
+---
+<!-- features:
   - title: 编程语言
     details:
       - 语言特性
@@ -58,4 +60,4 @@ features:
       - 就是随便乱谈
     # link: /posts/010 杂谈
 footer: © 2025 Machillka
----
+--- -->

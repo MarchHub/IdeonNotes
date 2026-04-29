@@ -78,3 +78,11 @@ export const postSidebar: SidebarItem[] = ScanDir(
     path.join(__dirname, "../../posts"),
     "posts",
 );
+
+export const aboutSidebar: SidebarItem[] = [
+    {
+        text: "About", // 添加一个顶级 title
+        // link: "/about/",
+        items: ScanDir(path.join(__dirname, "../../about"), "about"),
+    },
+];

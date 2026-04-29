@@ -1,5 +1,5 @@
 import { defineConfig } from "vitepress";
-import { postSidebar } from "./scripts/SidebarGenerator";
+import { aboutSidebar, postSidebar } from "./scripts/SidebarGenerator";
 import { ScanCurrentDir } from "./scripts/NavGenerator";
 import githubContributors from "./plugins/FetchContributors";
 import markdownItTaskCheckbox from "markdown-it-task-checkbox";
@@ -7,6 +7,7 @@ import mark from "markdown-it-mark";
 import footnote from "markdown-it-footnote";
 import { transformerTwoslash } from "@shikijs/vitepress-twoslash";
 import wikilink from "markdown-it-wikilinks";
+import { BiDirectionalLinks } from "@nolebase/markdown-it-bi-directional-links";
 
 import { RSSOptions, RssPlugin } from "vitepress-plugin-rss";
 
@@ -47,7 +48,8 @@ export default defineConfig({
                             .replace(/[^\w-]/g, ""),
                     hrefTemplate: (path: any) => `/${path}/`,
                     htmlAttributes: { class: "wikilink", target: "_blank" },
-                });
+                })
+                .use(BiDirectionalLinks());
             // md.renderer.rules.heading_close = (tokens, idx, options, env, slf) => {
             //     let htmlResult = slf.renderToken(tokens, idx, options);
             //     if (tokens[idx].tag === 'h1') htmlResult += `<ArticleMetadata />`;
@@ -72,7 +74,7 @@ export default defineConfig({
         nav: [
             { text: "主页", link: "/" },
             { text: "指南", link: "/guide/" },
-            // { text: "关于", link: "/about/" },
+            { text: "关于", link: "/about/" },
         ],
         sidebar: {
             "/guide/": [
@@ -86,6 +88,7 @@ export default defineConfig({
                 },
             ],
             "/posts/": postSidebar,
+            "/about/": aboutSidebar,
         },
         socialLinks: [{ icon: "github", link: "https://github.com/machillka" }],
 
@@ -96,9 +99,6 @@ export default defineConfig({
         },
     },
     vite: {
-        plugins: [
-            githubContributors(),
-            // RssPlugin(RSS),
-        ],
+        plugins: [githubContributors(), RssPlugin(RSS)],
     },
 });

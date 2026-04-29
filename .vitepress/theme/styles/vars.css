@@ -1,44 +1,93 @@
-.vp-nav__link.active {
-  color: var(--vp-color-primary);
-}
-
 :root {
-  /*---- 标题渐变 */
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(
-    135deg,
-    #79bbeb 20%,
-    #419dde 100%
-  );
+    --yuuka-blue-1: #8ecbff;
+    --yuuka-blue-2: #5ab0ff;
+    --yuuka-blue-3: #2f8ae8;
 
-  /*---- 图标背景颜色渐变 */
-  --vp-home-hero-image-background-image: linear-gradient(
-    -45deg,
-    #ABDCFF 20%,
-    #0396FF 100%
-  );
-  --vp-home-hero-image-filter: blur(75px);
+    --yuuka-purple-1: #c7b5ff;
+    --yuuka-purple-2: #b49aff;
+    --yuuka-purple-3: #9a7dff;
 
-  /*---- 主题色 */
-  --vp-c-indigo-1: #43aefc;
-  --vp-c-indigo-2: #43aefc;
-  --vp-c-indigo-3: #43aefc;
+    --vp-home-hero-name-background: linear-gradient(
+        -45deg,
+        #b49aff 0%,
+        #5ab0ff 100%
+    );
 
+    --vp-home-hero-image-background-image: linear-gradient(
+        -45deg,
+        #abdcff 0%,
+        #4ab3ff 45%,
+        #8a63ff 100%
+    );
+    --vp-home-hero-image-filter: blur(75px);
+
+    --vp-c-indigo-1: #43aefc;
+    --vp-c-indigo-2: #43aefc;
+    --vp-c-indigo-3: #43aefc;
+
+    --vp-c-brand-1: var(--yuuka-blue-2);
+    --vp-c-brand-2: var(--yuuka-blue-3);
+    --vp-c-brand-3: var(--yuuka-blue-3);
+}
+.VPHero {
+    text-align: left !important;
 }
 
-/* VPFeatures .items .item{
-} */
-/* .VPFeatures .items .item {
-  transition: transform 0.3s;
-} */
-/*---- 上移动画 */
-/* .VPFeatures .items .item:hover {
-  transform: translateY(-5px);
-} */
+.VPHero .name {
+    padding-bottom: 8px;
+    line-height: 1.25 !important;
+
+    background: var(--vp-home-hero-name-background) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+}
+
+.vp-nav__link.active {
+    border-bottom: 2px solid var(--vp-c-brand-1);
+}
+
+.VPHero .text {
+    margin-top: 12px;
+    line-height: 1.6;
+    font-weight: 600;
+}
 
 .medium-zoom-overlay {
-  z-index: 30;
+    z-index: 30;
 }
+
 .medium-zoom-image {
-  z-index: 9999 !important;
+    z-index: 9999 !important;
+}
+
+.VPHero .tagline {
+    margin-top: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--yuuka-purple-2);
+}
+
+.VPButton.brand {
+    background-color: var(--vp-c-brand-1);
+    border-color: var(--vp-c-brand-1);
+    color: white !important;
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.VPButton.brand:hover {
+    background-color: var(--vp-c-brand-2) !important;
+    border-color: var(--vp-c-brand-2) !important;
+
+    box-shadow:
+        0 0 10px rgba(90, 176, 255, 0.55),
+        0 0 18px rgba(90, 176, 255, 0.35),
+        0 0 28px rgba(90, 176, 255, 0.25);
+}
+
+.VPButton.alt:hover {
+    color: var(--vp-c-brand-2) !important;
+    border-color: var(--vp-c-brand-2) !important;
 }
