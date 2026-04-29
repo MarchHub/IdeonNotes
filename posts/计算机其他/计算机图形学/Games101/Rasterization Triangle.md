@@ -24,8 +24,6 @@ for (int x = 0; x < xMas; x++)
 
 反走样：先滤波做一次模糊，再进行采样
 
-![Pasted image 20251203215954](Pasted%20image%2020251203215954.png)
-
 MSAA：（对反走样进行一个近似）
 FXAA
 TAA

@@ -137,5 +137,5 @@ CommandBuffer 本身不执行任何操作，它只是一个“命令列表”。
 
 最后清理
 
-![Pasted image 20260312134308](Pasted%20image%2020260312134308.png)
+![Pasted image 20260312134308](Assets/Pasted%20image%2020260312134308.png)
 

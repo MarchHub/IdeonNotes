@@ -65,6 +65,6 @@ Nvidia 家的 Warp 或者 AMD 家的 Wavefront，其中的运行单位就是线�
 
 提供斯坦福课程的图片
 
-![Pasted image 20260311235732](Pasted%20image%2020260311235732.png)
+![Pasted image 20260311235732](Assets/Pasted%20image%2020260311235732.png)
 ## 总结
 
