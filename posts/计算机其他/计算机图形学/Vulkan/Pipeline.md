@@ -45,9 +45,6 @@ typedef struct VkGraphicsPipelineCreateInfo {
 类似这样
 `InputAssemblyState` 顶点数据如何组织（比如独立的点，三角形，三个点怎么组成一个三角形……
 
-
-![Pasted image 20260314181541](Pasted%20image%2020260314181541.png)
-
 ## 其他
 
 如果需要动态的在运行时调整一些GPU状态——比如动态设置 viewport，动态剔除模式等，也提供了`VkDynamicState`来在 pipeline 创建的时候进行声明，这样在渲染的时候可以通过`CommandBuffer`中利用一些提供的方法，如`vkCmdSetViewport`等来进行动态调整。
