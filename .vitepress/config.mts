@@ -52,7 +52,7 @@ export default defineConfig({
     sitemap: {
         hostname: baseUrl + "/",
     },
-    title: "IdeonNotes",
+    title: "YuuFrag",
     description: "Record learning journey",
     head: [["link", { rel: "icon", href: base + "favicon.ico" }]],
     cleanUrls: true,

@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: Idion Notes
+  name: YuuFrag
   text: 学习记录 共享笔记库
   tagline: 与你的相遇就是奇迹
   image:
