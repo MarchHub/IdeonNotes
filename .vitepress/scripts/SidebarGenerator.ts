@@ -12,24 +12,24 @@ interface SidebarItem {
 /**
  * 辅助函数：查找目录下第一个存在的 .md 文件（用于让文件夹标题可点击）
  */
-function getFirstFile(dir: string, routePath: string): string | undefined {
-    const entries = fs
-        .readdirSync(dir)
-        .sort((x, y) => x.localeCompare(y, "en"));
-    for (const name of entries) {
-        const fullPath = path.join(dir, name);
-        const stat = fs.statSync(fullPath);
-        if (folderNames.includes(name)) continue;
+// function getFirstFile(dir: string, routePath: string): string | undefined {
+//     const entries = fs
+//         .readdirSync(dir)
+//         .sort((x, y) => x.localeCompare(y, "en"));
+//     for (const name of entries) {
+//         const fullPath = path.join(dir, name);
+//         const stat = fs.statSync(fullPath);
+//         if (folderNames.includes(name)) continue;
 
-        if (stat.isDirectory()) {
-            const childFile = getFirstFile(fullPath, `${routePath}/${name}`);
-            if (childFile) return childFile;
-        } else if (name.endsWith(".md") && name !== "index.md") {
-            return `${routePath}/${name.replace(/\.md$/, "")}`;
-        }
-    }
-    return undefined;
-}
+//         if (stat.isDirectory()) {
+//             const childFile = getFirstFile(fullPath, `${routePath}/${name}`);
+//             if (childFile) return childFile;
+//         } else if (name.endsWith(".md") && name !== "index.md") {
+//             return `${routePath}/${name.replace(/\.md$/, "")}`;
+//         }
+//     }
+//     return undefined;
+// }
 
 function ScanDir(dir: string, routePath = "", depth = 1): SidebarItem[] {
     const entries = fs
@@ -51,11 +51,11 @@ function ScanDir(dir: string, routePath = "", depth = 1): SidebarItem[] {
 
             if (childItems.length) {
                 // 找到该目录下第一个文件作为文件夹的落地页
-                const firstFileLink = getFirstFile(fullPath, newRoutePath);
+                // const firstFileLink = getFirstFile(fullPath, newRoutePath);
 
                 items.push({
                     text: name,
-                    link: firstFileLink ? `/${firstFileLink}` : undefined,
+                    // link: firstFileLink ? `/${firstFileLink}` : undefined,
                     items: childItems,
                     // 只有深度大于等于 2 的才折叠，或者根据你的 CheckChildrenFolder 逻辑
                     collapsed: depth >= 2,
