@@ -4,7 +4,7 @@
 
 ## 基础使用
 
-```golang
+```go
 // calc_test.go
 package example
 

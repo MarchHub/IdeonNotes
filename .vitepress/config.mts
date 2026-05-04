@@ -16,6 +16,33 @@ const RSS: RSSOptions = {
     title: `Machillka's Notes`,
     baseUrl,
     copyright: "Copyright (c) 2025-present, Machillka",
+
+    render: (html) => {
+        return html.replace(
+            /(src|href)\s*=\s*["']([^"']+)["']/g,
+            (match, attr, src) => {
+                // 跳过绝对路径和锚点
+                if (/^https?:\/\/|^\/\/|^#|^mailto:/.test(src)) {
+                    return match;
+                }
+
+                // 1. 清理路径：去除 ./
+                let processedSrc = src.replace(/^\.\//, "");
+
+                // 2. 关键点：如果你的图片文件夹 Assets 就在根目录或 public 下
+                if (!processedSrc.startsWith("/")) {
+                    processedSrc = "/" + processedSrc;
+                }
+
+                // 3. 解决空格问题：RSS 里的链接不能有空格，必须转义为 %20
+                const encodedSrc = processedSrc.replace(/ /g, "%20");
+
+                // 4. 返回完整 URL
+                console.log(`RSS Rewriting: ${src} -> ${baseUrl}${encodedSrc}`); // 用于构建时调试查看
+                return `${attr}="${baseUrl}${encodedSrc}"`;
+            },
+        );
+    },
 };
 
 const base = "/";
@@ -25,12 +52,9 @@ export default defineConfig({
     sitemap: {
         hostname: baseUrl + "/",
     },
-    title: "部落阁",
+    title: "IdeonNotes",
     description: "Record learning journey",
-    head: [
-        ["link", { rel: "icon", href: base + "favicon.ico" }],
-        // ['meta', { name : 'algolia-site-verification', content: '98C626A87738BF05'}]
-    ],
+    head: [["link", { rel: "icon", href: base + "favicon.ico" }]],
     cleanUrls: true,
     markdown: {
         math: true,
@@ -75,6 +99,10 @@ export default defineConfig({
             { text: "主页", link: "/" },
             { text: "指南", link: "/guide/" },
             { text: "关于", link: "/about/" },
+            {
+                text: "分类",
+                items: ScanCurrentDir("../../posts/", "posts"),
+            },
         ],
         sidebar: {
             "/guide/": [

@@ -10,7 +10,7 @@ Golang 单元测试的书写 ——
 
 ## 基础语法
 
-```golang
+```go
 // A_test.go
 package example
 import "testing"
