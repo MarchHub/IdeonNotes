@@ -19,9 +19,8 @@ export default createContentLoader("posts/**/*.md", {
             .map(({ url, frontmatter, excerpt, src }) => {
                 const decodedUrl = decodeURI(url);
 
-                const filePath = `.${decodedUrl.replace(/\.html$/, ".md")}`;
-
-                const date = getGitTimestamp(filePath, "created");
+                const filePath = url.replace(/^\//, "") + ".md";
+                const date = getGitTimestamp(filePath, "updated");
 
                 let title = frontmatter.title;
 
