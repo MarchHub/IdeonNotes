@@ -2,3 +2,7 @@ allowBuilds:
     reurl: true
     esbuild: true
 blockExoticSubdeps: false
+packages:
+    - "packages/*"
+    - "apps/*"
+    - "!**/__tests__/**"
