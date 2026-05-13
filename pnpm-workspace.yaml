@@ -1,0 +1,4 @@
+allowBuilds:
+    reurl: true
+    esbuild: true
+blockExoticSubdeps: false

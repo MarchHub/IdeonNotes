@@ -99,6 +99,7 @@ export default defineConfig({
             { text: "主页", link: "/" },
             { text: "指南", link: "/guide/" },
             { text: "关于", link: "/about/" },
+            { text: "笔记总览", link: "/map" },
             {
                 text: "分类",
                 items: ScanCurrentDir("../../posts/", "posts"),

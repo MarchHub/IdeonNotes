@@ -4,6 +4,7 @@
     "@nolebase/markdown-it-bi-directional-links": "^2.18.2",
     "@octokit/rest": "^22.0.0",
     "@shikijs/vitepress-twoslash": "^3.8.1",
+    "@types/d3": "^7.4.3",
     "@types/node": "^24.1.0",
     "@types/node-fetch": "^2.6.12",
     "dotenv": "^17.2.1",
@@ -33,6 +34,7 @@
     "docs:preview": "vitepress preview"
   },
   "dependencies": {
+    "d3": "^7.9.0",
     "markdown-it-mathjax3": "^4.3.2",
     "vue": "^3.5.18"
   }
