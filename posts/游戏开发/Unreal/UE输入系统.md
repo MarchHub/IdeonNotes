@@ -43,6 +43,6 @@ IA (Input Action - 输入动作)，一层抽象，约束了 Value Type —— �
 
 - `ETriggerEvent::Triggered`
 - `ETriggerEvent::Completed`
--  等
+- 等
 
 这种广播机制不赖
