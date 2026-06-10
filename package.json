@@ -29,6 +29,8 @@
     "vitepress-plugin-rss": "^0.3.1"
   },
   "scripts": {
+    "check:secrets": "node scripts/check-secrets.mjs",
+    "predocs:build": "pnpm check:secrets",
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"

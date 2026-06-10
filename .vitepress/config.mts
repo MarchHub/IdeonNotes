@@ -1,7 +1,8 @@
 import { defineConfig } from "vitepress";
 import { aboutSidebar, postSidebar } from "./scripts/SidebarGenerator";
 import { ScanCurrentDir } from "./scripts/NavGenerator";
-import githubContributors from "./plugins/FetchContributors";
+import contributorsConfig from "./env-config";
+import { prepareGithubContributors } from "./plugins/GithubContributors";
 import markdownItTaskCheckbox from "markdown-it-task-checkbox";
 import mark from "markdown-it-mark";
 import footnote from "markdown-it-footnote";
@@ -12,6 +13,7 @@ import { BiDirectionalLinks } from "@nolebase/markdown-it-bi-directional-links";
 import { RSSOptions, RssPlugin } from "vitepress-plugin-rss";
 
 const baseUrl = "https://blog.machillka.site";
+const contributorIndex = await prepareGithubContributors(contributorsConfig);
 const RSS: RSSOptions = {
     title: `Machillka's Notes`,
     baseUrl,
@@ -87,6 +89,19 @@ export default defineConfig({
         },
     },
     lastUpdated: true,
+    transformPageData(pageData) {
+        const contributors =
+            contributorIndex[pageData.filePath.replace(/\\/g, "/")];
+
+        if (contributors === undefined) return;
+
+        return {
+            frontmatter: {
+                ...pageData.frontmatter,
+                contributors,
+            },
+        };
+    },
     themeConfig: {
         search: {
             provider: "local",
@@ -128,6 +143,6 @@ export default defineConfig({
         },
     },
     vite: {
-        plugins: [githubContributors(), RssPlugin(RSS)],
+        plugins: [RssPlugin(RSS)],
     },
 });

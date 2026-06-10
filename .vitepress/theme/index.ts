@@ -14,12 +14,12 @@ import { useRoute } from "vitepress";
 import TwoslashFloatingVue from "@shikijs/vitepress-twoslash/client";
 import "@shikijs/vitepress-twoslash/style.css";
 import TagList from "./components/TagList.vue";
-import Layout from "./Layout.vue";
 import RecentPosts from "./components/RecentPosts.vue";
 export default {
     Layout: () => {
         return h(DefaultTheme.Layout, null, {
             "home-features-after": () => h(RecentPosts),
+            "doc-footer-before": () => h(Contributors),
         });
     },
     extends: DefaultTheme,
@@ -80,11 +80,6 @@ export default {
             () => nextTick(() => initZoom()),
         );
     },
-    // Layout: () => {
-    //   return h(DefaultTheme.Layout, null, {
-    //     'doc-footer-before': () => h(Contributors)
-    //   })
-    // },
     enhanceApp({ app, router, siteData }) {
         app.component("ArticleMetadata", ArticleMetadata);
         app.component("Contributors", Contributors);
