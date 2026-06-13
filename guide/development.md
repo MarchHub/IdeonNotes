@@ -1,9 +1,9 @@
 # 参与开发
 
-项目地址: [IdeonNotes](https://github.com/MarchHub/IdeonNotes)
+项目地址: [YuuFrag](https://github.com/MarchHub/YuuFrag)
 
 ```bash
-git clone https://github.com/MarchHub/IdeonNotes.git
+git clone https://github.com/MarchHub/YuuFrag.git
 cd shared-blog
 pnpm install
 pnpm run docs:build
