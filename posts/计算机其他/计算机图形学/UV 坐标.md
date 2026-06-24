@@ -55,6 +55,7 @@ vec4 value = texture(uTexture, uv);
 - Offset —— 控制偏移
 
 一个基础的 GLSL
+
 ```
 vec2 finalUV = uv * tiling + offset;
 vec4 value = texture(uTexture, finalUV);
