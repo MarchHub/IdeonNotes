@@ -12,7 +12,30 @@ declare const data: Post[];
 export { data };
 
 export default createContentLoader("posts/**/*.md", {
-    excerpt: true,
+    excerpt(file) {
+        const content = file.content.trim();
+        const separator = '---';
+        if (content.includes(separator)) {
+            file.excerpt = content.split(separator)[0].trim();
+        } else {
+            const lines = content.split('\n');
+            const excerptLines: string[] = [];
+            for (const line of lines) {
+                const trimmed = line.trim();
+                if (trimmed.startsWith('#')) {
+                    continue;
+                }
+                if (trimmed === '') {
+                    if (excerptLines.length > 0) {
+                        break;
+                    }
+                    continue;
+                }
+                excerptLines.push(line);
+            }
+            file.excerpt = excerptLines.join('\n').trim();
+        }
+    },
     includeSrc: true,
     transform(raw): Post[] {
         return raw
