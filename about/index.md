@@ -1,16 +1,12 @@
 <script setup>
-import { VPTeamMembers } from 'vitepress/theme'
-
 const members = [
   {
-    avatar: 'https://www.github.com/machillka.png',
+    github: 'machillka',
     name: 'Machillka',
-    title: 'Creator',
-    links: [
-      { icon: 'github', link: 'https://github.com/machillka' },
-    ]
+    title: 'Creator'
   },
 ]
+// TODO: 做一个 website 的 fallback 因为可能有不用 Github 的 或者想要展示其他网站的
 </script>
 
 # About
@@ -21,4 +17,4 @@ const members = [
 
 ## 维护者
 
-<VPTeamMembers size="small" :members />
+<AboutTeam :members="members" />

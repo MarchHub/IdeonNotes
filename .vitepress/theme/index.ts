@@ -7,6 +7,7 @@ import "./style.css";
 import "./styles/index.css";
 import "./styles/vars.css";
 import Contributors from "./components/Contributors.vue";
+import AboutTeam from "./components/AboutTeam.vue";
 
 import mediumZoom from "medium-zoom";
 import { onMounted, watch, nextTick } from "vue";
@@ -83,6 +84,7 @@ export default {
     enhanceApp({ app, router, siteData }) {
         app.component("ArticleMetadata", ArticleMetadata);
         app.component("Contributors", Contributors);
+        app.component("AboutTeam", AboutTeam);
         app.component("TagList", TagList);
         app.use(TwoslashFloatingVue);
     },
