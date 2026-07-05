@@ -25,22 +25,22 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.CONTRIBUTOR_TOKEN || github.token }}
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v5
               with:
                   fetch-depth: 0
 
-            - uses: pnpm/action-setup@v3
+            - uses: pnpm/action-setup@v4
               with:
                   version: 9
 
             - name: Setup Node
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@v6
               with:
                   node-version: 22
                   cache: pnpm
 
             - name: Setup Pages
-              uses: actions/configure-pages@v4
+              uses: actions/configure-pages@v5
 
             - name: Install dependencies
               run: pnpm install
@@ -63,4 +63,4 @@ jobs:
         steps:
             - name: Deploy to GitHub Pages
               id: deployment
-              uses: actions/deploy-pages@v4
+              uses: actions/deploy-pages@v5

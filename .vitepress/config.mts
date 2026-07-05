@@ -12,7 +12,7 @@ import { BiDirectionalLinks } from "@nolebase/markdown-it-bi-directional-links";
 
 import { RSSOptions, RssPlugin } from "vitepress-plugin-rss";
 
-const baseUrl = "https://blog.machillka.site";
+const baseUrl = "https://yuufrag.machillka.com";
 const contributorIndex = await prepareGithubContributors(contributorsConfig);
 const RSS: RSSOptions = {
     title: `Machillka's Notes`,
