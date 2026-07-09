@@ -1,3 +1,8 @@
+---
+next: false
+prev: false
+---
+
 <script setup>
 const members = [
   {
