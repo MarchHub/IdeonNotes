@@ -10,7 +10,7 @@ Blinn–Phong 连续高光
 → Threshold
 → 硬边高光
 
-![](toon_shader_sample.png)
+![](Assets/toon_shader_sample.png)
 
 ## 漫反射阶段
 
@@ -22,7 +22,7 @@ $$
 
 先准备一张由暗到亮但是阶跃的 texture 作为采样的图片，接着把 $N · L$ 作为横坐标，纵坐标为常量进行采样（Clamp 采样方式）
 
-![](toon_shader_ramp.png)
+![](Assets/toon_shader_ramp.png)
 
 请 G 老师生成了一张简单的示意（仅供参考）
 
@@ -44,23 +44,23 @@ $$
 
 ### 输入节点
 
-| 数据         | UE 节点              |
-| ---------- | ------------------ |
-| 表面法线 `N`   | `PixelNormalWS`    |
+| 数据             | UE 节点            |
+| ---------------- | ------------------ |
+| 表面法线 `N`     | `PixelNormalWS`    |
 | 人工主光方向 `L` | `Vector Parameter` |
-| 观察方向 `V`   | `CameraVectorWS`   |
+| 观察方向 `V`     | `CameraVectorWS`   |
 
 ### 数学节点
 
-| UE 节点        | 对应运算           | 用途                 |
-| ------------ | -------------- | ------------------ |
-| `Normalize`  | `normalize(v)` | 将方向归一化             |
-| `DotProduct` | `dot(a,b)`     | 计算 `N·L` 或 `N·H`   |
-| `Saturate`   | `clamp(x,0,1)` | 将结果限制到 `[0,1]`     |
-| `Add`        | `a+b`          | 计算 `L+V`           |
-| `Power`      | `pow(x,p)`     | 控制高光分布             |
+| UE 节点      | 对应运算       | 用途                            |
+| ------------ | -------------- | ------------------------------- |
+| `Normalize`  | `normalize(v)` | 将方向归一化                    |
+| `DotProduct` | `dot(a,b)`     | 计算 `N·L` 或 `N·H`             |
+| `Saturate`   | `clamp(x,0,1)` | 将结果限制到 `[0,1]`            |
+| `Add`        | `a+b`          | 计算 `L+V`                      |
+| `Power`      | `pow(x,p)`     | 控制高光分布                    |
 | `Multiply`   | `a*b`          | 应用颜色、强度或 Mask（按位乘） |
-| `If`         | 条件比较           | 将连续高光硬切成 0/1       |
+| `If`         | 条件比较       | 将连续高光硬切成 0/1            |
 
 除此之外
 
