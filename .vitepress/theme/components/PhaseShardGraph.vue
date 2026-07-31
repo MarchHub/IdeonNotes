@@ -71,8 +71,29 @@
                     </svg>
                     笔记索引
                 </div>
+
+                <div class="mobile-node-tools">
+                    <label class="node-search-control">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2"
+                            fill="none" aria-hidden="true">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input v-model="nodeSearchQuery" type="search" aria-label="搜索知识节点"
+                            placeholder="搜索标题、分类或标签" />
+                        <button v-if="nodeSearchQuery" class="search-clear-btn" type="button" aria-label="清空节点搜索"
+                            @click="clearNodeSearch">
+                            ×
+                        </button>
+                    </label>
+                    <div class="node-list-meta" aria-live="polite">{{ nodeListStatus }}</div>
+                </div>
+
                 <div class="node-list" @mouseleave="resetHighlight">
-                    <div class="focus-list-item" v-for="node in rawData.nodes" :key="node.id"
+                    <div v-if="visibleNodes.length === 0" class="node-list-empty">
+                        没有匹配的知识节点
+                    </div>
+                    <div class="focus-list-item" v-for="node in visibleNodes" :key="node.id"
                         :class="{ 'is-active': activeNode?.id === node.id }"
                         :style="{ '--node-color': getGroupColor(node.group) }" @mouseenter="highlightNode(node.id)"
                         @click="activeNode = node">
@@ -80,6 +101,13 @@
                             :style="{ backgroundColor: getGroupColor(node.group), boxShadow: `0 0 6px ${getGroupColor(node.group)}` }"></span>
                         <span class="list-text">{{ node.title }}</span>
                     </div>
+                </div>
+
+                <div v-if="isCompactLayout && !nodeSearchQuery && rawData.nodes.length > mobileNodeLimit"
+                    class="mobile-list-actions">
+                    <button class="mobile-list-toggle" type="button" @click="showAllMobileNodes = !showAllMobileNodes">
+                        {{ showAllMobileNodes ? '收起为精选节点' : `查看全部 ${rawData.nodes.length} 个节点` }}
+                    </button>
                 </div>
             </div>
 
@@ -122,6 +150,28 @@ import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useRouter } from 'vitepress'
 import * as d3 from 'd3'
 
+interface GraphNode {
+    id: string
+    title: string
+    group: string
+    val: number
+    path: string
+    summary?: string
+    tags?: string[]
+}
+
+interface GraphLink {
+    source: string | GraphNode
+    target: string | GraphNode
+    type: 'hard' | 'soft'
+    reason?: string
+}
+
+interface GraphData {
+    nodes: GraphNode[]
+    links: GraphLink[]
+}
+
 const router = useRouter()
 const graphContainer = ref<HTMLElement | null>(null)
 let simulation: d3.Simulation<any, any> | null = null
@@ -134,9 +184,114 @@ let svgLabel: d3.Selection<any, any, any, any> | null = null
 
 const isFullscreen = ref(false)
 const chargeStrength = ref(-250)
-const tooltip = ref({ show: false, x: 0, y: 0, node: null as any })
-const activeNode = ref<any>(null)
-const rawData = ref({ nodes: [], links: [] })
+const mobileNodeLimit = 12
+const isCompactLayout = ref(false)
+const nodeSearchQuery = ref('')
+const showAllMobileNodes = ref(false)
+let compactLayoutMediaQuery: MediaQueryList | null = null
+const tooltip = ref<{
+    show: boolean
+    x: number
+    y: number
+    node: GraphNode | null
+}>({ show: false, x: 0, y: 0, node: null })
+const activeNode = ref<GraphNode | null>(null)
+const rawData = ref<GraphData>({ nodes: [], links: [] })
+
+const getLinkEndpointId = (endpoint: string | GraphNode) =>
+    typeof endpoint === 'string' ? endpoint : endpoint.id
+
+const connectionCounts = computed(() => {
+    const counts = new Map<string, number>()
+
+    rawData.value.links.forEach((link) => {
+        const sourceId = getLinkEndpointId(link.source)
+        const targetId = getLinkEndpointId(link.target)
+        counts.set(sourceId, (counts.get(sourceId) || 0) + 1)
+        counts.set(targetId, (counts.get(targetId) || 0) + 1)
+    })
+
+    return counts
+})
+
+const connectedNodeIds = computed(() => {
+    const connected = new Set<string>()
+    if (!activeNode.value) return connected
+
+    rawData.value.links.forEach((link) => {
+        const sourceId = getLinkEndpointId(link.source)
+        const targetId = getLinkEndpointId(link.target)
+
+        if (sourceId === activeNode.value?.id) connected.add(targetId)
+        if (targetId === activeNode.value?.id) connected.add(sourceId)
+    })
+
+    return connected
+})
+
+const mobileRankedNodes = computed(() => {
+    const query = nodeSearchQuery.value.trim().toLocaleLowerCase()
+    const sourceOrder = new Map(
+        rawData.value.nodes.map((node, index) => [node.id, index]),
+    )
+    const nodes = query
+        ? rawData.value.nodes.filter((node) => {
+            const searchable = [node.title, node.group, ...(node.tags || [])]
+                .join(' ')
+                .toLocaleLowerCase()
+            return searchable.includes(query)
+        })
+        : [...rawData.value.nodes]
+
+    return nodes.sort((left, right) => {
+        if (query) {
+            const leftStartsWith = left.title.toLocaleLowerCase().startsWith(query)
+            const rightStartsWith = right.title.toLocaleLowerCase().startsWith(query)
+            if (leftStartsWith !== rightStartsWith) return leftStartsWith ? -1 : 1
+        }
+
+        if (activeNode.value) {
+            if (left.id === activeNode.value.id) return -1
+            if (right.id === activeNode.value.id) return 1
+
+            const leftConnected = connectedNodeIds.value.has(left.id)
+            const rightConnected = connectedNodeIds.value.has(right.id)
+            if (leftConnected !== rightConnected) return leftConnected ? -1 : 1
+        }
+
+        const valueDifference = (right.val || 0) - (left.val || 0)
+        if (valueDifference !== 0) return valueDifference
+
+        const connectionDifference =
+            (connectionCounts.value.get(right.id) || 0) -
+            (connectionCounts.value.get(left.id) || 0)
+        if (connectionDifference !== 0) return connectionDifference
+
+        return (sourceOrder.get(left.id) || 0) - (sourceOrder.get(right.id) || 0)
+    })
+})
+
+const visibleNodes = computed(() => {
+    if (!isCompactLayout.value) return rawData.value.nodes
+    if (nodeSearchQuery.value.trim() || showAllMobileNodes.value) {
+        return mobileRankedNodes.value
+    }
+
+    return mobileRankedNodes.value.slice(0, mobileNodeLimit)
+})
+
+const nodeListStatus = computed(() => {
+    if (nodeSearchQuery.value.trim()) {
+        return `${visibleNodes.value.length} 个匹配节点`
+    }
+
+    return `显示 ${visibleNodes.value.length} / ${rawData.value.nodes.length} 个节点`
+})
+
+const clearNodeSearch = () => {
+    nodeSearchQuery.value = ''
+    showAllMobileNodes.value = false
+}
 
 const stats = computed(() => {
     const groupCounts: Record<string, number> = {}
@@ -152,7 +307,7 @@ const stats = computed(() => {
     return { nodes: rawData.value.nodes.length, links: rawData.value.links.length, topGroups }
 })
 
-const getGroupColor = (str: string) => {
+const getGroupColor = (str?: string) => {
     if (!str) return '#10b981'
     let hash = 0
     for (let i = 0; i < str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash)
@@ -160,7 +315,7 @@ const getGroupColor = (str: string) => {
 }
 
 const getNodeRadius = (val: number) => Math.max(12, Math.sqrt(val || 1) * 6)
-const getNodeConnectionCount = (id: string) => rawData.value.links.filter((l: any) => (l.source.id === id || l.target.id === id)).length
+const getNodeConnectionCount = (id: string) => connectionCounts.value.get(id) || 0
 
 // -------------------------------------------------------------------------
 // 核心修复：联动高亮逻辑 (彻底剥离 D3 动画，交由 CSS transition 接管处理防闪烁)
@@ -210,7 +365,7 @@ const toggleFullscreen = () => {
     }, 350)
 }
 
-const fetchGraphData = async () => {
+const fetchGraphData = async (): Promise<GraphData> => {
     try {
         const res = await fetch('/phaseshard.json')
         if (!res.ok) throw new Error()
@@ -332,6 +487,10 @@ const navigateTo = (path: string) => {
 }
 
 onMounted(async () => {
+    compactLayoutMediaQuery = window.matchMedia('(max-width: 800px)')
+    isCompactLayout.value = compactLayoutMediaQuery.matches
+    compactLayoutMediaQuery.addEventListener('change', handleCompactLayoutChange)
+
     rawData.value = await fetchGraphData()
     renderGraph(rawData.value)
 })
@@ -339,7 +498,17 @@ onMounted(async () => {
 onUnmounted(() => {
     if (simulation) simulation.stop()
     if (resizeObserver) resizeObserver.disconnect()
+    compactLayoutMediaQuery?.removeEventListener('change', handleCompactLayoutChange)
 })
+
+function handleCompactLayoutChange(event: MediaQueryListEvent) {
+    isCompactLayout.value = event.matches
+
+    if (!event.matches) {
+        nodeSearchQuery.value = ''
+        showAllMobileNodes.value = false
+    }
+}
 </script>
 
 <style scoped>
@@ -532,6 +701,98 @@ onUnmounted(() => {
     display: flex;
     flex-direction: column;
     padding-bottom: 8px;
+}
+
+.mobile-node-tools,
+.mobile-list-actions {
+    display: none;
+}
+
+.node-search-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0 10px;
+    color: var(--vp-c-text-3);
+    background-color: var(--vp-c-bg-soft);
+    border: 1px solid var(--vp-c-border);
+    border-radius: 8px;
+}
+
+.node-search-control:focus-within {
+    color: var(--vp-c-brand-1);
+    border-color: var(--vp-c-brand-1);
+}
+
+.node-search-control input {
+    width: 100%;
+    min-width: 0;
+    padding: 8px 0;
+    color: var(--vp-c-text-1);
+    background: transparent;
+    border: 0;
+    outline: 0;
+    font: inherit;
+    font-size: 0.85rem;
+}
+
+.node-search-control input::placeholder {
+    color: var(--vp-c-text-3);
+}
+
+.search-clear-btn {
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    color: var(--vp-c-text-2);
+    background: transparent;
+    border: 0;
+    border-radius: 6px;
+    font-size: 1.15rem;
+    cursor: pointer;
+}
+
+.search-clear-btn:hover {
+    color: var(--vp-c-text-1);
+    background-color: var(--vp-c-bg-mute);
+}
+
+.node-list-meta {
+    margin-top: 6px;
+    color: var(--vp-c-text-3);
+    font-size: 0.72rem;
+}
+
+.node-list-empty {
+    display: grid;
+    min-height: 120px;
+    place-items: center;
+    color: var(--vp-c-text-3);
+    font-size: 0.82rem;
+    text-align: center;
+}
+
+.mobile-list-actions {
+    flex: 0 0 auto;
+    padding-top: 8px;
+}
+
+.mobile-list-toggle {
+    width: 100%;
+    padding: 9px 12px;
+    color: var(--vp-c-brand-1);
+    background-color: var(--vp-c-bg-soft);
+    border: 1px solid var(--vp-c-brand-soft);
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.mobile-list-toggle:hover {
+    background-color: var(--vp-c-bg-mute);
 }
 
 .node-list {
@@ -743,21 +1004,54 @@ onUnmounted(() => {
     .phaseshard-wrapper {
         flex-direction: column;
         height: auto;
+        min-height: 0;
     }
 
     .phaseshard-wrapper.is-fullscreen {
         flex-direction: column;
+        overflow-y: auto;
     }
 
     .graph-area {
-        height: 60vh;
-        min-height: 400px;
+        flex: 0 0 clamp(320px, 52vh, 420px);
+        height: clamp(320px, 52vh, 420px);
+        min-height: 320px;
     }
 
     .obsidian-panel {
         width: 100%;
+        height: auto;
         border-left: none;
         border-top: 1px solid var(--vp-c-border);
+        overflow: visible;
+    }
+
+    .node-list-section {
+        flex: 0 0 clamp(360px, 52vh, 440px);
+        height: clamp(360px, 52vh, 440px);
+        min-height: 360px;
+    }
+
+    .mobile-node-tools,
+    .mobile-list-actions {
+        display: block;
+    }
+
+    .detail-section {
+        flex: 0 0 auto;
+        min-height: 180px;
+        max-height: 320px;
+    }
+
+    .active-node-card,
+    .empty-state {
+        min-height: 120px;
+    }
+
+    .phaseshard-wrapper.is-fullscreen .graph-area {
+        flex-basis: 55vh;
+        height: 55vh;
+        min-height: 300px;
     }
 }
 </style>

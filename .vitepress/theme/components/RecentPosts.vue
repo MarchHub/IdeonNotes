@@ -6,6 +6,11 @@ const formatDate = (timestamp: number) => {
     const date = new Date(timestamp)
     return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`
 }
+
+const formatDateTime = (timestamp: number) => {
+    if (!timestamp) return undefined
+    return new Date(timestamp).toISOString()
+}
 </script>
 
 <template>
@@ -16,19 +21,21 @@ const formatDate = (timestamp: number) => {
                 <h2 class="title">RECENT_UPDATES <span class="cn-title">最近更新</span></h2>
             </div>
             <div class="grid">
-                <a v-for="post in posts" :key="post.url" :href="post.url" class="card">
+                <article v-for="post in posts" :key="post.url" class="card">
                     <div class="card-top-line"></div>
                     <div class="card-header">
                         <div class="tech-dot"></div>
-                        <span class="date">{{ formatDate(post.date) }}</span>
+                        <time class="date" :datetime="formatDateTime(post.date)">{{ formatDate(post.date) }}</time>
                     </div>
-                    <h3 class="card-title">{{ post.title }}</h3>
+                    <h3 class="card-title">
+                        <a :href="post.url" class="card-link">{{ post.title }}</a>
+                    </h3>
                     <div class="card-excerpt" v-html="post.excerpt"></div>
                     <div class="card-footer">
                         <span class="link-text">READ_DATA //</span>
                         <div class="icon-arrow"></div>
                     </div>
-                </a>
+                </article>
             </div>
         </div>
     </section>
@@ -123,6 +130,34 @@ html.dark {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     text-decoration: none !important;
     overflow: hidden;
+}
+
+.card-link {
+    color: inherit;
+    text-decoration: none !important;
+}
+
+.card-link::after {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    border-radius: 8px;
+    content: '';
+}
+
+.card-link:focus {
+    outline: none;
+}
+
+.card-link:focus-visible::after {
+    outline: 2px solid var(--y-accent);
+    outline-offset: -3px;
+}
+
+.card-excerpt :deep(a),
+.card-excerpt :deep(button) {
+    position: relative;
+    z-index: 2;
 }
 
 .card-top-line {

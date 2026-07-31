@@ -1,5 +1,5 @@
 allowBuilds:
-    reurl: true
+    reurl: false
     esbuild: true
 blockExoticSubdeps: false
 packages:

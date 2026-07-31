@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "env.d.ts",
+    ".vitepress/theme/**/*.ts",
+    ".vitepress/theme/**/*.vue"
+  ],
+  "exclude": [
+    ".vitepress/cache",
+    ".vitepress/dist",
+    "node_modules"
+  ]
+}

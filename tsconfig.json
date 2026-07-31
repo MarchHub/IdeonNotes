@@ -2,16 +2,24 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "types": ["vite/client"]
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "types": ["node", "vite/client"]
   },
   "include": [
     "env.d.ts",
-    "src",
-    "docs",
-    ".vitepress"
+    ".vitepress/**/*.ts",
+    ".vitepress/**/*.mts"
+  ],
+  "exclude": [
+    ".vitepress/cache",
+    ".vitepress/dist",
+    ".vitepress/theme/index.ts",
+    "node_modules"
   ]
 }

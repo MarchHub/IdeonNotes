@@ -3,7 +3,6 @@
   "devDependencies": {
     "@nolebase/markdown-it-bi-directional-links": "^2.18.2",
     "@octokit/rest": "^22.0.0",
-    "@shikijs/vitepress-twoslash": "^3.8.1",
     "@types/d3": "^7.4.3",
     "@types/node": "^24.1.0",
     "@types/node-fetch": "^2.6.12",
@@ -21,16 +20,20 @@
     "medium-zoom": "^1.1.0",
     "node-fetch": "^2.7.0",
     "path": "^0.12.7",
-    "shiki": "^3.8.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
     "vite": "^7.0.6",
     "vitepress": "^1.6.3",
-    "vitepress-plugin-rss": "^0.3.1"
+    "vitepress-plugin-rss": "^0.3.1",
+    "vue-tsc": "^3.3.8"
   },
   "scripts": {
     "check:secrets": "node scripts/check-secrets.mjs",
-    "predocs:build": "pnpm check:secrets",
+    "predocs:build": "pnpm check:secrets && pnpm test:routes",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "typecheck:vue": "vue-tsc -p tsconfig.vue.json --noEmit",
+    "test:rss": "node --test --experimental-strip-types .vitepress/utilities/rss-assets.test.ts",
+    "test:routes": "node --test --experimental-strip-types .vitepress/utilities/route-paths.test.ts",
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"

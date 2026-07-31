@@ -6,44 +6,50 @@ import { prepareGithubContributors } from "./plugins/GithubContributors";
 import markdownItTaskCheckbox from "markdown-it-task-checkbox";
 import mark from "markdown-it-mark";
 import footnote from "markdown-it-footnote";
-import { transformerTwoslash } from "@shikijs/vitepress-twoslash";
 import wikilink from "markdown-it-wikilinks";
 import { BiDirectionalLinks } from "@nolebase/markdown-it-bi-directional-links";
 
-import { RSSOptions, RssPlugin } from "vitepress-plugin-rss";
+import {
+    RssPlugin,
+    type PostInfo,
+    type RSSOptions,
+} from "vitepress-plugin-rss";
+import { RssAssetPlugin } from "./utilities/rss-assets";
+import {
+    PageRoutePlugin,
+    writeLegacyPageRedirects,
+} from "./utilities/page-route-plugin";
+import { createPageRouteRewriter } from "./utilities/route-paths";
 
 const baseUrl = "https://yuufrag.machillka.com";
+const feedUrl = `${baseUrl}/feed.rss`;
 const contributorIndex = await prepareGithubContributors(contributorsConfig);
+
+function hasExplicitValidDate(post: PostInfo): boolean {
+    const frontmatter = post.fileContent.match(
+        /^---[^\S\r\n]*\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/,
+    )?.[1];
+
+    return (
+        frontmatter !== undefined &&
+        /^date\s*:/m.test(frontmatter) &&
+        !Number.isNaN(Date.parse(String(post.frontmatter.date)))
+    );
+}
+
 const RSS: RSSOptions = {
     title: `Machillka's Notes`,
+    description: "Machillka 的学习记录与共享笔记库",
     baseUrl,
+    link: baseUrl,
+    url: feedUrl,
+    feed: feedUrl,
+    language: "zh-CN",
     copyright: "Copyright (c) 2025-present, Machillka",
-
-    render: (html) => {
-        return html.replace(
-            /(src|href)\s*=\s*["']([^"']+)["']/g,
-            (match, attr, src) => {
-                // 跳过绝对路径和锚点
-                if (/^https?:\/\/|^\/\/|^#|^mailto:/.test(src)) {
-                    return match;
-                }
-
-                // 1. 清理路径：去除 ./
-                let processedSrc = src.replace(/^\.\//, "");
-
-                // 2. 关键点：如果你的图片文件夹 Assets 就在根目录或 public 下
-                if (!processedSrc.startsWith("/")) {
-                    processedSrc = "/" + processedSrc;
-                }
-
-                // 3. 解决空格问题：RSS 里的链接不能有空格，必须转义为 %20
-                const encodedSrc = processedSrc.replace(/ /g, "%20");
-
-                // 4. 返回完整 URL
-                console.log(`RSS Rewriting: ${src} -> ${baseUrl}${encodedSrc}`); // 用于构建时调试查看
-                return `${attr}="${baseUrl}${encodedSrc}"`;
-            },
-        );
+    filter(post) {
+        // An explicit valid date is the publication marker for RSS.
+        // Undated knowledge pages stay out until the frontmatter schema is defined.
+        return post.url.startsWith("/posts/") && hasExplicitValidDate(post);
     },
 };
 
@@ -51,6 +57,7 @@ const base = "/";
 
 export default defineConfig({
     base: base,
+    rewrites: createPageRouteRewriter(),
     sitemap: {
         hostname: baseUrl + "/",
     },
@@ -82,7 +89,6 @@ export default defineConfig({
             //     return htmlResult;
             // }
         },
-        codeTransformers: [transformerTwoslash()],
         theme: {
             light: "material-theme-lighter",
             dark: "material-theme-palenight",
@@ -101,6 +107,9 @@ export default defineConfig({
                 contributors,
             },
         };
+    },
+    async buildEnd(siteConfig) {
+        await writeLegacyPageRedirects(siteConfig);
     },
     themeConfig: {
         search: {
@@ -143,6 +152,10 @@ export default defineConfig({
         },
     },
     vite: {
-        plugins: [RssPlugin(RSS)],
+        plugins: [
+            PageRoutePlugin(),
+            RssPlugin(RSS),
+            RssAssetPlugin({ baseUrl, filename: "feed.rss" }),
+        ],
     },
 });

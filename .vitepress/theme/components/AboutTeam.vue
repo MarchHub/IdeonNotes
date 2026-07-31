@@ -26,26 +26,30 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { withBase } from 'vitepress'
 
-const props = defineProps({
-  members: {
-    type: Array,
-    required: true
-  }
-})
+interface TeamMember {
+  github: string
+  name: string
+  title?: string
+}
+
+defineProps<{
+  members: TeamMember[]
+}>()
 
 // 先读 Cache
-const getAvatarUrl = (github) => {
+const getAvatarUrl = (github: string) => {
   return withBase(`/contributors/${github}.png`)
 }
 
 // Fallback
-const handleAvatarError = (event, github) => {
-  if (!event.target.dataset.fallback) {
-    event.target.dataset.fallback = '1'
-    event.target.src = `https://github.com/${github}.png`
+const handleAvatarError = (event: Event, github: string) => {
+  const image = event.currentTarget
+  if (image instanceof HTMLImageElement && !image.dataset.fallback) {
+    image.dataset.fallback = '1'
+    image.src = `https://github.com/${github}.png`
   }
 }
 

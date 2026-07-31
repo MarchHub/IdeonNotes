@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { folderNames } from "../ignore";
+import { pageIdToPublicHref } from "../utilities/route-paths";
 
 interface navItem {
     text: string;
@@ -68,16 +69,15 @@ export function ScanCurrentDir(dir: string, routePath = ""): navItem[] {
 
             // 如果找到了文件（说明文件夹不为空），则添加该目录到导航
             if (firstFileRelativePath) {
-                // 移除 .md 后缀以匹配 VitePress 的 cleanUrls 逻辑
-                const cleanLink =
-                    `/${routePath}/${name}/${firstFileRelativePath}`.replace(
-                        /\.md$/,
-                        "",
+                const sourcePageId =
+                    `${routePath}/${name}/${firstFileRelativePath}`.replace(
+                        /\/+/g,
+                        "/",
                     );
 
                 items.push({
                     text: name,
-                    link: cleanLink.replace(/\/+/g, "/"), // 确保没有双斜杠
+                    link: pageIdToPublicHref(sourcePageId),
                 });
             }
             // 如果 firstFileRelativePath 为 null，说明是空目录或没有 md 文件，直接跳过

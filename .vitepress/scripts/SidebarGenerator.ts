@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { folderNames } from "../ignore";
+import { pageIdToPublicHref } from "../utilities/route-paths";
 
 interface SidebarItem {
     text: string;
@@ -65,7 +66,7 @@ function ScanDir(dir: string, routePath = "", depth = 1): SidebarItem[] {
             const slug = name.replace(/\.md$/, "");
             items.push({
                 text: slug,
-                link: `/${routePath}/${slug}`.replace(/\/+/g, "/"), // 确保路径不重复斜杠
+                link: pageIdToPublicHref(`${routePath}/${name}`),
             });
         }
     }

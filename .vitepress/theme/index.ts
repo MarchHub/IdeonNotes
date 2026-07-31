@@ -12,8 +12,6 @@ import AboutTeam from "./components/AboutTeam.vue";
 import mediumZoom from "medium-zoom";
 import { onMounted, watch, nextTick } from "vue";
 import { useRoute } from "vitepress";
-import TwoslashFloatingVue from "@shikijs/vitepress-twoslash/client";
-import "@shikijs/vitepress-twoslash/style.css";
 import TagList from "./components/TagList.vue";
 import RecentPosts from "./components/RecentPosts.vue";
 export default {
@@ -86,6 +84,5 @@ export default {
         app.component("Contributors", Contributors);
         app.component("AboutTeam", AboutTeam);
         app.component("TagList", TagList);
-        app.use(TwoslashFloatingVue);
     },
 } satisfies Theme;
