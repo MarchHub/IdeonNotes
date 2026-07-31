@@ -14,7 +14,8 @@
   "include": [
     "env.d.ts",
     ".vitepress/**/*.ts",
-    ".vitepress/**/*.mts"
+    ".vitepress/**/*.mts",
+    "tests/**/*.ts"
   ],
   "exclude": [
     ".vitepress/cache",

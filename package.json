@@ -29,11 +29,13 @@
   },
   "scripts": {
     "check:secrets": "node scripts/check-secrets.mjs",
-    "predocs:build": "pnpm check:secrets && pnpm test:routes",
+    "check": "pnpm check:secrets && pnpm typecheck && pnpm typecheck:vue && pnpm test",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "typecheck:vue": "vue-tsc -p tsconfig.vue.json --noEmit",
-    "test:rss": "node --test --experimental-strip-types .vitepress/utilities/rss-assets.test.ts",
-    "test:routes": "node --test --experimental-strip-types .vitepress/utilities/route-paths.test.ts",
+    "test": "pnpm test:unit",
+    "test:unit": "pnpm test:routes && pnpm test:rss",
+    "test:rss": "node --test --experimental-strip-types tests/unit/rss-assets.test.ts",
+    "test:routes": "node --test --experimental-strip-types tests/unit/route-paths.test.ts",
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"

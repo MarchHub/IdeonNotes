@@ -1,25 +1,61 @@
 # 构建 VitePress 站点并将其部署到 GitHub Pages 的示例工作流程
 #
-name: Deploy VitePress site to Pages
+name: Check and deploy VitePress site
 
 on:
     push:
         branches: [main]
+    pull_request:
+        branches: [main]
     workflow_dispatch:
 
-# 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
+# 默认只授予读取代码的权限；部署 job 单独申请 Pages 权限。
 permissions:
     contents: read
-    pages: write
-    id-token: write
 
 concurrency:
-    group: pages
+    group: pages-${{ github.ref }}
     cancel-in-progress: false
 
 jobs:
-    # 构建工作
+    quality:
+        name: Quality checks
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v5
+              with:
+                  fetch-depth: 0
+
+            - uses: pnpm/action-setup@v4
+              with:
+                  version: 9
+
+            - name: Setup Node
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 22
+                  cache: pnpm
+
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+
+            - name: Check committed secrets
+              run: pnpm check:secrets
+
+            - name: Type-check VitePress config
+              run: pnpm typecheck
+
+            - name: Type-check Vue theme
+              run: pnpm typecheck:vue
+
+            - name: Run unit tests
+              run: pnpm test
+
     build:
+        name: Build VitePress site
+        if: github.event_name != 'pull_request'
+        needs: quality
         runs-on: ubuntu-latest
         env:
             GITHUB_TOKEN: ${{ secrets.CONTRIBUTOR_TOKEN || github.token }}
@@ -43,17 +79,22 @@ jobs:
               uses: actions/configure-pages@v5
 
             - name: Install dependencies
-              run: pnpm install
+              run: pnpm install --frozen-lockfile
 
             - name: Build with VitePress
               run: pnpm docs:build
 
             - name: Upload artifact
-              uses: actions/upload-pages-artifact@v3
+              uses: actions/upload-pages-artifact@v4
               with:
                   path: .vitepress/dist
 
     deploy:
+        if: github.event_name != 'pull_request'
+        permissions:
+            contents: read
+            pages: write
+            id-token: write
         environment:
             name: github-pages
             url: ${{ steps.deployment.outputs.page_url }}
