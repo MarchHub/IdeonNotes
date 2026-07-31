@@ -83,11 +83,6 @@ export default defineConfig({
                     htmlAttributes: { class: "wikilink", target: "_blank" },
                 })
                 .use(BiDirectionalLinks());
-            // md.renderer.rules.heading_close = (tokens, idx, options, env, slf) => {
-            //     let htmlResult = slf.renderToken(tokens, idx, options);
-            //     if (tokens[idx].tag === 'h1') htmlResult += `<ArticleMetadata />`;
-            //     return htmlResult;
-            // }
         },
         theme: {
             light: "material-theme-lighter",
@@ -124,6 +119,7 @@ export default defineConfig({
             { text: "指南", link: "/guide/" },
             { text: "关于", link: "/about/" },
             { text: "笔记总览", link: "/map" },
+            { text: "标签", link: "/tags/" },
             {
                 text: "分类",
                 items: ScanCurrentDir("../../posts/", "posts"),
@@ -137,6 +133,7 @@ export default defineConfig({
                         { text: "站点说明", link: "/guide/" },
                         { text: "提交笔记", link: "/guide/note.md" },
                         { text: "参与开发", link: "/guide/development.md" },
+                        { text: "tag 系统", link: "/guide/tags.md" },
                     ],
                 },
             ],

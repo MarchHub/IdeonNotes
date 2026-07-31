@@ -11,6 +11,7 @@
 .vitepress/cache
 .vitepress/dist
 .vitepress/.temp
+.vitepress/generated/
 public/contributors/
 dist
 cache

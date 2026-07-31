@@ -1,3 +1,10 @@
+---
+tags:
+  - ChikaEngine
+  - 实时渲染
+  - Shader 与材质
+---
+
 # Shader Interface Stable Hash
 
 浅说一下 ChikaEngine 中的 Stable Hash 设计。

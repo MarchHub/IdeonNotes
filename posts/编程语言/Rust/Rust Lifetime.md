@@ -1,5 +1,8 @@
 ---
 footer: false
+tags:
+  - Rust
+  - 内存管理
 ---
 # 生命周期
 

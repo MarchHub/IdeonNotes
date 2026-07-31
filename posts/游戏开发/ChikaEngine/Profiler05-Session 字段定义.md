@@ -1,3 +1,10 @@
+---
+tags:
+  - ChikaEngine
+  - 游戏引擎
+  - 性能分析
+---
+
 # Profiler05-Session 字段定义
 
 先说明一下字段的定义，和 Session 比较简单的零碎边缘，把内部的具体实现留到下次说明

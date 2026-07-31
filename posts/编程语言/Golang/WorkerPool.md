@@ -1,6 +1,9 @@
 ---
 title: WorkerPool
-tags: []
+tags:
+  - Go
+  - 并发编程
+  - 异步与调度
 date: 2025-08-09
 ---
 # WorkerPool

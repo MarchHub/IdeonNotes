@@ -1,6 +1,9 @@
 ---
 title: WaitGroup
-tags: []
+tags:
+  - Go
+  - 并发编程
+  - 同步机制
 date: 2025-08-09
 ---
 # WaitGroup

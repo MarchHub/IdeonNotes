@@ -1,3 +1,10 @@
+---
+tags:
+  - ChikaEngine
+  - 游戏引擎
+  - 性能分析
+---
+
 # Profiler02-RAII
 
 把 `ProfilerScope` 和 `ProfilerFrameScope` 做一次 RAII 封装，保证有`Begin`就一定有`End`

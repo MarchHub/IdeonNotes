@@ -33,11 +33,13 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "typecheck:vue": "vue-tsc -p tsconfig.vue.json --noEmit",
     "test": "pnpm test:unit",
-    "test:unit": "pnpm test:routes && pnpm test:rss",
+    "test:unit": "pnpm test:routes && pnpm test:rss && pnpm test:tags",
     "test:rss": "node --test --experimental-strip-types tests/unit/rss-assets.test.ts",
     "test:routes": "node --test --experimental-strip-types tests/unit/route-paths.test.ts",
-    "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build",
+    "test:tags": "node --test --experimental-strip-types tests/unit/tag-catalog.test.ts",
+    "tags:generate": "node --experimental-strip-types .vitepress/scripts/generate-tags.ts",
+    "docs:dev": "pnpm tags:generate && vitepress dev",
+    "docs:build": "pnpm tags:generate && vitepress build",
     "docs:preview": "vitepress preview"
   },
   "dependencies": {

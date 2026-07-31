@@ -1,3 +1,10 @@
+---
+tags:
+  - ChikaEngine
+  - 实时渲染
+  - 渲染管线
+---
+
 # Render Dependency Graph
 
 浅说一下在 `ChikaEngine` 中实现的 `RDG`

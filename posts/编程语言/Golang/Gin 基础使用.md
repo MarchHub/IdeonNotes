@@ -1,8 +1,8 @@
 ---
 title: Gin 基础使用
 tags:
-  - 后端
-  - golang
+  - Go
+  - 后端开发
 date: 2025-08-13
 ---
 # Gin 基础使用

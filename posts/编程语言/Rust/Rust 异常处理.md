@@ -1,3 +1,9 @@
+---
+tags:
+  - Rust
+  - 错误处理
+---
+
 # Rust 异常处理
 
 ## Panic

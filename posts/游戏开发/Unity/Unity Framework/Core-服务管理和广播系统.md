@@ -1,3 +1,10 @@
+---
+tags:
+  - Unity
+  - 游戏引擎
+  - 软件架构
+---
+
 # 服务管理和广播系统
 
 ## Service Locator

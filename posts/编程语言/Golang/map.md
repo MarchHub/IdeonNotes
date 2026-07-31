@@ -1,6 +1,8 @@
 ---
 title: map
-tags: []
+tags:
+  - Go
+  - 类型系统
 date: 2025-08-13
 ---
 # map

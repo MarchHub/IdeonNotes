@@ -1,3 +1,10 @@
+---
+tags:
+  - ChikaEngine
+  - 游戏引擎
+  - 性能分析
+---
+
 # Profiler04-Event 数据
 
 定义 `ProfilerEvent` —— 把一次 profiler 的行为打包，形成一个固定格式，而不是随意乱写的数据（

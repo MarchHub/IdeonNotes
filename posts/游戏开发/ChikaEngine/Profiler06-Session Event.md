@@ -1,3 +1,10 @@
+---
+tags:
+  - ChikaEngine
+  - 游戏引擎
+  - 性能分析
+---
+
 # Profiler06-Session Event
 
 聚焦外部调用 `BeginFrame / BeginZone / RecordCounter / RecordInstant` 后，Session 如何构造事件，并把它交给下一层，即 ——

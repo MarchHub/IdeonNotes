@@ -1,5 +1,5 @@
 // https://vitepress.dev/guide/custom-theme
-import { h } from "vue";
+import { Fragment, h } from "vue";
 import type { Theme } from "vitepress";
 import DefaultTheme from "vitepress/theme";
 import ArticleMetadata from "./components/ArticleMetadata.vue";
@@ -18,7 +18,8 @@ export default {
     Layout: () => {
         return h(DefaultTheme.Layout, null, {
             "home-features-after": () => h(RecentPosts),
-            "doc-footer-before": () => h(Contributors),
+            "doc-footer-before": () =>
+                h(Fragment, null, [h(TagList), h(Contributors)]),
         });
     },
     extends: DefaultTheme,
@@ -83,6 +84,5 @@ export default {
         app.component("ArticleMetadata", ArticleMetadata);
         app.component("Contributors", Contributors);
         app.component("AboutTeam", AboutTeam);
-        app.component("TagList", TagList);
     },
 } satisfies Theme;

@@ -1,3 +1,10 @@
+---
+tags:
+  - ChikaEngine
+  - 游戏引擎
+  - 资源管理
+---
+
 # Archive
 
 姑且称之为 Archive Mode —— 它合并了 Read 和 Write 两种方法,是的读写非常的对称,大大减少出错概率.

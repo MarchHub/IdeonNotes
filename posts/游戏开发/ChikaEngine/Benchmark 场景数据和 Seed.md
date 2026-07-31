@@ -1,3 +1,10 @@
+---
+tags:
+  - ChikaEngine
+  - 游戏引擎
+  - 性能分析
+---
+
 # Benchmark 场景数据和 Seed
 
 先生成一份纯数据的场景描述，然后丢给下一步的工厂`BenchmarkSceneFactory`进行实例化，构建真实的场景

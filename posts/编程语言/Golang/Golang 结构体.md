@@ -1,6 +1,8 @@
 ---
 title: Golang 结构体
-tags: 
+tags:
+  - Go
+  - 类型系统
 date: 2025-08-10
 ---
 # Golang 结构体

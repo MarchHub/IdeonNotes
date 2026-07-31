@@ -1,9 +1,8 @@
 ---
 tags:
-  - 游戏开发
   - ChikaEngine
-  - CG
-  - GraphicsPipeline
+  - 实时渲染
+  - 渲染管线
 ---
 # Renderer
 

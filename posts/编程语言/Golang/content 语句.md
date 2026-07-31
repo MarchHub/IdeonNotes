@@ -1,6 +1,9 @@
 ---
 title: content 语句
-tags: 
+tags:
+  - Go
+  - 并发编程
+  - 异步与调度
 date: 2025-08-11
 ---
 # content 语句

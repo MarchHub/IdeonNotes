@@ -1,3 +1,10 @@
+---
+tags:
+  - ChikaEngine
+  - 游戏引擎
+  - 性能分析
+---
+
 # Benchmark
 
 单独实现一个可执行程序作为Benchmark，不依赖 Editor 的运行.

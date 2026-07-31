@@ -1,82 +1,90 @@
-<template>
-  <!-- <ul class="tag-list" v-if="tags?.length">
-    <li
-      v-for="(tag, idx) in tags"
-      :key="idx"
-      class="tag-list-item"
-    >
-      {{ tag }}
-    </li>
-  </ul> -->
-  <div class="tags-container" v-if="tags?.length">
-    <span
-      v-for="(tag, idx) in tags"
-      :key="idx"
-      class="tag-item"
-    >
-    {{ tag }}
-    </span>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useData } from 'vitepress'
+import { useData, useRoute, withBase } from 'vitepress'
 
-const { page, frontmatter } = useData()
+import { data as tagCatalog } from '../tag-catalog.data'
+
+const { frontmatter } = useData()
+const route = useRoute()
+
 const tags = computed(() => {
-  const c = frontmatter.value.tags
-  return Array.isArray(c) ? c : []
+    const values = frontmatter.value.tags
+    if (!Array.isArray(values)) return []
+
+    return values
+        .filter((value): value is string => typeof value === 'string')
+        .map((value) => value.normalize('NFC').trim().replace(/\s+/g, ' '))
+        .filter(Boolean)
+        .map((name) => tagCatalog.tags.find((tag) => tag.name === name))
+        .filter((tag) => tag !== undefined)
 })
+
+const tagHref = (href: string) => {
+    const encodedPath = route.path.replace(/[?#].*$/, '')
+    let from = encodedPath
+
+    try {
+        from = decodeURI(encodedPath)
+    } catch {
+        // 保留原路径，聚合页仍会执行站内文章校验。
+    }
+
+    return `${withBase(href)}?from=${encodeURIComponent(from)}`
+}
 </script>
 
+<template>
+    <nav v-if="tags.length" class="article-tags" aria-label="文章标签">
+        <a
+            v-for="tag in tags"
+            :key="tag.routeId"
+            :href="tagHref(tag.href)"
+        >
+            # {{ tag.name }}
+        </a>
+    </nav>
+</template>
+
 <style scoped>
-.tag-item {
-  display: inline-block;
-  padding: 0.2em 0.5em;
-  font-size: 0.75rem;
-  color: #fff;
-  /* background: linear-gradient(135deg, #50a9e8 20%, #94d0fa 100%); */
-  background-color: #43aefc;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(33, 150, 243, 0.3);
-  transition: box-shadow 0.2s ease;
-  white-space: nowrap;
+.article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 56px 0 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--vp-c-divider);
 }
 
-.tag-item:hover {
-  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.4);
+.article-tags a {
+    display: block;
+    padding: 0 14px;
+    border: 1px solid var(--vp-c-divider);
+    border-radius: 8px;
+    background: var(--vp-c-bg-soft);
+    color: var(--vp-c-text-2);
+    font-size: 13px;
+    line-height: 34px;
+    text-decoration: none;
+    transition:
+        background-color 0.2s,
+        border-color 0.2s,
+        color 0.2s,
+        box-shadow 0.2s;
 }
 
-/* 新增：标签容器布局 */
-.tags-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;         /* 水平 & 垂直间距 */
-  margin: 0.5rem 0 1.5rem;      /* 容器上下间距 */
-  align-items: center; /* 垂直居中对齐 */
-}
-/* .tag-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 0.75rem;
-  margin-top: 1rem;
-  list-style: none;
-  padding: 0;
+.article-tags a:hover,
+.article-tags a:focus-visible {
+    border-color: var(--vp-c-brand-1);
+    background: var(--vp-c-brand-soft);
+    color: var(--vp-c-brand-1);
+    box-shadow: 0 0 0 2px var(--vp-c-brand-soft);
+    outline: none;
 }
 
-.tag-list-item {
-  display: inline-block;
-  padding: 0.3em 0.7em;
-  font-size: 0.9rem;
-  color: #fff;
-  background: linear-gradient(135deg, #2196f3, #42a5f5);
-  border-radius: 20px;
-  box-shadow: 0 2px 6px rgba(33, 150, 243, 0.3);
-  transition: box-shadow 0.2s ease;
+@media (max-width: 640px) {
+    .article-tags {
+        margin-top: 40px;
+        padding-top: 20px;
+    }
 }
-
-.tag-list-item:hover {
-  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
-} */
 </style>

@@ -1,3 +1,10 @@
+---
+tags:
+  - ChikaEngine
+  - 游戏引擎
+  - 性能分析
+---
+
 # Profiler03-NameRegistry
 
 如果热路径存储的是字符串，假设一直在每一帧运行的话 ——

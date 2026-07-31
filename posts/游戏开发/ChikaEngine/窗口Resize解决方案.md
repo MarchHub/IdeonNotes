@@ -1,3 +1,10 @@
+---
+tags:
+  - ChikaEngine
+  - 游戏引擎
+  - 实时渲染
+---
+
 # 窗口Resize解决方案
 
 ## GLFW

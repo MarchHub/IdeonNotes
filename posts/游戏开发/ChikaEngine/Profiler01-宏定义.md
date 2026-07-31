@@ -1,3 +1,10 @@
+---
+tags:
+  - ChikaEngine
+  - 游戏引擎
+  - 性能分析
+---
+
 # Profiler01-宏定义
 
 拆分`Profiler`中的宏定义和展开这块的内容 ——

@@ -1,3 +1,10 @@
+---
+tags:
+  - Unreal Engine
+  - 游戏引擎
+  - 反射
+---
+
 # UE 反射机制
 
 > Reflection is the ability of a program to examine itself at runtime. This is hugely useful and is a foundational technology of the Unreal engine, powering many systems such as detail panels in the editor, serialization, garbage collection, network replication, and Blueprint/C++ communication. —— [Unreal Property System (Reflection)](https://www.unrealengine.com/blog/unreal-property-system-reflection?lang=zh-CN)

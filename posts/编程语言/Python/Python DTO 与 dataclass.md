@@ -1,3 +1,10 @@
+---
+tags:
+  - Python
+  - 软件工程
+  - 类型系统
+---
+
 # Python DTO 与 dataclass
 
 DTO，Data Transfer Object，数据传输对象

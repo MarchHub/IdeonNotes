@@ -1,3 +1,10 @@
+---
+tags:
+  - ChikaEngine
+  - 反射
+  - Shader 与材质
+---
+
 # Shader 反射
 
 之前为了简单敏捷，Shader 布局是硬编码写死在全局 `Descriptor Set Layout` 中

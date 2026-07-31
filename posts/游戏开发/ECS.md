@@ -1,3 +1,9 @@
+---
+tags:
+  - 游戏引擎
+  - 软件架构
+---
+
 # ECS
 
 `Entity-Component-System`, 高性能编程中逃不开的。

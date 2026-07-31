@@ -1,3 +1,10 @@
+---
+tags:
+  - Unreal Engine
+  - 游戏玩法
+  - 输入与控制
+---
+
 # UE 输入系统
 
 一个不错的高度解耦的系统。有点类似Unity新的（~~已经旧了~~）`Input System`
