@@ -9,39 +9,6 @@ interface navItem {
 }
 
 /**
- * 辅助函数：深度优先搜索目录下第一个 .md 文件
- * @param dir 绝对路径
- * @returns 相对路径字符串或 null
- */
-function findFirstFile(dir: string): string | null {
-    if (!fs.existsSync(dir)) return null;
-
-    const entries = fs
-        .readdirSync(dir)
-        .sort((x, y) => x.localeCompare(y, "en"));
-
-    for (const name of entries) {
-        if (folderNames.includes(name)) continue; // 跳过忽略的目录
-
-        const fullPath = path.join(dir, name);
-        const stat = fs.statSync(fullPath);
-
-        if (stat.isDirectory()) {
-            // 如果是目录，递归查找该目录下的第一个文件
-            const childFile = findFirstFile(fullPath);
-            if (childFile) {
-                return `${name}/${childFile}`;
-            }
-        } else if (name.endsWith(".md")) {
-            // 如果是 md 文件，直接返回文件名（去掉 .md 后缀以符合 VitePress 习惯，或保留取决于你）
-            // 这里我们返回带后缀的路径，后面拼接时再统一处理
-            return name;
-        }
-    }
-    return null;
-}
-
-/**
  * @param dir 需要扫描的目录 (相对 __dirname)
  * @param routePath 前缀 (如 "posts")
  * @returns 返回当前目录所有有内容的文件夹导航
@@ -64,23 +31,18 @@ export function ScanCurrentDir(dir: string, routePath = ""): navItem[] {
         const stat = fs.statSync(fullPath);
 
         if (stat.isDirectory()) {
-            // 查找该目录下第一个可用的 md 文件
-            const firstFileRelativePath = findFirstFile(fullPath);
+            const categoryIndex = path.join(fullPath, "index.md");
 
-            // 如果找到了文件（说明文件夹不为空），则添加该目录到导航
-            if (firstFileRelativePath) {
-                const sourcePageId =
-                    `${routePath}/${name}/${firstFileRelativePath}`.replace(
-                        /\/+/g,
-                        "/",
-                    );
-
-                items.push({
-                    text: name,
-                    link: pageIdToPublicHref(sourcePageId),
-                });
+            if (!fs.existsSync(categoryIndex)) {
+                throw new Error(`分类目录缺少 index.md：${fullPath}`);
             }
-            // 如果 firstFileRelativePath 为 null，说明是空目录或没有 md 文件，直接跳过
+
+            items.push({
+                text: name,
+                link: pageIdToPublicHref(
+                    `${routePath}/${name}/index.md`.replace(/\/+/g, "/"),
+                ),
+            });
         }
     }
 

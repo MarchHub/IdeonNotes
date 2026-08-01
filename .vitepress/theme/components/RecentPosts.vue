@@ -18,7 +18,15 @@ const formatDateTime = (timestamp: number) => {
         <div class="container">
             <div class="title-wrapper">
                 <div class="title-deco"></div>
-                <h2 class="title">RECENT_UPDATES <span class="cn-title">最近更新</span></h2>
+                <div>
+                    <h2 class="title">
+                        RECENT_UPDATES
+                        <span class="cn-title">最近更新</span>
+                    </h2>
+                    <p class="title-lead">
+                        查看近期新增与修订的内容，快速了解知识库的最新变化。
+                    </p>
+                </div>
             </div>
             <div class="grid">
                 <article v-for="post in posts" :key="post.url" class="card">
@@ -82,14 +90,14 @@ html.dark {
 
 .title-wrapper {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 14px;
     margin-bottom: 40px;
 }
 
 .title-deco {
     width: 4px;
-    height: 24px;
+    height: 48px;
     background: var(--y-grad);
     box-shadow: 0 0 10px var(--y-accent);
 }
@@ -109,6 +117,12 @@ html.dark {
     font-size: 14px;
     color: var(--y-desc);
     letter-spacing: 0.1em;
+}
+
+.title-lead {
+    margin: 6px 0 0;
+    color: var(--y-desc);
+    font-size: 14px;
 }
 
 .grid {

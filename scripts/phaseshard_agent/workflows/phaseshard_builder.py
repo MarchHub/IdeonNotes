@@ -17,7 +17,11 @@ class PhaseShardWorkflow:
         print("--> [Step 1] Scanning files...")
         target_dir = config.POSTS_DIR
         md_files = list(target_dir.rglob("*.md"))
-        state.files_to_process = [str(f) for f in md_files if ".github" not in str(f)]
+        state.files_to_process = [
+            str(f)
+            for f in md_files
+            if ".github" not in str(f) and f.name != "index.md"
+        ]
         return state
 
     def step_2_parse_and_extract(self, state: GraphState) -> GraphState:

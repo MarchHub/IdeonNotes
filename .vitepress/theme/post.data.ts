@@ -23,6 +23,7 @@ export default createContentLoader("posts/**/*.md", {
     includeSrc: true,
     transform(raw): Post[] {
         return raw
+            .filter(({ frontmatter }) => frontmatter.publish !== false)
             .map(({ url, frontmatter, excerpt, src }) => {
                 const sourcePageId = sourceHrefToPageId(url);
                 const publicUrl = pageIdToPublicHref(sourcePageId);

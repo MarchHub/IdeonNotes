@@ -13,11 +13,13 @@ import mediumZoom from "medium-zoom";
 import { onMounted, watch, nextTick } from "vue";
 import { useRoute } from "vitepress";
 import TagList from "./components/TagList.vue";
+import CategoryCards from "./components/CategoryCards.vue";
 import RecentPosts from "./components/RecentPosts.vue";
 export default {
     Layout: () => {
         return h(DefaultTheme.Layout, null, {
-            "home-features-after": () => h(RecentPosts),
+            "home-features-after": () =>
+                h(Fragment, null, [h(CategoryCards), h(RecentPosts)]),
             "doc-footer-before": () =>
                 h(Fragment, null, [h(TagList), h(Contributors)]),
         });
