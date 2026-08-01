@@ -1,392 +1,101 @@
 {
   "nodes": [
     {
-      "id": "傅里叶变换",
-      "title": "傅里叶变换",
-      "group": "数学相关",
-      "val": 3,
-      "path": "/posts/数学相关/傅里叶变换",
-      "summary": "傅里叶变换将信号从时域转换为频域，用于分析非周期函数的频率成分。",
+      "id": "锁 · 编程语言/C++/并发模型",
+      "title": "锁",
+      "group": "编程语言",
+      "val": 17,
+      "path": "/posts/编程语言/C++/并发模型/锁",
+      "summary": "总结 C++ 互斥量、RAII 锁管理器和多锁协作等并发同步手段。",
       "tags": [
-        "傅里叶变换",
-        "频域",
-        "时域"
+        "C++",
+        "互斥锁",
+        "RAII 锁管理"
       ]
     },
     {
-      "id": "傅里叶级数",
-      "title": "傅里叶级数",
-      "group": "数学相关",
-      "val": 4,
-      "path": "/posts/数学相关/傅里叶级数",
-      "summary": "傅里叶级数将复杂周期函数分解为简单震荡叠加，通过正交基底表示。",
+      "id": "Thread 基础语法",
+      "title": "Thread 基础语法",
+      "group": "编程语言",
+      "val": 24,
+      "path": "/posts/编程语言/C++/并发模型/Thread-基础语法",
+      "summary": "介绍 std::thread 的创建、参数传递、等待与基础并发用法。",
       "tags": [
-        "傅里叶级数",
-        "欧拉公式",
-        "正交性"
+        "C++",
+        "线程",
+        "并发编程"
       ]
     },
     {
-      "id": "欧拉公式",
-      "title": "欧拉公式",
-      "group": "数学相关",
-      "val": 3,
-      "path": "/posts/数学相关/欧拉公式",
-      "summary": "欧拉公式描述了复数平面单位圆上的点以角速度ω匀速旋转，可表示为e^(iθ)=cos(θ)+isin(θ)。",
+      "id": "类的内存布局",
+      "title": "类的内存布局",
+      "group": "编程语言",
+      "val": 17,
+      "path": "/posts/编程语言/C++/类的内存布局",
+      "summary": "类的内存布局包括成员变量、静态成员变量和虚函数机制，其中虚函数使用vptr和vtable实现多态。",
       "tags": [
-        "数学",
-        "欧拉公式",
-        "复数"
+        "C++",
+        "内存布局",
+        "多态"
       ]
     },
     {
-      "id": "蒙特卡罗方法",
-      "title": "蒙特卡罗方法",
-      "group": "数学相关",
-      "val": 2,
-      "path": "/posts/数学相关/蒙特卡罗方法",
-      "summary": "蒙特卡罗方法通过随机采样估计复杂问题的结果，适用于高维和概率模型，实现简单且并行化容易，但依赖于概率分布函数和大量样本。",
+      "id": "模板元编程",
+      "title": "模板元编程",
+      "group": "编程语言",
+      "val": 17,
+      "path": "/posts/编程语言/C++/模板元编程",
+      "summary": "模板元编程利用编译期计算实现高效代码生成和类型检查，支持图灵完备特性、SFINAE原则以及CRTP机制。",
       "tags": [
-        "数值计算",
-        "随机模拟",
-        "统计学"
+        "C++",
+        "模板元编程",
+        "编译器"
       ]
     },
     {
-      "id": "单调栈",
-      "title": "单调栈",
-      "group": "数据结构与算法",
-      "val": 6,
-      "path": "/posts/数据结构与算法/单调栈",
-      "summary": "单调栈是一种数据结构，用于在O(N)时间内解决NGE/NSE问题。通过维护一个单调递增或递减的栈来缓存和处理历史信息。",
+      "id": "指针",
+      "title": "指针",
+      "group": "编程语言",
+      "val": 17,
+      "path": "/posts/编程语言/C++/指针",
+      "summary": "指针是存储内存地址的变量，理解其本质有助于掌握多态和类型转换。涉及const关键字、双重指针及函数指针的应用。",
       "tags": [
-        "算法",
-        "数据结构",
-        "单调栈"
+        "C++",
+        "指针",
+        "多态"
       ]
     },
     {
-      "id": "双指针",
-      "title": "双指针",
-      "group": "数据结构与算法",
-      "val": 2,
-      "path": "/posts/数据结构与算法/双指针",
-      "summary": "双指针技术包括滑动窗口和快慢指针，用于解决数组或链表问题，如查找区间、去重等。",
+      "id": "资源传递 移动和转发",
+      "title": "资源传递 移动和转发",
+      "group": "编程语言",
+      "val": 16,
+      "path": "/posts/编程语言/C++/资源传递-移动和转发",
+      "summary": "说明移动语义、完美转发和引用折叠如何降低资源传递成本。",
       "tags": [
-        "双指针",
-        "滑动窗口",
-        "快慢指针"
+        "C++",
+        "移动语义",
+        "完美转发"
       ]
     },
     {
-      "id": "快速选择",
-      "title": "快速选择",
-      "group": "数据结构与算法",
-      "val": 2,
-      "path": "/posts/数据结构与算法/快速选择",
-      "summary": "快速选择算法通过划分数据找到第k大的数，均摊时间复杂度为O(n)，不需要完全排序。",
+      "id": "左值右值",
+      "title": "左值右值",
+      "group": "编程语言",
+      "val": 16,
+      "path": "/posts/编程语言/C++/左值右值",
+      "summary": "梳理 C++ 值类别以及它们与移动语义和资源所有权转移的关系。",
       "tags": [
-        "快速选择算法",
-        "pivot选取策略",
-        "线性时间复杂度"
-      ]
-    },
-    {
-      "id": "GPT-SoVITS使用",
-      "title": "GPT-SoVITS使用",
-      "group": "机器学习",
-      "val": 2,
-      "path": "/posts/机器学习/GPT-SoVITS使用",
-      "summary": "记录使用GPT-SoVITS进行物语AI配音的工作流程及遇到的问题。",
-      "tags": [
-        "语音合成",
-        "AI配音",
-        "工作流优化"
-      ]
-    },
-    {
-      "id": "关于什么是游戏引擎的乱想",
-      "title": "关于什么是游戏引擎的乱想",
-      "group": "杂谈",
-      "val": 4,
-      "path": "/posts/杂谈/关于什么是游戏引擎的乱想",
-      "summary": "游戏引擎是提供开发视频游戏所需的工具和功能的软件框架，帮助开发者高效实现创意。",
-      "tags": [
-        "游戏开发",
-        "游戏引擎"
-      ]
-    },
-    {
-      "id": "凉宫春日黑客松",
-      "title": "凉宫春日黑客松",
-      "group": "杂谈",
-      "val": 2,
-      "path": "/posts/杂谈/凉宫春日黑客松",
-      "summary": "在黑客松活动中制作了一款以《凉宫春日》为主题的终端风格文字冒险游戏，采用Python和Godot引擎结合的方式进行开发。",
-      "tags": [
-        "黑客松",
-        "文字冒险游戏",
-        "凉宫春日",
-        "复古TUI界面",
-        "Godot引擎"
-      ]
-    },
-    {
-      "id": "我们，被模型绑架了",
-      "title": "我们，被模型绑架了",
-      "group": "杂谈",
-      "val": 2,
-      "path": "/posts/杂谈/我们，被模型绑架了",
-      "summary": "大模型加剧社会不平等，提高效率却削弱人的独立思考能力。人们需掌握快速迭代和质疑信息的能力。",
-      "tags": [
-        "人工智能",
-        "社会不平等",
-        "技术依赖"
-      ]
-    },
-    {
-      "id": "ECS",
-      "title": "ECS",
-      "group": "游戏开发",
-      "val": 3,
-      "path": "/posts/游戏开发/ECS",
-      "summary": "ECS通过将数据打包成Component并在System中统一处理，提升缓存命中率和运行效率。Unity的DOTS框架包括ECS, Job System和Brust Compiler。",
-      "tags": [
-        "Entity-Component-System",
-        "高性能编程",
-        "Unity"
-      ]
-    },
-    {
-      "id": "Games104反射机制",
-      "title": "Games104反射机制",
-      "group": "游戏开发",
-      "val": 5,
-      "path": "/posts/游戏开发/Games104反射机制",
-      "summary": "Games104通过编译期反射机制利用Clang读取AST树，生成反射信息，并使用Mustache进行代码生成。",
-      "tags": [
-        "编译器",
-        "反射机制",
-        "AST",
-        "Clang",
-        "代码生成"
-      ]
-    },
-    {
-      "id": "拓扑排序",
-      "title": "拓扑排序",
-      "group": "数据结构与算法",
-      "val": 6,
-      "path": "/posts/数据结构与算法/图论/拓扑排序",
-      "summary": "拓扑排序用于有向无环图，通过每次选取入度为0的节点并删除，找到一种满足依赖关系的线性序列。",
-      "tags": [
-        "算法",
-        "图论",
-        "数据结构"
-      ]
-    },
-    {
-      "id": "二叉搜索树",
-      "title": "二叉搜索树",
-      "group": "数据结构与算法",
-      "val": 5,
-      "path": "/posts/数据结构与算法/树形结构/二叉搜索树",
-      "summary": "二叉搜索树是一种特殊的二叉树，其节点值满足左子树<根节点<右子树的关系。支持高效的插入和搜索操作，但存在退化为链表的风险。",
-      "tags": [
-        "数据结构",
-        "二叉树",
-        "搜索"
-      ]
-    },
-    {
-      "id": "红黑树",
-      "title": "红黑树",
-      "group": "数据结构与算法",
-      "val": 2,
-      "path": "/posts/数据结构与算法/树形结构/红黑树",
-      "summary": "红黑树是一种自平衡二叉查找树，通过颜色规则和旋转操作保证数据结构的平衡性。",
-      "tags": [
-        "红黑树",
-        "BST",
-        "自平衡"
-      ]
-    },
-    {
-      "id": "Archive",
-      "title": "Archive",
-      "group": "游戏开发",
-      "val": 2,
-      "path": "/posts/游戏开发/ChikaEngine/Archive",
-      "summary": "Archive模式通过封装读写数据流，确保高度一致性减少错误，并简化业务层逻辑。",
-      "tags": [
-        "数据流封装",
-        "一致性保证",
-        "声明式编程"
-      ]
-    },
-    {
-      "id": "Renderer",
-      "title": "Renderer",
-      "group": "游戏开发",
-      "val": 3,
-      "path": "/posts/游戏开发/ChikaEngine/Renderer",
-      "summary": "Renderer是一个图形渲染引擎，包含用户层、渲染逻辑层和硬件层，解耦硬件与逻辑以支持不同图形后端；通过CPU处理逻辑运算并将数据传输到GPU进行并行计算，遵循Graphics Pipeline流程完成渲染。",
-      "tags": [
-        "图形渲染",
-        "渲染流水线",
-        "GPU"
-      ]
-    },
-    {
-      "id": "总览",
-      "title": "总览",
-      "group": "游戏开发",
-      "val": 2,
-      "path": "/posts/游戏开发/ChikaEngine/总览",
-      "summary": "总览各模块的特点与分析结果。",
-      "tags": [
-        "架构设计概述",
-        "性能评估"
-      ]
-    },
-    {
-      "id": "窗口Resize解决方案",
-      "title": "窗口Resize解决方案",
-      "group": "游戏开发",
-      "val": 6,
-      "path": "/posts/游戏开发/ChikaEngine/窗口Resize解决方案",
-      "summary": "介绍了一种解决窗口Resize时Vulkan Swapchain重建的方法，并讨论了使用Imgui进行View Resize的简单方案。",
-      "tags": [
-        "GLFW",
-        "Vulkan",
-        "Swapchain",
-        "Resize",
-        "Framebuffer"
-      ]
-    },
-    {
-      "id": "环境安装踩坑",
-      "title": "环境安装踩坑",
-      "group": "游戏开发",
-      "val": 3,
-      "path": "/posts/游戏开发/Unity/环境安装踩坑",
-      "summary": "在Mac OS中安装Unity Editor时遇到验证失败问题，通过命令行方式解决。",
-      "tags": [
-        "Unity",
-        "MacOS",
-        "安装问题"
-      ]
-    },
-    {
-      "id": "UE反射",
-      "title": "UE反射",
-      "group": "游戏开发",
-      "val": 3,
-      "path": "/posts/游戏开发/Unreal/UE反射",
-      "summary": "UE反射机制是Unreal引擎的核心技术之一，通过宏定义标记和UHT工具收集处理，在编译时生成必要的代码以支持运行时的自我检查和各种系统功能。",
-      "tags": [
-        "UE引擎",
-        "反射机制",
-        "UHT工具"
-      ]
-    },
-    {
-      "id": "UE输入系统",
-      "title": "UE输入系统",
-      "group": "游戏开发",
-      "val": 2,
-      "path": "/posts/游戏开发/Unreal/UE输入系统",
-      "summary": "UE输入系统实现解耦，通过IMC映射物理按键信号到抽象引擎信号，IA定义动作类型，Blueprint隔离数据逻辑，C++处理具体逻辑。",
-      "tags": [
-        "UE",
-        "Input System",
-        "IMC",
-        "IA"
-      ]
-    },
-    {
-      "id": "Core-State Machine",
-      "title": "Core-State Machine",
-      "group": "游戏开发",
-      "val": 3,
-      "path": "/posts/游戏开发/Unity/Unity-Framework/Core-State-Machine",
-      "summary": "实现了一个包含状态创建和状态转换条件的有限状态机，并计划加入异步状态和支持编辑器。",
-      "tags": [
-        "状态机",
-        "有限状态机",
-        "异步处理"
-      ]
-    },
-    {
-      "id": "Core-服务管理和广播系统",
-      "title": "Core-服务管理和广播系统",
-      "group": "游戏开发",
-      "val": 2,
-      "path": "/posts/游戏开发/Unity/Unity-Framework/Core-服务管理和广播系统",
-      "summary": "实现服务管理和事件广播功能的系统，包括服务注册器和事件总线。",
-      "tags": [
-        "服务管理",
-        "事件广播",
-        "Service Locator"
-      ]
-    },
-    {
-      "id": "Movement",
-      "title": "Movement",
-      "group": "游戏开发",
-      "val": 2,
-      "path": "/posts/游戏开发/Unity/Unity-Framework/Movement",
-      "summary": "移动设计中的基础操控分为输入接受、物理计算和结果反馈三个部分。",
-      "tags": [
-        "移动接口",
-        "物理引擎",
-        "动画处理"
-      ]
-    },
-    {
-      "id": "Utilities-Audio Manager",
-      "title": "Utilities-Audio Manager",
-      "group": "游戏开发",
-      "val": 4,
-      "path": "/posts/游戏开发/Unity/Unity-Framework/Utilities-Audio-Manager",
-      "summary": "Audio Manager是用于管理和控制背景音乐和音效的服务，提供播放、停止、设置音量等功能。",
-      "tags": [
-        "音频管理",
-        "Unity服务",
-        "游戏开发"
-      ]
-    },
-    {
-      "id": "对象池",
-      "title": "对象池",
-      "group": "游戏开发",
-      "val": 5,
-      "path": "/posts/游戏开发/Unity/Unity-Framework/对象池",
-      "summary": "创建对象池接口和Pool Manager类，用于管理和注册游戏对象池。",
-      "tags": [
-        "对象池",
-        "游戏开发",
-        "资源管理"
-      ]
-    },
-    {
-      "id": "项目管理",
-      "title": "项目管理",
-      "group": "游戏开发",
-      "val": 2,
-      "path": "/posts/游戏开发/Unity/Unity-Framework/项目管理",
-      "summary": "项目管理中，使用GitHub进行版本控制和自动化构建。主要开发在develop分支，功能开发在features分支，文档编写在docs分支，包开发在单独的package分支。",
-      "tags": [
-        "项目管理",
-        "git工作流",
-        "github"
+        "C++",
+        "值类别",
+        "移动语义"
       ]
     },
     {
       "id": "const",
       "title": "const",
       "group": "编程语言",
-      "val": 9,
+      "val": 15,
       "path": "/posts/编程语言/C++/const",
       "summary": "const关键字用于声明常量或恒定值，在编译期和运行时确保变量不变；可用于函数、参数、返回值及智能指针。",
       "tags": [
@@ -399,7 +108,7 @@
       "id": "Effective C++ Item 11",
       "title": "Effective C++ Item 11",
       "group": "编程语言",
-      "val": 9,
+      "val": 15,
       "path": "/posts/编程语言/C++/Effective-C++-Item-11",
       "summary": "Item 11介绍了一种深拷贝的赋值运算方法，并分析其执行过程和优点，同时指出该方法不够优雅的原因。",
       "tags": [
@@ -409,10 +118,23 @@
       ]
     },
     {
+      "id": "Lambda",
+      "title": "Lambda",
+      "group": "编程语言",
+      "val": 16,
+      "path": "/posts/编程语言/C++/Lambda",
+      "summary": "介绍 C++ Lambda 的捕获、调用和匿名函数对象语义。",
+      "tags": [
+        "C++",
+        "Lambda",
+        "闭包"
+      ]
+    },
+    {
       "id": "RAII",
       "title": "RAII",
       "group": "编程语言",
-      "val": 10,
+      "val": 17,
       "path": "/posts/编程语言/C++/RAII",
       "summary": "RAII是一种C++编程技术，通过对象的构造和析构函数来控制资源的分配与释放，确保资源在对象生命周期内正确管理和释放。",
       "tags": [
@@ -422,58 +144,16 @@
       ]
     },
     {
-      "id": "指针",
-      "title": "指针",
+      "id": "Type Traits",
+      "title": "Type Traits",
       "group": "编程语言",
-      "val": 11,
-      "path": "/posts/编程语言/C++/指针",
-      "summary": "指针是存储内存地址的变量，理解其本质有助于掌握多态和类型转换。涉及const关键字、双重指针及函数指针的应用。",
+      "val": 16,
+      "path": "/posts/编程语言/C++/Type-Traits",
+      "summary": "使用 Type Traits 在编译期查询、判断和转换类型。",
       "tags": [
         "C++",
-        "指针",
-        "多态"
-      ]
-    },
-    {
-      "id": "模板元编程",
-      "title": "模板元编程",
-      "group": "编程语言",
-      "val": 10,
-      "path": "/posts/编程语言/C++/模板元编程",
-      "summary": "模板元编程利用编译期计算实现高效代码生成和类型检查，支持图灵完备特性、SFINAE原则以及CRTP机制。",
-      "tags": [
-        "C++",
-        "模板元编程",
-        "编译器"
-      ]
-    },
-    {
-      "id": "类的内存布局",
-      "title": "类的内存布局",
-      "group": "编程语言",
-      "val": 11,
-      "path": "/posts/编程语言/C++/类的内存布局",
-      "summary": "类的内存布局包括成员变量、静态成员变量和虚函数机制，其中虚函数使用vptr和vtable实现多态。",
-      "tags": [
-        "C++",
-        "内存布局",
-        "多态"
-      ]
-    },
-    {
-      "id": "值类型和引用类型",
-      "title": "值类型和引用类型",
-      "group": "编程语言",
-      "val": 5,
-      "path": "/posts/编程语言/CSharp/值类型和引用类型",
-      "summary": "介绍C#中的值类型和引用类型的特性，包括值类型直接拷贝数据、引用类型拷贝地址，以及ref、out、in方法修饰符的用法。",
-      "tags": [
-        "C#",
-        "值类型",
-        "引用类型",
-        "ref",
-        "out",
-        "in"
+        "类型萃取",
+        "模板元编程"
       ]
     },
     {
@@ -503,7 +183,23 @@
       ]
     },
     {
-      "id": "Benchmark",
+      "id": "值类型和引用类型",
+      "title": "值类型和引用类型",
+      "group": "编程语言",
+      "val": 5,
+      "path": "/posts/编程语言/CSharp/值类型和引用类型",
+      "summary": "介绍C#中的值类型和引用类型的特性，包括值类型直接拷贝数据、引用类型拷贝地址，以及ref、out、in方法修饰符的用法。",
+      "tags": [
+        "C#",
+        "值类型",
+        "引用类型",
+        "ref",
+        "out",
+        "in"
+      ]
+    },
+    {
+      "id": "Benchmark · 编程语言/Golang",
       "title": "Benchmark",
       "group": "编程语言",
       "val": 3,
@@ -545,7 +241,7 @@
       "id": "G-P-M调度模型",
       "title": "G-P-M调度模型",
       "group": "编程语言",
-      "val": 11,
+      "val": 12,
       "path": "/posts/编程语言/Golang/G-P-M调度模型",
       "summary": "G-P-M调度模型中，Go协程通过逻辑处理器调度操作系统线程，优先从本地队列获取任务，并在满时分一半至全局队列。",
       "tags": [
@@ -568,33 +264,6 @@
       ]
     },
     {
-      "id": "Golang 协程通道",
-      "title": "Golang 协程通道",
-      "group": "编程语言",
-      "val": 12,
-      "path": "/posts/编程语言/Golang/Golang-协程通道",
-      "summary": "Golang通道用于协程间通信，保证同步。支持无缓冲和有缓冲模式，数据通过‘<-’操作符进行流动，且可利用select或time包实现非阻塞与超时控制。",
-      "tags": [
-        "golang",
-        "协程",
-        "通道",
-        "并发编程"
-      ]
-    },
-    {
-      "id": "Golang 异常处理",
-      "title": "Golang 异常处理",
-      "group": "编程语言",
-      "val": 4,
-      "path": "/posts/编程语言/Golang/Golang-异常处理",
-      "summary": "Golang中错误处理通过返回error类型，使用errors.New和fmt.Errorf创建错误；Panic用于异常立即退出程序，Recover捕获panic使程序继续运行。",
-      "tags": [
-        "Golang",
-        "Error Handling",
-        "Panic Recover"
-      ]
-    },
-    {
       "id": "Golang 结构体",
       "title": "Golang 结构体",
       "group": "编程语言",
@@ -605,6 +274,33 @@
         "Golang",
         "结构体",
         "组合"
+      ]
+    },
+    {
+      "id": "Golang 协程通道",
+      "title": "Golang 协程通道",
+      "group": "编程语言",
+      "val": 13,
+      "path": "/posts/编程语言/Golang/Golang-协程通道",
+      "summary": "Golang通道用于协程间通信，保证同步。支持无缓冲和有缓冲模式，数据通过‘<-’操作符进行流动，且可利用select或time包实现非阻塞与超时控制。",
+      "tags": [
+        "golang",
+        "协程",
+        "通道",
+        "并发编程"
+      ]
+    },
+    {
+      "id": "异常处理",
+      "title": "异常处理",
+      "group": "编程语言",
+      "val": 4,
+      "path": "/posts/编程语言/Golang/Golang-异常处理",
+      "summary": "Golang中错误处理通过返回error类型，使用errors.New和fmt.Errorf创建错误；Panic用于异常立即退出程序，Recover捕获panic使程序继续运行。",
+      "tags": [
+        "Golang",
+        "Error Handling",
+        "Panic Recover"
       ]
     },
     {
@@ -634,10 +330,10 @@
       ]
     },
     {
-      "id": "select 语句",
-      "title": "select 语句",
+      "id": "select语句",
+      "title": "select语句",
       "group": "编程语言",
-      "val": 11,
+      "val": 12,
       "path": "/posts/编程语言/Golang/select-语句",
       "summary": "Go语言中select语句用于监听多个通道的操作，并根据通道的状态执行相应的case或默认操作。如果没有可执行分支且无default，则阻塞当前goroutine。",
       "tags": [
@@ -650,7 +346,7 @@
       "id": "Test",
       "title": "Test",
       "group": "编程语言",
-      "val": 4,
+      "val": 5,
       "path": "/posts/编程语言/Golang/Test",
       "summary": "介绍了Golang单元测试的书写规范、基础语法，并提及了并行和子任务测试。",
       "tags": [
@@ -664,7 +360,7 @@
       "id": "WaitGroup",
       "title": "WaitGroup",
       "group": "编程语言",
-      "val": 12,
+      "val": 13,
       "path": "/posts/编程语言/Golang/WaitGroup",
       "summary": "Go语言中的WaitGroup本质上是信号量，用于协调goroutine同步。通过Add添加任务，Done标记完成，Wait阻塞等待。",
       "tags": [
@@ -687,43 +383,16 @@
       ]
     },
     {
-      "id": "Rust Lifetime",
-      "title": "Rust Lifetime",
+      "id": "Python DTO 与 dataclass",
+      "title": "Python DTO 与 dataclass",
       "group": "编程语言",
-      "val": 4,
-      "path": "/posts/编程语言/Rust/Rust-Lifetime",
-      "summary": "Rust中的每个引用都有生命周期，主要目标是避免悬垂引用。函数返回参数的引用其生命周期与该参数相同。",
+      "val": 3,
+      "path": "/posts/编程语言/Python/Python-DTO-与-dataclass",
+      "summary": "介绍使用 Python dataclass 定义结构清晰的数据传输对象。",
       "tags": [
-        "Rust",
-        "生命周期",
-        "悬垂引用"
-      ]
-    },
-    {
-      "id": "Rust Ownership",
-      "title": "Rust Ownership",
-      "group": "编程语言",
-      "val": 5,
-      "path": "/posts/编程语言/Rust/Rust-Ownership",
-      "summary": "Rust中的所有权系统管理内存，每个值有一个所有者，在所有者离开作用域时释放；堆区和栈区分别处理动态和静态分配的数据。",
-      "tags": [
-        "Rust",
-        "所有权",
-        "内存管理",
-        "编程语言"
-      ]
-    },
-    {
-      "id": "Rust 中的闭包",
-      "title": "Rust 中的闭包",
-      "group": "编程语言",
-      "val": 5,
-      "path": "/posts/编程语言/Rust/Rust-中的闭包",
-      "summary": "Rust中的闭包是匿名函数，能够访问外部作用域的变量，并且返回一个包含这些变量引用的新函数实例。",
-      "tags": [
-        "Rust",
-        "闭包",
-        "函数式编程"
+        "Python",
+        "DTO",
+        "dataclass"
       ]
     },
     {
@@ -741,8 +410,48 @@
       ]
     },
     {
-      "id": "基础概念与使用",
-      "title": "基础概念与使用",
+      "id": "Rust 中的闭包",
+      "title": "Rust 中的闭包",
+      "group": "编程语言",
+      "val": 6,
+      "path": "/posts/编程语言/Rust/Rust-中的闭包",
+      "summary": "Rust中的闭包是匿名函数，能够访问外部作用域的变量，并且返回一个包含这些变量引用的新函数实例。",
+      "tags": [
+        "Rust",
+        "闭包",
+        "函数式编程"
+      ]
+    },
+    {
+      "id": "生命周期",
+      "title": "生命周期",
+      "group": "编程语言",
+      "val": 4,
+      "path": "/posts/编程语言/Rust/Rust-Lifetime",
+      "summary": "Rust中的每个引用都有生命周期，主要目标是避免悬垂引用。函数返回参数的引用其生命周期与该参数相同。",
+      "tags": [
+        "Rust",
+        "生命周期",
+        "悬垂引用"
+      ]
+    },
+    {
+      "id": "Ownership",
+      "title": "Ownership",
+      "group": "编程语言",
+      "val": 5,
+      "path": "/posts/编程语言/Rust/Rust-Ownership",
+      "summary": "Rust中的所有权系统管理内存，每个值有一个所有者，在所有者离开作用域时释放；堆区和栈区分别处理动态和静态分配的数据。",
+      "tags": [
+        "Rust",
+        "所有权",
+        "内存管理",
+        "编程语言"
+      ]
+    },
+    {
+      "id": "基础概念",
+      "title": "基础概念",
       "group": "编程语言",
       "val": 5,
       "path": "/posts/编程语言/SQL/基础概念与使用",
@@ -754,346 +463,24 @@
       ]
     },
     {
-      "id": "抓型 01",
-      "title": "抓型 01",
-      "group": "美术美工",
-      "val": 2,
-      "path": "/posts/美术美工/板绘入手/抓型-01",
-      "summary": "练习观察力和手部控制力，使用宫格法辅助观察，逐步完善线稿并补充细节，提高绘画效率。",
-      "tags": [
-        "绘画技巧",
-        "观察力",
-        "手部控制"
-      ]
-    },
-    {
-      "id": "临界区和临界资源",
-      "title": "临界区和临界资源",
-      "group": "计算机其他",
+      "id": "材质",
+      "title": "材质",
+      "group": "计算机图形学",
       "val": 3,
-      "path": "/posts/计算机其他/多线程开发/临界区和临界资源",
-      "summary": "临界区是代码片段，用于保护对共享状态的访问；临界资源是被保护的实际资源，如变量或外部设备。",
+      "path": "/posts/计算机图形学/课程笔记-GAMES101/材质",
+      "summary": "材质通过BRDF定义光的反射，涉及各向同性和各向异性材质及基于图像的BRDF测量。",
       "tags": [
-        "并发控制",
-        "线程同步",
-        "互斥锁"
-      ]
-    },
-    {
-      "id": "原子操作",
-      "title": "原子操作",
-      "group": "计算机其他",
-      "val": 9,
-      "path": "/posts/计算机其他/多线程开发/原子操作",
-      "summary": "原子操作是不可中断的操作，依赖硬件指令和内存屏障，执行速度快但只能进行简单操作。无锁编程通过尝试原子操作提高性能并避免死锁。",
-      "tags": [
-        "并发编程",
-        "原子操作",
-        "无锁编程"
-      ]
-    },
-    {
-      "id": "多级缓存和MESI",
-      "title": "多级缓存和MESI",
-      "group": "计算机其他",
-      "val": 2,
-      "path": "/posts/计算机其他/多线程开发/多级缓存和MESI",
-      "summary": "多级缓存通过减少CPU与内存速度差异的影响，提高程序执行效率。MESI协议确保多核访问同一变量时的数据一致性。",
-      "tags": [
-        "多级缓存",
-        "MESI协议",
-        "缓存一致性"
-      ]
-    },
-    {
-      "id": "并发活性问题",
-      "title": "并发活性问题",
-      "group": "计算机其他",
-      "val": 9,
-      "path": "/posts/计算机其他/多线程开发/并发活性问题",
-      "summary": "并发活性问题主要包括死锁、活锁和饥饿，其中死锁四大必要条件为互斥、占有并等待、非抢占和循环等待；活锁表现为高CPU占用率和状态高频震荡；饥饿则是线程因资源分配策略不公平而无限期等待执行。",
-      "tags": [
-        "并发编程",
-        "线程活性问题",
-        "死锁",
-        "活锁",
-        "饥饿"
-      ]
-    },
-    {
-      "id": "异步",
-      "title": "异步",
-      "group": "计算机其他",
-      "val": 2,
-      "path": "/posts/计算机其他/多线程开发/异步",
-      "summary": "异步编程允许程序在等待耗时操作完成时不阻塞，通过回调或其他机制通知结果。",
-      "tags": [
-        "异步编程",
-        "回调函数",
-        "非阻塞"
-      ]
-    },
-    {
-      "id": "条件变量",
-      "title": "条件变量",
-      "group": "计算机其他",
-      "val": 12,
-      "path": "/posts/计算机其他/多线程开发/条件变量",
-      "summary": "条件变量用于线程间通信，允许一个线程等待特定条件，另一个线程改变条件并唤醒等待的线程。",
-      "tags": [
-        "并发编程",
-        "多线程",
-        "线程同步"
-      ]
-    },
-    {
-      "id": "线程和进程",
-      "title": "线程和进程",
-      "group": "计算机其他",
-      "val": 2,
-      "path": "/posts/计算机其他/多线程开发/线程和进程",
-      "summary": "进程是操作系统分配资源的基本单位，线程是CPU调度的基本单位。两者通过上下文切换机制和调度策略实现并发执行，其中引入互斥来解决竞争条件。",
-      "tags": [
-        "进程",
-        "线程",
-        "上下文切换",
-        "调度策略"
-      ]
-    },
-    {
-      "id": "线程状态",
-      "title": "线程状态",
-      "group": "计算机其他",
-      "val": 4,
-      "path": "/posts/计算机其他/多线程开发/线程状态",
-      "summary": "线程状态包括新建、可运行、运行、阻塞、等待和终止，由调度程序或其他方法控制。",
-      "tags": [
-        "Java",
-        "多线程",
-        "线程管理"
-      ]
-    },
-    {
-      "id": "线程行为",
-      "title": "线程行为",
-      "group": "计算机其他",
-      "val": 11,
-      "path": "/posts/计算机其他/多线程开发/线程行为",
-      "summary": "线程行为包括挂起、恢复和中断，以及阻塞与睡眠机制。挂起由外部干预，恢复需显式唤醒信号，阻塞是等待特定条件满足。",
-      "tags": [
-        "多线程",
-        "并发编程",
-        "操作系统"
-      ]
-    },
-    {
-      "id": "Cmake基础用法",
-      "title": "Cmake基础用法",
-      "group": "计算机其他",
-      "val": 2,
-      "path": "/posts/计算机其他/工具链/Cmake基础用法",
-      "summary": "介绍了Cmake的基本使用方法和常用指令，包括项目声明、目标定义、编译特性请求等。",
-      "tags": [
-        "Cmake",
-        "C++开发",
-        "构建工具"
-      ]
-    },
-    {
-      "id": "Google Benchmark",
-      "title": "Google Benchmark",
-      "group": "计算机其他",
-      "val": 10,
-      "path": "/posts/计算机其他/工具链/Google-Benchmark",
-      "summary": "Google Benchmark是一个用于性能测试的库，支持基本用法、编译器优化规避、自定义参数注入和多线程测试。",
-      "tags": [
-        "性能测试",
-        "C++",
-        "Benchmark"
-      ]
-    },
-    {
-      "id": "LibclangPython",
-      "title": "LibclangPython",
-      "group": "计算机其他",
-      "val": 10,
-      "path": "/posts/计算机其他/工具链/LibclangPython",
-      "summary": "介绍使用libclang和Python读取C++源码的抽象语法树（AST），包括创建索引、获取编译参数及解析AST的基本流程。",
-      "tags": [
-        "Libclang",
-        "Python",
-        "C++",
-        "AST"
-      ]
-    },
-    {
-      "id": "编译基本流程",
-      "title": "编译基本流程",
-      "group": "计算机其他",
-      "val": 2,
-      "path": "/posts/计算机其他/编译原理/编译基本流程",
-      "summary": "编译流程包括预处理、词法分析、语法分析、语义分析、IR优化、寄存器分配及生成目标代码。",
-      "tags": [
-        "编译原理",
-        "前端处理",
-        "后端处理",
-        "中间表示"
-      ]
-    },
-    {
-      "id": "CPU和GPU加速计算",
-      "title": "CPU和GPU加速计算",
-      "group": "计算机其他",
-      "val": 3,
-      "path": "/posts/计算机其他/计算机图形学/CPU和GPU加速计算",
-      "summary": "SIMD通过单指令操作多数据实现高效并行计算，适用于整齐排布的数据；SIMT利用多个线程执行单指令以加速计算，但分支结构复杂时效率降低。",
-      "tags": [
-        "SIMD",
-        "SIMT",
-        "并行处理",
-        "数据并行性"
-      ]
-    },
-    {
-      "id": "Shader 和 Material",
-      "title": "Shader 和 Material",
-      "group": "计算机其他",
-      "val": 5,
-      "path": "/posts/计算机其他/计算机图形学/Shader-和-Material",
-      "summary": "着色器（Shader）是执行逻辑和参数布局的模板，材质（Material）则是Shader的具体实例，通过参数传递给渲染管线。",
-      "tags": [
-        "图形编程",
-        "Shader",
-        "Material"
-      ]
-    },
-    {
-      "id": "延迟渲染",
-      "title": "延迟渲染",
-      "group": "计算机其他",
-      "val": 2,
-      "path": "/posts/计算机其他/计算机图形学/延迟渲染",
-      "summary": "延迟渲染是一种通过增加存储来减少计算量的方法，将场景几何信息提前存储到G-buffer中，再进行逐像素光照计算，适用于光源较多的场景。",
-      "tags": [
-        "图形学",
-        "渲染技术",
-        "延迟渲染"
-      ]
-    },
-    {
-      "id": "视锥体剔除",
-      "title": "视锥体剔除",
-      "group": "计算机其他",
-      "val": 2,
-      "path": "/posts/计算机其他/计算机图形学/视锥体剔除",
-      "summary": "视锥体剔除技术通过简化几何计算和空间划分来提高渲染效率，包括使用包围盒、空间划分算法（如四叉树、八叉树）以及GPU驱动的视锥体剔除方法。",
-      "tags": [
-        "视锥体",
-        "包围盒",
-        "空间划分算法",
-        "GPU-Driven"
-      ]
-    },
-    {
-      "id": "二进制负数表达",
-      "title": "二进制负数表达",
-      "group": "计算机其他",
-      "val": 2,
-      "path": "/posts/计算机其他/计算机底层原理/二进制负数表达",
-      "summary": "补码通过原码取反加一实现负数二进制表示，便于计算机进行减法操作转换成加法。",
-      "tags": [
-        "二进制",
-        "负数",
-        "补码"
-      ]
-    },
-    {
-      "id": "硬件相关",
-      "title": "硬件相关",
-      "group": "计算机其他",
-      "val": 3,
-      "path": "/posts/计算机其他/计算机底层原理/硬件相关",
-      "summary": "SIMD是一种向量运算技术，通过一次操作处理多个数据；SMIT则是单指令多线程技术。",
-      "tags": [
-        "SIMD",
-        "向量运算",
-        "SMIT",
-        "单指令多线程"
-      ]
-    },
-    {
-      "id": "Depth testing",
-      "title": "Depth testing",
-      "group": "计算机其他",
-      "val": 4,
-      "path": "/posts/计算机其他/计算机图形学/Games101/Depth-testing",
-      "summary": "光栅化过程中使用深度测试确定像素遮挡关系，常用z-buffer算法进行记录。",
-      "tags": [
-        "计算机图形学",
-        "深度测试",
-        "Z-Buffer"
-      ]
-    },
-    {
-      "id": "OpenGL逻辑简述",
-      "title": "OpenGL逻辑简述",
-      "group": "计算机其他",
-      "val": 5,
-      "path": "/posts/计算机其他/计算机图形学/Games101/OpenGL逻辑简述",
-      "summary": "OpenGL通过glBufferData将数据从CPU传输到显存中。",
-      "tags": [
-        "渲染管线",
-        "GPU编程",
-        "内存管理",
-        "数据传输接口"
-      ]
-    },
-    {
-      "id": "Rasterization Triangle",
-      "title": "Rasterization Triangle",
-      "group": "计算机其他",
-      "val": 2,
-      "path": "/posts/计算机其他/计算机图形学/Games101/Rasterization-Triangle",
-      "summary": "通过像素采样算法判断给定三角形内的像素集合，并采用多种图像质量优化技术如反走样和多采样抗锯齿来减少视觉伪影。",
-      "tags": [
-        "光栅化算法",
-        "像素采样",
-        "三角形渲染",
-        "抗锯齿技术"
-      ]
-    },
-    {
-      "id": "Ray Tracing",
-      "title": "Ray Tracing",
-      "group": "计算机其他",
-      "val": 2,
-      "path": "/posts/计算机其他/计算机图形学/Games101/Ray-Tracing",
-      "summary": "Ray Tracing是一种递归算法，用于模拟光线与物体的交互，通过Bounding Volume、空间划分和辐射度量学等技术提高效率。BRDF描述了光在表面的反射行为。",
-      "tags": [
-        "ray tracing",
-        "radiometry",
-        "brdf"
-      ]
-    },
-    {
-      "id": "Shadow Map",
-      "title": "Shadow Map",
-      "group": "计算机其他",
-      "val": 3,
-      "path": "/posts/计算机其他/计算机图形学/Games101/Shadow-Map",
-      "summary": "Shadow Map通过两次深度测试实现阴影渲染，硬阴影只有可见或不可见，而软阴影则有渐变效果。",
-      "tags": [
-        "计算机图形学",
-        "光照技术",
-        "阴影映射"
+        "BRDF",
+        "微表面模型",
+        "各向异性"
       ]
     },
     {
       "id": "几何",
       "title": "几何",
-      "group": "计算机其他",
+      "group": "计算机图形学",
       "val": 2,
-      "path": "/posts/计算机其他/计算机图形学/Games101/几何",
+      "path": "/posts/计算机图形学/课程笔记-GAMES101/几何",
       "summary": "几何通过隐式和显式方法建模，包括使用SDF、水平集、布尔运算及细分技术如Loop和Catmull-Clark。",
       "tags": [
         "隐式表示",
@@ -1108,24 +495,24 @@
       ]
     },
     {
-      "id": "材质",
-      "title": "材质",
-      "group": "计算机其他",
+      "id": "路径追踪",
+      "title": "路径追踪",
+      "group": "计算机图形学",
       "val": 2,
-      "path": "/posts/计算机其他/计算机图形学/Games101/材质",
-      "summary": "材质通过BRDF定义光的反射，涉及各向同性和各向异性材质及基于图像的BRDF测量。",
+      "path": "/posts/计算机图形学/课程笔记-GAMES101/路径追踪",
+      "summary": "路径追踪通过多次采样减少噪声；重要性采样优化光追效率。",
       "tags": [
-        "BRDF",
-        "微表面模型",
-        "各向异性"
+        "蒙特卡洛积分",
+        "路径追踪",
+        "俄罗斯轮盘赌"
       ]
     },
     {
       "id": "渲染",
       "title": "渲染",
-      "group": "计算机其他",
-      "val": 5,
-      "path": "/posts/计算机其他/计算机图形学/Games101/渲染",
+      "group": "计算机图形学",
+      "val": 6,
+      "path": "/posts/计算机图形学/课程笔记-GAMES101/渲染",
       "summary": "图形渲染涉及Z-Buffer、着色（Vertex和Fragment）、纹理映射（UV坐标系）、渲染管线及三角形内部插值技术。",
       "tags": [
         "Z-Buffer",
@@ -1135,128 +522,24 @@
       ]
     },
     {
-      "id": "路径追踪",
-      "title": "路径追踪",
-      "group": "计算机其他",
-      "val": 2,
-      "path": "/posts/计算机其他/计算机图形学/Games101/路径追踪",
-      "summary": "路径追踪通过多次采样减少噪声；重要性采样优化光追效率。",
+      "id": "Depth testing",
+      "title": "Depth testing",
+      "group": "计算机图形学",
+      "val": 4,
+      "path": "/posts/计算机图形学/课程笔记-GAMES101/Depth-testing",
+      "summary": "光栅化过程中使用深度测试确定像素遮挡关系，常用z-buffer算法进行记录。",
       "tags": [
-        "蒙特卡洛积分",
-        "路径追踪",
-        "俄罗斯轮盘赌"
-      ]
-    },
-    {
-      "id": "Attachment",
-      "title": "Attachment",
-      "group": "计算机其他",
-      "val": 2,
-      "path": "/posts/计算机其他/计算机图形学/Vulkan/Attachment",
-      "summary": "描述了图像资源在pass中的使用方法，包括format、MSAA采样数、渲染行为和布局转换。",
-      "tags": [
-        "multisampling",
-        "texture-loading",
-        "layout-transformation"
-      ]
-    },
-    {
-      "id": "Descriptor相关",
-      "title": "Descriptor相关",
-      "group": "计算机其他",
-      "val": 5,
-      "path": "/posts/计算机其他/计算机图形学/Vulkan/Descriptor相关",
-      "summary": "Descriptor是Shader资源描述符接口，DescriptorSetLayout定义资源布局，DescriptorSet从Pool分配并绑定实际资源，WriteDescriptorSet进行数据写入操作。",
-      "tags": [
-        "图形编程",
-        "Shader",
-        "Descriptor"
-      ]
-    },
-    {
-      "id": "PhysicalDevice",
-      "title": "PhysicalDevice",
-      "group": "计算机其他",
-      "val": 7,
-      "path": "/posts/计算机其他/计算机图形学/Vulkan/PhysicalDevice",
-      "summary": "PhysicalDevice用于检查和选择合适的物理设备进行渲染，包含设备属性、特性查询及队列家族支持情况。",
-      "tags": [
-        "Vulkan",
-        "PhysicalDevice",
-        "GPU"
-      ]
-    },
-    {
-      "id": "Pipeline",
-      "title": "Pipeline",
-      "group": "计算机其他",
-      "val": 6,
-      "path": "/posts/计算机其他/计算机图形学/Vulkan/Pipeline",
-      "summary": "Vulkan Pipeline定义了图形渲染的过程，包括ShaderStage、ViewPort、Rasterization、ColorBlend、VertexInputState和InputAssemblyState等内容。",
-      "tags": [
-        "Vulkan",
-        "Pipeline",
-        "Graphics Programming"
-      ]
-    },
-    {
-      "id": "Vulkan渲染流程",
-      "title": "Vulkan渲染流程",
-      "group": "计算机其他",
-      "val": 10,
-      "path": "/posts/计算机其他/计算机图形学/Vulkan/Vulkan渲染流程",
-      "summary": "Vulkan渲染流程包括初始化全局和设备、创建窗口和呈现对象、配置渲染参数及命令同步机制。",
-      "tags": [
-        "图形编程",
-        "Vulkan",
-        "渲染管线"
-      ]
-    },
-    {
-      "id": "Why Vulkan",
-      "title": "Why Vulkan",
-      "group": "计算机其他",
-      "val": 6,
-      "path": "/posts/计算机其他/计算机图形学/Vulkan/Why-Vulkan",
-      "summary": "Vulkan 直接反映现代GPU架构，相比OpenGL效率更高，更适合多线程环境。",
-      "tags": [
-        "Vulkan",
-        "OpenGL",
-        "GPU性能"
-      ]
-    },
-    {
-      "id": "Linear",
-      "title": "Linear",
-      "group": "计算机其他",
-      "val": 3,
-      "path": "/posts/计算机其他/计算机图形学/Games101/Math/Linear",
-      "summary": "使用叉乘判定向量位置关系及点是否在多边形内。",
-      "tags": [
-        "线性代数",
-        "几何算法",
-        "叉乘"
-      ]
-    },
-    {
-      "id": "Transformation",
-      "title": "Transformation",
-      "group": "计算机其他",
-      "val": 3,
-      "path": "/posts/计算机其他/计算机图形学/Games101/Math/Transformation",
-      "summary": "介绍了线性变化、平移变换和齐次坐标系的概念，重点包括缩放矩阵、反射矩阵、剪切矩阵和平移矩阵。详细讲解了正交投影的数学推导。",
-      "tags": [
-        "线性代数",
-        "矩阵乘法",
-        "几何变换"
+        "计算机图形学",
+        "深度测试",
+        "Z-Buffer"
       ]
     },
     {
       "id": "傅里叶",
       "title": "傅里叶",
-      "group": "计算机其他",
+      "group": "计算机图形学",
       "val": 4,
-      "path": "/posts/计算机其他/计算机图形学/Games101/Math/傅里叶",
+      "path": "/posts/计算机图形学/课程笔记-GAMES101/Math/傅里叶",
       "summary": "傅里叶级数将周期性函数表示为正弦与余弦的线性组合；傅里叶变换分析信号在频域特性，滤波技术用于消除特定频率噪声。",
       "tags": [
         "周期函数",
@@ -1267,41 +550,519 @@
       ]
     },
     {
-      "id": "HTTP基础",
-      "title": "HTTP基础",
-      "group": "软件工程",
-      "val": 2,
-      "path": "/posts/软件工程/后端学习/HTTP基础",
-      "summary": "HTTP是应用层协议，用于传输资源；请求-响应模型包括建立连接、发送请求和响应、关闭连接。报文结构分为请求和响应两部分，包含起始行、首部字段及可选的消息体。",
+      "id": "Linear",
+      "title": "Linear",
+      "group": "计算机图形学",
+      "val": 3,
+      "path": "/posts/计算机图形学/课程笔记-GAMES101/Math/Linear",
+      "summary": "使用叉乘判定向量位置关系及点是否在多边形内。",
       "tags": [
-        "HTTP",
-        "请求响应模型",
-        "报文结构"
+        "线性代数",
+        "几何算法",
+        "叉乘"
       ]
     },
     {
-      "id": "幂等",
-      "title": "幂等",
-      "group": "软件工程",
-      "val": 2,
-      "path": "/posts/软件工程/后端学习/幂等",
-      "summary": "幂等操作满足重复执行对系统状态无影响，常见于HTTP GET和HEAD方法；在分布式系统中保证一致性。",
+      "id": "Transformation",
+      "title": "Transformation",
+      "group": "计算机图形学",
+      "val": 3,
+      "path": "/posts/计算机图形学/课程笔记-GAMES101/Math/Transformation",
+      "summary": "介绍了线性变化、平移变换和齐次坐标系的概念，重点包括缩放矩阵、反射矩阵、剪切矩阵和平移矩阵。详细讲解了正交投影的数学推导。",
       "tags": [
-        "幂等性原理",
-        "分布式系统的一致性保证"
+        "线性代数",
+        "矩阵乘法",
+        "几何变换"
       ]
     },
     {
-      "id": "雪花算法",
-      "title": "雪花算法",
-      "group": "软件工程",
-      "val": 2,
-      "path": "/posts/软件工程/后端学习/雪花算法",
-      "summary": "雪花算法生成UID，包含符号位、时间戳偏移量、工作机ID和序列号，确保分布式系统中唯一性与有序性。",
+      "id": "OpenGL 逻辑简述",
+      "title": "OpenGL 逻辑简述",
+      "group": "计算机图形学",
+      "val": 6,
+      "path": "/posts/计算机图形学/课程笔记-GAMES101/OpenGL逻辑简述",
+      "summary": "OpenGL通过glBufferData将数据从CPU传输到显存中。",
       "tags": [
-        "Snowflake",
-        "分布式系统",
-        "UID生成"
+        "渲染管线",
+        "GPU编程",
+        "内存管理",
+        "数据传输接口"
+      ]
+    },
+    {
+      "id": "Rasterization Triangle",
+      "title": "Rasterization Triangle",
+      "group": "计算机图形学",
+      "val": 2,
+      "path": "/posts/计算机图形学/课程笔记-GAMES101/Rasterization-Triangle",
+      "summary": "通过像素采样算法判断给定三角形内的像素集合，并采用多种图像质量优化技术如反走样和多采样抗锯齿来减少视觉伪影。",
+      "tags": [
+        "光栅化算法",
+        "像素采样",
+        "三角形渲染",
+        "抗锯齿技术"
+      ]
+    },
+    {
+      "id": "Ray Tracing",
+      "title": "Ray Tracing",
+      "group": "计算机图形学",
+      "val": 2,
+      "path": "/posts/计算机图形学/课程笔记-GAMES101/Ray-Tracing",
+      "summary": "Ray Tracing是一种递归算法，用于模拟光线与物体的交互，通过Bounding Volume、空间划分和辐射度量学等技术提高效率。BRDF描述了光在表面的反射行为。",
+      "tags": [
+        "ray tracing",
+        "radiometry",
+        "brdf"
+      ]
+    },
+    {
+      "id": "Shadow Map",
+      "title": "Shadow Map",
+      "group": "计算机图形学",
+      "val": 3,
+      "path": "/posts/计算机图形学/课程笔记-GAMES101/Shadow-Map",
+      "summary": "Shadow Map通过两次深度测试实现阴影渲染，硬阴影只有可见或不可见，而软阴影则有渐变效果。",
+      "tags": [
+        "计算机图形学",
+        "光照技术",
+        "阴影映射"
+      ]
+    },
+    {
+      "id": "视锥体剔除",
+      "title": "视锥体剔除",
+      "group": "计算机图形学",
+      "val": 2,
+      "path": "/posts/计算机图形学/视锥体剔除",
+      "summary": "视锥体剔除技术通过简化几何计算和空间划分来提高渲染效率，包括使用包围盒、空间划分算法（如四叉树、八叉树）以及GPU驱动的视锥体剔除方法。",
+      "tags": [
+        "视锥体",
+        "包围盒",
+        "空间划分算法",
+        "GPU-Driven"
+      ]
+    },
+    {
+      "id": "延迟渲染",
+      "title": "延迟渲染",
+      "group": "计算机图形学",
+      "val": 2,
+      "path": "/posts/计算机图形学/延迟渲染",
+      "summary": "延迟渲染是一种通过增加存储来减少计算量的方法，将场景几何信息提前存储到G-buffer中，再进行逐像素光照计算，适用于光源较多的场景。",
+      "tags": [
+        "图形学",
+        "渲染技术",
+        "延迟渲染"
+      ]
+    },
+    {
+      "id": "BRDF",
+      "title": "BRDF",
+      "group": "计算机图形学",
+      "val": 4,
+      "path": "/posts/计算机图形学/BRDF",
+      "summary": "BRDF 描述光线从入射方向到观察方向的反射分布，是材质光照模型的核心。",
+      "tags": [
+        "BRDF",
+        "光照模型",
+        "材质"
+      ]
+    },
+    {
+      "id": "CPU和GPU加速计算",
+      "title": "CPU和GPU加速计算",
+      "group": "计算机图形学",
+      "val": 3,
+      "path": "/posts/计算机图形学/CPU和GPU加速计算",
+      "summary": "SIMD通过单指令操作多数据实现高效并行计算，适用于整齐排布的数据；SIMT利用多个线程执行单指令以加速计算，但分支结构复杂时效率降低。",
+      "tags": [
+        "SIMD",
+        "SIMT",
+        "并行处理",
+        "数据并行性"
+      ]
+    },
+    {
+      "id": "Mipmap",
+      "title": "Mipmap",
+      "group": "计算机图形学",
+      "val": 2,
+      "path": "/posts/计算机图形学/Mipmap",
+      "summary": "预计算多级纹理分辨率，在缩小采样时降低走样并改善缓存效率。",
+      "tags": [
+        "Mipmap",
+        "纹理过滤",
+        "抗锯齿"
+      ]
+    },
+    {
+      "id": "Shader 和 Material",
+      "title": "Shader 和 Material",
+      "group": "计算机图形学",
+      "val": 7,
+      "path": "/posts/计算机图形学/Shader-和-Material",
+      "summary": "着色器（Shader）是执行逻辑和参数布局的模板，材质（Material）则是Shader的具体实例，通过参数传递给渲染管线。",
+      "tags": [
+        "图形编程",
+        "Shader",
+        "Material"
+      ]
+    },
+    {
+      "id": "UV 坐标",
+      "title": "UV 坐标",
+      "group": "计算机图形学",
+      "val": 2,
+      "path": "/posts/计算机图形学/UV-坐标",
+      "summary": "UV 坐标把三维模型表面映射到二维纹理空间，用于采样和材质贴图。",
+      "tags": [
+        "UV 坐标",
+        "纹理映射",
+        "模型展开"
+      ]
+    },
+    {
+      "id": "Attachment",
+      "title": "Attachment",
+      "group": "计算机图形学",
+      "val": 2,
+      "path": "/posts/计算机图形学/Vulkan/Attachment",
+      "summary": "描述了图像资源在pass中的使用方法，包括format、MSAA采样数、渲染行为和布局转换。",
+      "tags": [
+        "multisampling",
+        "texture-loading",
+        "layout-transformation"
+      ]
+    },
+    {
+      "id": "Descriptor相关",
+      "title": "Descriptor相关",
+      "group": "计算机图形学",
+      "val": 7,
+      "path": "/posts/计算机图形学/Vulkan/Descriptor相关",
+      "summary": "Descriptor是Shader资源描述符接口，DescriptorSetLayout定义资源布局，DescriptorSet从Pool分配并绑定实际资源，WriteDescriptorSet进行数据写入操作。",
+      "tags": [
+        "图形编程",
+        "Shader",
+        "Descriptor"
+      ]
+    },
+    {
+      "id": "PhysicalDevice",
+      "title": "PhysicalDevice",
+      "group": "计算机图形学",
+      "val": 7,
+      "path": "/posts/计算机图形学/Vulkan/PhysicalDevice",
+      "summary": "PhysicalDevice用于检查和选择合适的物理设备进行渲染，包含设备属性、特性查询及队列家族支持情况。",
+      "tags": [
+        "Vulkan",
+        "PhysicalDevice",
+        "GPU"
+      ]
+    },
+    {
+      "id": "Pipeline",
+      "title": "Pipeline",
+      "group": "计算机图形学",
+      "val": 6,
+      "path": "/posts/计算机图形学/Vulkan/Pipeline",
+      "summary": "Vulkan Pipeline定义了图形渲染的过程，包括ShaderStage、ViewPort、Rasterization、ColorBlend、VertexInputState和InputAssemblyState等内容。",
+      "tags": [
+        "Vulkan",
+        "Pipeline",
+        "Graphics Programming"
+      ]
+    },
+    {
+      "id": "Vulkan 渲染流程",
+      "title": "Vulkan 渲染流程",
+      "group": "计算机图形学",
+      "val": 11,
+      "path": "/posts/计算机图形学/Vulkan/Vulkan渲染流程",
+      "summary": "Vulkan渲染流程包括初始化全局和设备、创建窗口和呈现对象、配置渲染参数及命令同步机制。",
+      "tags": [
+        "图形编程",
+        "Vulkan",
+        "渲染管线"
+      ]
+    },
+    {
+      "id": "Why Vulkan",
+      "title": "Why Vulkan",
+      "group": "计算机图形学",
+      "val": 6,
+      "path": "/posts/计算机图形学/Vulkan/Why-Vulkan",
+      "summary": "Vulkan 直接反映现代GPU架构，相比OpenGL效率更高，更适合多线程环境。",
+      "tags": [
+        "Vulkan",
+        "OpenGL",
+        "GPU性能"
+      ]
+    },
+    {
+      "id": "编译基本流程",
+      "title": "编译基本流程",
+      "group": "计算机系统",
+      "val": 2,
+      "path": "/posts/计算机系统/编译原理/编译基本流程",
+      "summary": "编译流程包括预处理、词法分析、语法分析、语义分析、IR优化、寄存器分配及生成目标代码。",
+      "tags": [
+        "编译原理",
+        "前端处理",
+        "后端处理",
+        "中间表示"
+      ]
+    },
+    {
+      "id": "线程活性问题",
+      "title": "线程活性问题",
+      "group": "计算机系统",
+      "val": 10,
+      "path": "/posts/计算机系统/操作系统与并发/并发活性问题",
+      "summary": "并发活性问题主要包括死锁、活锁和饥饿，其中死锁四大必要条件为互斥、占有并等待、非抢占和循环等待；活锁表现为高CPU占用率和状态高频震荡；饥饿则是线程因资源分配策略不公平而无限期等待执行。",
+      "tags": [
+        "并发编程",
+        "线程活性问题",
+        "死锁",
+        "活锁",
+        "饥饿"
+      ]
+    },
+    {
+      "id": "多级缓存和MESI",
+      "title": "多级缓存和MESI",
+      "group": "计算机系统",
+      "val": 2,
+      "path": "/posts/计算机系统/操作系统与并发/多级缓存和MESI",
+      "summary": "多级缓存通过减少CPU与内存速度差异的影响，提高程序执行效率。MESI协议确保多核访问同一变量时的数据一致性。",
+      "tags": [
+        "多级缓存",
+        "MESI协议",
+        "缓存一致性"
+      ]
+    },
+    {
+      "id": "临界区和临界资源",
+      "title": "临界区和临界资源",
+      "group": "计算机系统",
+      "val": 6,
+      "path": "/posts/计算机系统/操作系统与并发/临界区和临界资源",
+      "summary": "临界区是代码片段，用于保护对共享状态的访问；临界资源是被保护的实际资源，如变量或外部设备。",
+      "tags": [
+        "并发控制",
+        "线程同步",
+        "互斥锁"
+      ]
+    },
+    {
+      "id": "锁 · 计算机系统/操作系统与并发",
+      "title": "锁",
+      "group": "计算机系统",
+      "val": 5,
+      "path": "/posts/计算机系统/操作系统与并发/锁",
+      "summary": "从操作系统并发视角说明锁的互斥语义、同步作用和常见实现。",
+      "tags": [
+        "互斥锁",
+        "同步原语",
+        "并发控制"
+      ]
+    },
+    {
+      "id": "条件变量",
+      "title": "条件变量",
+      "group": "计算机系统",
+      "val": 13,
+      "path": "/posts/计算机系统/操作系统与并发/条件变量",
+      "summary": "条件变量用于线程间通信，允许一个线程等待特定条件，另一个线程改变条件并唤醒等待的线程。",
+      "tags": [
+        "并发编程",
+        "多线程",
+        "线程同步"
+      ]
+    },
+    {
+      "id": "线程和进程",
+      "title": "线程和进程",
+      "group": "计算机系统",
+      "val": 3,
+      "path": "/posts/计算机系统/操作系统与并发/线程和进程",
+      "summary": "进程是操作系统分配资源的基本单位，线程是CPU调度的基本单位。两者通过上下文切换机制和调度策略实现并发执行，其中引入互斥来解决竞争条件。",
+      "tags": [
+        "进程",
+        "线程",
+        "上下文切换",
+        "调度策略"
+      ]
+    },
+    {
+      "id": "线程行为",
+      "title": "线程行为",
+      "group": "计算机系统",
+      "val": 12,
+      "path": "/posts/计算机系统/操作系统与并发/线程行为",
+      "summary": "线程行为包括挂起、恢复和中断，以及阻塞与睡眠机制。挂起由外部干预，恢复需显式唤醒信号，阻塞是等待特定条件满足。",
+      "tags": [
+        "多线程",
+        "并发编程",
+        "操作系统"
+      ]
+    },
+    {
+      "id": "线程状态",
+      "title": "线程状态",
+      "group": "计算机系统",
+      "val": 4,
+      "path": "/posts/计算机系统/操作系统与并发/线程状态",
+      "summary": "线程状态包括新建、可运行、运行、阻塞、等待和终止，由调度程序或其他方法控制。",
+      "tags": [
+        "Java",
+        "多线程",
+        "线程管理"
+      ]
+    },
+    {
+      "id": "异步",
+      "title": "异步",
+      "group": "计算机系统",
+      "val": 2,
+      "path": "/posts/计算机系统/操作系统与并发/异步",
+      "summary": "异步编程允许程序在等待耗时操作完成时不阻塞，通过回调或其他机制通知结果。",
+      "tags": [
+        "异步编程",
+        "回调函数",
+        "非阻塞"
+      ]
+    },
+    {
+      "id": "原子操作",
+      "title": "原子操作",
+      "group": "计算机系统",
+      "val": 10,
+      "path": "/posts/计算机系统/操作系统与并发/原子操作",
+      "summary": "原子操作是不可中断的操作，依赖硬件指令和内存屏障，执行速度快但只能进行简单操作。无锁编程通过尝试原子操作提高性能并避免死锁。",
+      "tags": [
+        "并发编程",
+        "原子操作",
+        "无锁编程"
+      ]
+    },
+    {
+      "id": "二进制负数表达",
+      "title": "二进制负数表达",
+      "group": "计算机系统",
+      "val": 2,
+      "path": "/posts/计算机系统/计算机体系结构/二进制负数表达",
+      "summary": "补码通过原码取反加一实现负数二进制表示，便于计算机进行减法操作转换成加法。",
+      "tags": [
+        "二进制",
+        "负数",
+        "补码"
+      ]
+    },
+    {
+      "id": "硬件相关",
+      "title": "硬件相关",
+      "group": "计算机系统",
+      "val": 3,
+      "path": "/posts/计算机系统/计算机体系结构/硬件相关",
+      "summary": "SIMD是一种向量运算技术，通过一次操作处理多个数据；SMIT则是单指令多线程技术。",
+      "tags": [
+        "SIMD",
+        "向量运算",
+        "SMIT",
+        "单指令多线程"
+      ]
+    },
+    {
+      "id": "图形概括",
+      "title": "图形概括",
+      "group": "美术",
+      "val": 2,
+      "path": "/posts/美术/板绘入手/图形概括",
+      "summary": "通过概括整体形状和比例训练观察能力，并减少对局部细节的依赖。",
+      "tags": [
+        "绘画",
+        "形体概括",
+        "观察训练"
+      ]
+    },
+    {
+      "id": "抓型 01",
+      "title": "抓型 01",
+      "group": "美术",
+      "val": 2,
+      "path": "/posts/美术/板绘入手/抓型-01",
+      "summary": "练习观察力和手部控制力，使用宫格法辅助观察，逐步完善线稿并补充细节，提高绘画效率。",
+      "tags": [
+        "绘画技巧",
+        "观察力",
+        "手部控制"
+      ]
+    },
+    {
+      "id": "Agent 综述",
+      "title": "Agent 综述",
+      "group": "人工智能",
+      "val": 5,
+      "path": "/posts/人工智能/Agent-综述",
+      "summary": "梳理 LLM、Tool、Runtime、Skill、MCP、RAG 与 Memory 等组件在 Agent 系统中的职责和协作关系。",
+      "tags": [
+        "AI Agent",
+        "大语言模型",
+        "MCP"
+      ]
+    },
+    {
+      "id": "GPT-SoVITS 使用",
+      "title": "GPT-SoVITS 使用",
+      "group": "人工智能",
+      "val": 2,
+      "path": "/posts/人工智能/GPT-SoVITS使用",
+      "summary": "记录使用GPT-SoVITS进行物语AI配音的工作流程及遇到的问题。",
+      "tags": [
+        "语音合成",
+        "AI配音",
+        "工作流优化"
+      ]
+    },
+    {
+      "id": "KV Cache",
+      "title": "KV Cache",
+      "group": "人工智能",
+      "val": 4,
+      "path": "/posts/人工智能/KV-Cache",
+      "summary": "KV Cache 保存推理过程中已计算的 Key 与 Value，减少生成后续 Token 时的重复计算。",
+      "tags": [
+        "大语言模型",
+        "KV Cache",
+        "推理优化"
+      ]
+    },
+    {
+      "id": "RAG",
+      "title": "RAG",
+      "group": "人工智能",
+      "val": 4,
+      "path": "/posts/人工智能/RAG",
+      "summary": "RAG 先检索外部知识，再把相关资料加入模型上下文，以提升回答的时效性和可靠性。",
+      "tags": [
+        "大语言模型",
+        "检索增强生成",
+        "向量检索"
+      ]
+    },
+    {
+      "id": "YokoDevAgent",
+      "title": "YokoDevAgent",
+      "group": "人工智能",
+      "val": 3,
+      "path": "/posts/人工智能/YokoDevAgent/YokoDevAgent",
+      "summary": "设计一个面向 C++ 与 Unreal 项目的开发 Agent，负责源码检索、工具调用和证据化回答。",
+      "tags": [
+        "AI Agent",
+        "代码检索",
+        "开发工具"
       ]
     },
     {
@@ -1318,6 +1079,176 @@
       ]
     },
     {
+      "id": "抽象和接口的思考",
+      "title": "抽象和接口的思考",
+      "group": "软件工程",
+      "val": 7,
+      "path": "/posts/软件工程/编程范式/面向对象/抽象和接口的思考",
+      "summary": "抽象类定义共性行为和属性，支持单继承；接口定义功能契约，允许多重继承。",
+      "tags": [
+        "抽象类",
+        "接口",
+        "多态",
+        "面向对象"
+      ]
+    },
+    {
+      "id": "鸭子类型",
+      "title": "鸭子类型",
+      "group": "软件工程",
+      "val": 4,
+      "path": "/posts/软件工程/编程范式/面向对象/鸭子类型",
+      "summary": "鸭子类型是一种编程概念，关注对象的行为而非其类型或继承关系。",
+      "tags": [
+        "编程概念",
+        "面向对象",
+        "动态语言"
+      ]
+    },
+    {
+      "id": "幂等",
+      "title": "幂等",
+      "group": "软件工程",
+      "val": 2,
+      "path": "/posts/软件工程/后端工程/幂等",
+      "summary": "幂等操作满足重复执行对系统状态无影响，常见于HTTP GET和HEAD方法；在分布式系统中保证一致性。",
+      "tags": [
+        "幂等性原理",
+        "分布式系统的一致性保证"
+      ]
+    },
+    {
+      "id": "令牌桶",
+      "title": "令牌桶",
+      "group": "软件工程",
+      "val": 2,
+      "path": "/posts/软件工程/后端工程/限流算法/令牌桶",
+      "summary": "令牌桶算法控制访问速度，维护平均速率和突发能力；采用按需填充策略减少资源消耗。",
+      "tags": [
+        "令牌桶",
+        "流量控制",
+        "并发处理"
+      ]
+    },
+    {
+      "id": "雪花算法 Snowflake",
+      "title": "雪花算法 Snowflake",
+      "group": "软件工程",
+      "val": 2,
+      "path": "/posts/软件工程/后端工程/雪花算法",
+      "summary": "雪花算法生成UID，包含符号位、时间戳偏移量、工作机ID和序列号，确保分布式系统中唯一性与有序性。",
+      "tags": [
+        "Snowflake",
+        "分布式系统",
+        "UID生成"
+      ]
+    },
+    {
+      "id": "HTTP基础",
+      "title": "HTTP基础",
+      "group": "软件工程",
+      "val": 2,
+      "path": "/posts/软件工程/后端工程/HTTP基础",
+      "summary": "HTTP是应用层协议，用于传输资源；请求-响应模型包括建立连接、发送请求和响应、关闭连接。报文结构分为请求和响应两部分，包含起始行、首部字段及可选的消息体。",
+      "tags": [
+        "HTTP",
+        "请求响应模型",
+        "报文结构"
+      ]
+    },
+    {
+      "id": "Clean Architecure",
+      "title": "Clean Architecure",
+      "group": "软件工程",
+      "val": 2,
+      "path": "/posts/软件工程/架构与设计/Clean-Architecture",
+      "summary": "Clean Architecture将系统分为实体层、用例层、接口适配层和框架驱动层，依赖关系由外向内流动。",
+      "tags": [
+        "Clean Architecture",
+        "软件架构层次",
+        "依赖规则"
+      ]
+    },
+    {
+      "id": "DOD",
+      "title": "DOD",
+      "group": "软件工程",
+      "val": 2,
+      "path": "/posts/软件工程/架构与设计/DOD",
+      "summary": "面向数据设计注重数据布局和内存访问以优化性能，减少Cache Miss。",
+      "tags": [
+        "Data-Oriented Design",
+        "性能优化",
+        "内存访问"
+      ]
+    },
+    {
+      "id": "MVP",
+      "title": "MVP",
+      "group": "软件工程",
+      "val": 2,
+      "path": "/posts/软件工程/架构与设计/MVP",
+      "summary": "MVP中，Model处理数据结构，View展示UI和交互，Presenter负责业务逻辑并连接二者。",
+      "tags": [
+        "MVP架构",
+        "Flutter开发",
+        "UI与业务分离"
+      ]
+    },
+    {
+      "id": "Model",
+      "title": "Model",
+      "group": "软件工程",
+      "val": 2,
+      "path": "/posts/软件工程/架构与设计/MVVM",
+      "summary": "MVVM架构包括Model管理数据、View展示UI并绑定数据、ViewModel处理业务逻辑并与View通信。",
+      "tags": [
+        "MVVM",
+        "架构模式",
+        "数据绑定"
+      ]
+    },
+    {
+      "id": "Cmake Usage",
+      "title": "Cmake Usage",
+      "group": "软件工程",
+      "val": 2,
+      "path": "/posts/软件工程/开发工具/Cmake基础用法",
+      "summary": "介绍了Cmake的基本使用方法和常用指令，包括项目声明、目标定义、编译特性请求等。",
+      "tags": [
+        "Cmake",
+        "C++开发",
+        "构建工具"
+      ]
+    },
+    {
+      "id": "Google Benchmark",
+      "title": "Google Benchmark",
+      "group": "软件工程",
+      "val": 16,
+      "path": "/posts/软件工程/开发工具/Google-Benchmark",
+      "summary": "Google Benchmark是一个用于性能测试的库，支持基本用法、编译器优化规避、自定义参数注入和多线程测试。",
+      "tags": [
+        "性能测试",
+        "C++",
+        "Benchmark"
+      ]
+    },
+    {
+      "id": "Libclang Python",
+      "title": "Libclang Python",
+      "group": "软件工程",
+      "val": 17,
+      "path": "/posts/软件工程/开发工具/LibclangPython",
+      "summary": "介绍使用libclang和Python读取C++源码的抽象语法树（AST），包括创建索引、获取编译参数及解析AST的基本流程。",
+      "tags": [
+        "Libclang",
+        "Python",
+        "C++",
+        "AST"
+      ]
+    },
+    {
       "id": "工厂模式",
       "title": "工厂模式",
       "group": "软件工程",
@@ -1328,32 +1259,6 @@
         "设计模式",
         "工厂模式",
         "面向对象"
-      ]
-    },
-    {
-      "id": "状态机",
-      "title": "状态机",
-      "group": "软件工程",
-      "val": 3,
-      "path": "/posts/软件工程/设计模式/状态机",
-      "summary": "状态机通过定义Enter、Execute、Exit方法实现状态转换和解耦合，提高系统的可维护性和效率。",
-      "tags": [
-        "状态机",
-        "解耦合",
-        "事件驱动"
-      ]
-    },
-    {
-      "id": "装饰器模式",
-      "title": "装饰器模式",
-      "group": "软件工程",
-      "val": 5,
-      "path": "/posts/软件工程/设计模式/装饰器模式",
-      "summary": "装饰器模式用于动态地为对象添加属性，在不改变原始结构的前提下扩展功能。",
-      "tags": [
-        "设计模式",
-        "Decorator Pattern",
-        "面向对象编程"
       ]
     },
     {
@@ -1370,63 +1275,37 @@
       ]
     },
     {
-      "id": "Clean Architecture",
-      "title": "Clean Architecture",
+      "id": "装饰器模式",
+      "title": "装饰器模式",
       "group": "软件工程",
-      "val": 2,
-      "path": "/posts/软件工程/软件设计模式/Clean-Architecture",
-      "summary": "Clean Architecture将系统分为实体层、用例层、接口适配层和框架驱动层，依赖关系由外向内流动。",
+      "val": 5,
+      "path": "/posts/软件工程/设计模式/装饰器模式",
+      "summary": "装饰器模式用于动态地为对象添加属性，在不改变原始结构的前提下扩展功能。",
       "tags": [
-        "Clean Architecture",
-        "软件架构层次",
-        "依赖规则"
+        "设计模式",
+        "Decorator Pattern",
+        "面向对象编程"
       ]
     },
     {
-      "id": "DOD",
-      "title": "DOD",
+      "id": "状态机",
+      "title": "状态机",
       "group": "软件工程",
-      "val": 2,
-      "path": "/posts/软件工程/软件设计模式/DOD",
-      "summary": "面向数据设计注重数据布局和内存访问以优化性能，减少Cache Miss。",
+      "val": 3,
+      "path": "/posts/软件工程/设计模式/状态机",
+      "summary": "状态机通过定义Enter、Execute、Exit方法实现状态转换和解耦合，提高系统的可维护性和效率。",
       "tags": [
-        "Data-Oriented Design",
-        "性能优化",
-        "内存访问"
-      ]
-    },
-    {
-      "id": "MVP",
-      "title": "MVP",
-      "group": "软件工程",
-      "val": 2,
-      "path": "/posts/软件工程/软件设计模式/MVP",
-      "summary": "MVP中，Model处理数据结构，View展示UI和交互，Presenter负责业务逻辑并连接二者。",
-      "tags": [
-        "MVP架构",
-        "Flutter开发",
-        "UI与业务分离"
-      ]
-    },
-    {
-      "id": "MVVM",
-      "title": "MVVM",
-      "group": "软件工程",
-      "val": 2,
-      "path": "/posts/软件工程/软件设计模式/MVVM",
-      "summary": "MVVM架构包括Model管理数据、View展示UI并绑定数据、ViewModel处理业务逻辑并与View通信。",
-      "tags": [
-        "MVVM",
-        "架构模式",
-        "数据绑定"
+        "状态机",
+        "解耦合",
+        "事件驱动"
       ]
     },
     {
       "id": "组合模式",
       "title": "组合模式",
       "group": "软件工程",
-      "val": 5,
-      "path": "/posts/软件工程/软件设计模式/组合模式",
+      "val": 6,
+      "path": "/posts/软件工程/设计模式/组合模式",
       "summary": "组合模式将对象拆分为组件并进行内聚形成实体，便于扩展和测试，避免了继承的复杂性。",
       "tags": [
         "设计模式",
@@ -1435,38 +1314,11 @@
       ]
     },
     {
-      "id": "令牌桶",
-      "title": "令牌桶",
+      "id": "数据库实现",
+      "title": "数据库实现",
       "group": "软件工程",
       "val": 2,
-      "path": "/posts/软件工程/后端学习/限流算法/令牌桶",
-      "summary": "令牌桶算法控制访问速度，维护平均速率和突发能力；采用按需填充策略减少资源消耗。",
-      "tags": [
-        "令牌桶",
-        "流量控制",
-        "并发处理"
-      ]
-    },
-    {
-      "id": "WebChatRoom 总述",
-      "title": "WebChatRoom 总述",
-      "group": "软件工程",
-      "val": 5,
-      "path": "/posts/软件工程/实战/web-chatroom/WebChatRoom-总述",
-      "summary": "使用Golang实现WebSocket多用户聊天室，包含注册登录、Hub和Client管理、房间模式及中间件（JWT认证、CORS等），利用context.Context处理并发与超时。",
-      "tags": [
-        "golang",
-        "websocket-chat",
-        "jwt-authentication",
-        "token-based-security"
-      ]
-    },
-    {
-      "id": "数据库基础实现",
-      "title": "数据库基础实现",
-      "group": "软件工程",
-      "val": 2,
-      "path": "/posts/软件工程/实战/web-chatroom/数据库基础实现",
+      "path": "/posts/软件工程/项目实践/web-chatroom/数据库基础实现",
       "summary": "使用GORM在MySQL上实现用户数据的CRUD操作，包括注册、登录功能，并采用bcrypt进行密码哈希加密。",
       "tags": [
         "GORM",
@@ -1476,39 +1328,922 @@
       ]
     },
     {
-      "id": "抽象和接口的思考",
-      "title": "抽象和接口的思考",
+      "id": "WebChatRoom 总述",
+      "title": "WebChatRoom 总述",
       "group": "软件工程",
-      "val": 6,
-      "path": "/posts/软件工程/编程范式/001-面向对象/抽象和接口的思考",
-      "summary": "抽象类定义共性行为和属性，支持单继承；接口定义功能契约，允许多重继承。",
+      "val": 5,
+      "path": "/posts/软件工程/项目实践/web-chatroom/WebChatRoom-总述",
+      "summary": "使用Golang实现WebSocket多用户聊天室，包含注册登录、Hub和Client管理、房间模式及中间件（JWT认证、CORS等），利用context.Context处理并发与超时。",
       "tags": [
-        "抽象类",
-        "接口",
-        "多态",
-        "面向对象"
+        "golang",
+        "websocket-chat",
+        "jwt-authentication",
+        "token-based-security"
       ]
     },
     {
-      "id": "鸭子类型",
-      "title": "鸭子类型",
+      "id": "ACID",
+      "title": "ACID",
       "group": "软件工程",
-      "val": 4,
-      "path": "/posts/软件工程/编程范式/001-面向对象/鸭子类型",
-      "summary": "鸭子类型是一种编程概念，关注对象的行为而非其类型或继承关系。",
+      "val": 2,
+      "path": "/posts/软件工程/ACID",
+      "summary": "ACID 用原子性、一致性、隔离性和持久性约束数据库事务。",
       "tags": [
-        "编程概念",
-        "面向对象",
-        "动态语言"
+        "ACID",
+        "事务",
+        "数据库"
+      ]
+    },
+    {
+      "id": "TDD",
+      "title": "TDD",
+      "group": "软件工程",
+      "val": 3,
+      "path": "/posts/软件工程/TDD",
+      "summary": "测试驱动开发以失败测试、最小实现和持续重构组成开发循环。",
+      "tags": [
+        "测试驱动开发",
+        "单元测试",
+        "重构"
+      ]
+    },
+    {
+      "id": "单调栈",
+      "title": "单调栈",
+      "group": "数据结构与算法",
+      "val": 6,
+      "path": "/posts/数据结构与算法/单调栈",
+      "summary": "单调栈是一种数据结构，用于在O(N)时间内解决NGE/NSE问题。通过维护一个单调递增或递减的栈来缓存和处理历史信息。",
+      "tags": [
+        "算法",
+        "数据结构",
+        "单调栈"
+      ]
+    },
+    {
+      "id": "快速选择",
+      "title": "快速选择",
+      "group": "数据结构与算法",
+      "val": 2,
+      "path": "/posts/数据结构与算法/快速选择",
+      "summary": "快速选择算法通过划分数据找到第k大的数，均摊时间复杂度为O(n)，不需要完全排序。",
+      "tags": [
+        "快速选择算法",
+        "pivot选取策略",
+        "线性时间复杂度"
+      ]
+    },
+    {
+      "id": "前缀和哈希",
+      "title": "前缀和哈希",
+      "group": "数据结构与算法",
+      "val": 2,
+      "path": "/posts/数据结构与算法/前缀和哈希",
+      "summary": "使用哈希表记录前缀和及其统计信息，以快速查询满足条件的区间。",
+      "tags": [
+        "前缀和",
+        "哈希表",
+        "数组算法"
+      ]
+    },
+    {
+      "id": "二叉搜索树",
+      "title": "二叉搜索树",
+      "group": "数据结构与算法",
+      "val": 5,
+      "path": "/posts/数据结构与算法/树形结构/二叉搜索树",
+      "summary": "二叉搜索树是一种特殊的二叉树，其节点值满足左子树<根节点<右子树的关系。支持高效的插入和搜索操作，但存在退化为链表的风险。",
+      "tags": [
+        "数据结构",
+        "二叉树",
+        "搜索"
+      ]
+    },
+    {
+      "id": "红黑树",
+      "title": "红黑树",
+      "group": "数据结构与算法",
+      "val": 2,
+      "path": "/posts/数据结构与算法/树形结构/红黑树",
+      "summary": "红黑树是一种自平衡二叉查找树，通过颜色规则和旋转操作保证数据结构的平衡性。",
+      "tags": [
+        "红黑树",
+        "BST",
+        "自平衡"
+      ]
+    },
+    {
+      "id": "LCA",
+      "title": "LCA",
+      "group": "数据结构与算法",
+      "val": 2,
+      "path": "/posts/数据结构与算法/树形结构/LCA",
+      "summary": "介绍最近公共祖先问题及其树上查询思路。",
+      "tags": [
+        "最近公共祖先",
+        "树算法",
+        "倍增"
+      ]
+    },
+    {
+      "id": "双指针",
+      "title": "双指针",
+      "group": "数据结构与算法",
+      "val": 2,
+      "path": "/posts/数据结构与算法/双指针",
+      "summary": "双指针技术包括滑动窗口和快慢指针，用于解决数组或链表问题，如查找区间、去重等。",
+      "tags": [
+        "双指针",
+        "滑动窗口",
+        "快慢指针"
+      ]
+    },
+    {
+      "id": "Leetcode-214",
+      "title": "Leetcode-214",
+      "group": "数据结构与算法",
+      "val": 5,
+      "path": "/posts/数据结构与算法/题解/Leetcode-214",
+      "summary": "使用 KMP 等字符串方法求出在原串前添加字符后得到的最短回文串。",
+      "tags": [
+        "回文串",
+        "KMP",
+        "字符串算法"
+      ]
+    },
+    {
+      "id": "拓扑排序",
+      "title": "拓扑排序",
+      "group": "数据结构与算法",
+      "val": 6,
+      "path": "/posts/数据结构与算法/图论/拓扑排序",
+      "summary": "拓扑排序用于有向无环图，通过每次选取入度为0的节点并删除，找到一种满足依赖关系的线性序列。",
+      "tags": [
+        "算法",
+        "图论",
+        "数据结构"
+      ]
+    },
+    {
+      "id": "字符串前缀和哈希",
+      "title": "字符串前缀和哈希",
+      "group": "数据结构与算法",
+      "val": 3,
+      "path": "/posts/数据结构与算法/字符串前缀和哈希",
+      "summary": "把字符串前缀编码为滚动哈希，从而快速比较任意子串或前缀。",
+      "tags": [
+        "字符串哈希",
+        "前缀哈希",
+        "字符串匹配"
+      ]
+    },
+    {
+      "id": "KMP",
+      "title": "KMP",
+      "group": "数据结构与算法",
+      "val": 4,
+      "path": "/posts/数据结构与算法/KMP",
+      "summary": "KMP 利用前缀函数复用已经匹配的信息，避免失配后从头比较模式串。",
+      "tags": [
+        "KMP",
+        "字符串匹配",
+        "前缀函数"
+      ]
+    },
+    {
+      "id": "Manacher",
+      "title": "Manacher",
+      "group": "数据结构与算法",
+      "val": 4,
+      "path": "/posts/数据结构与算法/Manacher",
+      "summary": "Manacher 利用回文串的镜像性质，在线性时间内计算各中心的回文半径。",
+      "tags": [
+        "Manacher",
+        "回文串",
+        "字符串算法"
+      ]
+    },
+    {
+      "id": "傅里叶变换",
+      "title": "傅里叶变换",
+      "group": "数学",
+      "val": 3,
+      "path": "/posts/数学/傅里叶变换",
+      "summary": "傅里叶变换将信号从时域转换为频域，用于分析非周期函数的频率成分。",
+      "tags": [
+        "傅里叶变换",
+        "频域",
+        "时域"
+      ]
+    },
+    {
+      "id": "傅里叶级数",
+      "title": "傅里叶级数",
+      "group": "数学",
+      "val": 4,
+      "path": "/posts/数学/傅里叶级数",
+      "summary": "傅里叶级数将复杂周期函数分解为简单震荡叠加，通过正交基底表示。",
+      "tags": [
+        "傅里叶级数",
+        "欧拉公式",
+        "正交性"
+      ]
+    },
+    {
+      "id": "蒙特卡罗方法",
+      "title": "蒙特卡罗方法",
+      "group": "数学",
+      "val": 2,
+      "path": "/posts/数学/蒙特卡罗方法",
+      "summary": "蒙特卡罗方法通过随机采样估计复杂问题的结果，适用于高维和概率模型，实现简单且并行化容易，但依赖于概率分布函数和大量样本。",
+      "tags": [
+        "数值计算",
+        "随机模拟",
+        "统计学"
+      ]
+    },
+    {
+      "id": "欧拉公式",
+      "title": "欧拉公式",
+      "group": "数学",
+      "val": 3,
+      "path": "/posts/数学/欧拉公式",
+      "summary": "欧拉公式描述了复数平面单位圆上的点以角速度ω匀速旋转，可表示为e^(iθ)=cos(θ)+isin(θ)。",
+      "tags": [
+        "数学",
+        "欧拉公式",
+        "复数"
+      ]
+    },
+    {
+      "id": "关于什么是游戏引擎的乱想",
+      "title": "关于什么是游戏引擎的乱想",
+      "group": "随笔",
+      "val": 4,
+      "path": "/posts/随笔/关于什么是游戏引擎的乱想",
+      "summary": "游戏引擎是提供开发视频游戏所需的工具和功能的软件框架，帮助开发者高效实现创意。",
+      "tags": [
+        "游戏开发",
+        "游戏引擎"
+      ]
+    },
+    {
+      "id": "凉宫春日黑客松",
+      "title": "凉宫春日黑客松",
+      "group": "随笔",
+      "val": 2,
+      "path": "/posts/随笔/凉宫春日黑客松",
+      "summary": "在黑客松活动中制作了一款以《凉宫春日》为主题的终端风格文字冒险游戏，采用Python和Godot引擎结合的方式进行开发。",
+      "tags": [
+        "黑客松",
+        "文字冒险游戏",
+        "凉宫春日",
+        "复古TUI界面",
+        "Godot引擎"
+      ]
+    },
+    {
+      "id": "魔卡少女樱",
+      "title": "魔卡少女樱",
+      "group": "随笔",
+      "val": 3,
+      "path": "/posts/随笔/魔卡少女樱",
+      "summary": "记录对《魔卡少女樱》角色、作品气质与个人体验的感受。",
+      "tags": [
+        "魔卡少女樱",
+        "ACG",
+        "作品随笔"
+      ]
+    },
+    {
+      "id": "我们，被模型绑架了",
+      "title": "我们，被模型绑架了",
+      "group": "随笔",
+      "val": 2,
+      "path": "/posts/随笔/我们，被模型绑架了",
+      "summary": "大模型加剧社会不平等，提高效率却削弱人的独立思考能力。人们需掌握快速迭代和质疑信息的能力。",
+      "tags": [
+        "人工智能",
+        "社会不平等",
+        "技术依赖"
+      ]
+    },
+    {
+      "id": "无法驻留的冬天",
+      "title": "无法驻留的冬天",
+      "group": "随笔",
+      "val": 3,
+      "path": "/posts/随笔/无法驻留的冬天",
+      "summary": "围绕《白色相簿2》人物与情感体验写下的作品随笔。",
+      "tags": [
+        "白色相簿2",
+        "情感叙事",
+        "作品随笔"
+      ]
+    },
+    {
+      "id": "窗口Resize解决方案",
+      "title": "窗口Resize解决方案",
+      "group": "游戏开发",
+      "val": 6,
+      "path": "/posts/游戏开发/ChikaEngine/窗口Resize解决方案",
+      "summary": "介绍了一种解决窗口Resize时Vulkan Swapchain重建的方法，并讨论了使用Imgui进行View Resize的简单方案。",
+      "tags": [
+        "GLFW",
+        "Vulkan",
+        "Swapchain",
+        "Resize",
+        "Framebuffer"
+      ]
+    },
+    {
+      "id": "资产管理",
+      "title": "资产管理",
+      "group": "游戏开发",
+      "val": 2,
+      "path": "/posts/游戏开发/ChikaEngine/资产管理",
+      "summary": "构建从资产扫描、GUID 与导入器到运行时加载、热重载和 GPU 资源管理的完整资产管线。",
+      "tags": [
+        "资产管线",
+        "GUID",
+        "异步加载"
+      ]
+    },
+    {
+      "id": "总览",
+      "title": "总览",
+      "group": "游戏开发",
+      "val": 2,
+      "path": "/posts/游戏开发/ChikaEngine/总览",
+      "summary": "总览各模块的特点与分析结果。",
+      "tags": [
+        "架构设计概述",
+        "性能评估"
+      ]
+    },
+    {
+      "id": "Archive",
+      "title": "Archive",
+      "group": "游戏开发",
+      "val": 2,
+      "path": "/posts/游戏开发/ChikaEngine/Archive",
+      "summary": "Archive模式通过封装读写数据流，确保高度一致性减少错误，并简化业务层逻辑。",
+      "tags": [
+        "数据流封装",
+        "一致性保证",
+        "声明式编程"
+      ]
+    },
+    {
+      "id": "Benchmark 场景数据和 Seed",
+      "title": "Benchmark 场景数据和 Seed",
+      "group": "游戏开发",
+      "val": 3,
+      "path": "/posts/游戏开发/ChikaEngine/Benchmark-场景数据和-Seed",
+      "summary": "用纯数据描述和随机种子构建可重复的基准测试场景。",
+      "tags": [
+        "性能基准",
+        "测试场景",
+        "随机种子"
+      ]
+    },
+    {
+      "id": "Benchmark · 游戏开发/ChikaEngine",
+      "title": "Benchmark",
+      "group": "游戏开发",
+      "val": 3,
+      "path": "/posts/游戏开发/ChikaEngine/Benchmark",
+      "summary": "将 ChikaEngine 基准测试实现为不依赖编辑器的独立可执行程序。",
+      "tags": [
+        "性能基准",
+        "基准测试框架",
+        "ChikaEngine"
+      ]
+    },
+    {
+      "id": "EventBus",
+      "title": "EventBus",
+      "group": "游戏开发",
+      "val": 3,
+      "path": "/posts/游戏开发/ChikaEngine/EventBus",
+      "summary": "通过发布订阅式事件总线解耦消息发送方与接收方。",
+      "tags": [
+        "事件总线",
+        "发布订阅",
+        "解耦"
+      ]
+    },
+    {
+      "id": "Job System",
+      "title": "Job System",
+      "group": "游戏开发",
+      "val": 2,
+      "path": "/posts/游戏开发/ChikaEngine/Job-System",
+      "summary": "将可并行 CPU 工作分发给 Worker 执行，并管理任务调度、同步和完成状态。",
+      "tags": [
+        "任务调度",
+        "线程池",
+        "并行计算"
+      ]
+    },
+    {
+      "id": "Profiler01-宏定义",
+      "title": "Profiler01-宏定义",
+      "group": "游戏开发",
+      "val": 14,
+      "path": "/posts/游戏开发/ChikaEngine/Profiler01-宏定义",
+      "summary": "拆解 Profiler 埋点宏的定义、参数传递与展开过程。",
+      "tags": [
+        "性能分析",
+        "Profiler",
+        "宏定义"
+      ]
+    },
+    {
+      "id": "Profiler02-RAII",
+      "title": "Profiler02-RAII",
+      "group": "游戏开发",
+      "val": 15,
+      "path": "/posts/游戏开发/ChikaEngine/Profiler02-RAII",
+      "summary": "用 RAII 封装 Profiler 作用域，保证 Begin 与 End 成对执行。",
+      "tags": [
+        "性能分析",
+        "Profiler",
+        "RAII"
+      ]
+    },
+    {
+      "id": "Profiler03-NameRegistry",
+      "title": "Profiler03-NameRegistry",
+      "group": "游戏开发",
+      "val": 14,
+      "path": "/posts/游戏开发/ChikaEngine/Profiler03-NameRegistry",
+      "summary": "通过名称注册表把热路径中的字符串转换为稳定标识，减少重复存储和比较成本。",
+      "tags": [
+        "性能分析",
+        "Profiler",
+        "NameRegistry"
+      ]
+    },
+    {
+      "id": "Profiler04-Event 数据",
+      "title": "Profiler04-Event 数据",
+      "group": "游戏开发",
+      "val": 14,
+      "path": "/posts/游戏开发/ChikaEngine/Profiler04-Event-数据",
+      "summary": "定义固定格式的 ProfilerEvent，统一表达区间、计数器和瞬时事件。",
+      "tags": [
+        "性能分析",
+        "Profiler",
+        "Event 数据"
+      ]
+    },
+    {
+      "id": "Profiler05-Session 字段定义",
+      "title": "Profiler05-Session 字段定义",
+      "group": "游戏开发",
+      "val": 14,
+      "path": "/posts/游戏开发/ChikaEngine/Profiler05-Session-字段定义",
+      "summary": "说明 Profiler Session 的核心字段、状态和边界职责。",
+      "tags": [
+        "性能分析",
+        "Profiler",
+        "Session 字段定义"
+      ]
+    },
+    {
+      "id": "Profiler06-Session Event",
+      "title": "Profiler06-Session Event",
+      "group": "游戏开发",
+      "val": 14,
+      "path": "/posts/游戏开发/ChikaEngine/Profiler06-Session-Event",
+      "summary": "说明 Session 如何把外部性能采样调用转换为事件并交给后续处理层。",
+      "tags": [
+        "性能分析",
+        "Profiler",
+        "Session Event"
+      ]
+    },
+    {
+      "id": "Profiler07-ThreadRegistry",
+      "title": "Profiler07-ThreadRegistry",
+      "group": "游戏开发",
+      "val": 14,
+      "path": "/posts/游戏开发/ChikaEngine/Profiler07-ThreadRegistry",
+      "summary": "为每个线程分配 Profiler 标识和独立事件缓冲区，以支持多线程采样。",
+      "tags": [
+        "性能分析",
+        "Profiler",
+        "ThreadRegistry"
+      ]
+    },
+    {
+      "id": "Render Dependency Graph",
+      "title": "Render Dependency Graph",
+      "group": "游戏开发",
+      "val": 5,
+      "path": "/posts/游戏开发/ChikaEngine/Render-Dependency-Graph",
+      "summary": "使用渲染依赖图表达 Pass 与资源之间的读写关系和执行顺序。",
+      "tags": [
+        "渲染图",
+        "资源依赖",
+        "渲染管线"
+      ]
+    },
+    {
+      "id": "Renderer",
+      "title": "Renderer",
+      "group": "游戏开发",
+      "val": 3,
+      "path": "/posts/游戏开发/ChikaEngine/Renderer",
+      "summary": "Renderer是一个图形渲染引擎，包含用户层、渲染逻辑层和硬件层，解耦硬件与逻辑以支持不同图形后端；通过CPU处理逻辑运算并将数据传输到GPU进行并行计算，遵循Graphics Pipeline流程完成渲染。",
+      "tags": [
+        "图形渲染",
+        "渲染流水线",
+        "GPU"
+      ]
+    },
+    {
+      "id": "Shader 反射",
+      "title": "Shader 反射",
+      "group": "游戏开发",
+      "val": 2,
+      "path": "/posts/游戏开发/ChikaEngine/Shader-反射",
+      "summary": "通过 Shader 反射提取资源布局，替代全局 Descriptor Set Layout 的硬编码。",
+      "tags": [
+        "Shader 反射",
+        "SPIR-V",
+        "资源绑定"
+      ]
+    },
+    {
+      "id": "Shader Interface Stable Hash",
+      "title": "Shader Interface Stable Hash",
+      "group": "游戏开发",
+      "val": 2,
+      "path": "/posts/游戏开发/ChikaEngine/Shader-Interface-Stable-Hash",
+      "summary": "为 Shader 接口生成稳定哈希，用于资源布局识别、缓存和兼容性判断。",
+      "tags": [
+        "Shader 接口",
+        "稳定哈希",
+        "资源缓存"
+      ]
+    },
+    {
+      "id": "ECS",
+      "title": "ECS",
+      "group": "游戏开发",
+      "val": 3,
+      "path": "/posts/游戏开发/ECS",
+      "summary": "ECS通过将数据打包成Component并在System中统一处理，提升缓存命中率和运行效率。Unity的DOTS框架包括ECS, Job System和Brust Compiler。",
+      "tags": [
+        "Entity-Component-System",
+        "高性能编程",
+        "Unity"
+      ]
+    },
+    {
+      "id": "Games104 反射机制",
+      "title": "Games104 反射机制",
+      "group": "游戏开发",
+      "val": 5,
+      "path": "/posts/游戏开发/Games104反射机制",
+      "summary": "Games104通过编译期反射机制利用Clang读取AST树，生成反射信息，并使用Mustache进行代码生成。",
+      "tags": [
+        "编译器",
+        "反射机制",
+        "AST",
+        "Clang",
+        "代码生成"
+      ]
+    },
+    {
+      "id": "Mac OS 环境安装踩坑",
+      "title": "Mac OS 环境安装踩坑",
+      "group": "游戏开发",
+      "val": 3,
+      "path": "/posts/游戏开发/Unity/环境安装踩坑",
+      "summary": "在Mac OS中安装Unity Editor时遇到验证失败问题，通过命令行方式解决。",
+      "tags": [
+        "Unity",
+        "MacOS",
+        "安装问题"
+      ]
+    },
+    {
+      "id": "对象池",
+      "title": "对象池",
+      "group": "游戏开发",
+      "val": 5,
+      "path": "/posts/游戏开发/Unity/Unity-Framework/对象池",
+      "summary": "创建对象池接口和Pool Manager类，用于管理和注册游戏对象池。",
+      "tags": [
+        "对象池",
+        "游戏开发",
+        "资源管理"
+      ]
+    },
+    {
+      "id": "项目管理",
+      "title": "项目管理",
+      "group": "游戏开发",
+      "val": 2,
+      "path": "/posts/游戏开发/Unity/Unity-Framework/项目管理",
+      "summary": "项目管理中，使用GitHub进行版本控制和自动化构建。主要开发在develop分支，功能开发在features分支，文档编写在docs分支，包开发在单独的package分支。",
+      "tags": [
+        "项目管理",
+        "git工作流",
+        "github"
+      ]
+    },
+    {
+      "id": "服务管理和广播系统",
+      "title": "服务管理和广播系统",
+      "group": "游戏开发",
+      "val": 2,
+      "path": "/posts/游戏开发/Unity/Unity-Framework/Core-服务管理和广播系统",
+      "summary": "实现服务管理和事件广播功能的系统，包括服务注册器和事件总线。",
+      "tags": [
+        "服务管理",
+        "事件广播",
+        "Service Locator"
+      ]
+    },
+    {
+      "id": "State Machine",
+      "title": "State Machine",
+      "group": "游戏开发",
+      "val": 3,
+      "path": "/posts/游戏开发/Unity/Unity-Framework/Core-State-Machine",
+      "summary": "实现了一个包含状态创建和状态转换条件的有限状态机，并计划加入异步状态和支持编辑器。",
+      "tags": [
+        "状态机",
+        "有限状态机",
+        "异步处理"
+      ]
+    },
+    {
+      "id": "Movement",
+      "title": "Movement",
+      "group": "游戏开发",
+      "val": 2,
+      "path": "/posts/游戏开发/Unity/Unity-Framework/Movement",
+      "summary": "移动设计中的基础操控分为输入接受、物理计算和结果反馈三个部分。",
+      "tags": [
+        "移动接口",
+        "物理引擎",
+        "动画处理"
+      ]
+    },
+    {
+      "id": "Audio Manager",
+      "title": "Audio Manager",
+      "group": "游戏开发",
+      "val": 4,
+      "path": "/posts/游戏开发/Unity/Unity-Framework/Utilities-Audio-Manager",
+      "summary": "Audio Manager是用于管理和控制背景音乐和音效的服务，提供播放、停止、设置音量等功能。",
+      "tags": [
+        "音频管理",
+        "Unity服务",
+        "游戏开发"
+      ]
+    },
+    {
+      "id": "CDO",
+      "title": "CDO",
+      "group": "游戏开发",
+      "val": 3,
+      "path": "/posts/游戏开发/Unreal/CDO",
+      "summary": "CDO 是每个 UClass 唯一的类默认对象，为 Unreal 对象提供属性模板和默认值。",
+      "tags": [
+        "Unreal 反射",
+        "CDO",
+        "类默认对象"
+      ]
+    },
+    {
+      "id": "初探UE材质系统",
+      "title": "初探UE材质系统",
+      "group": "游戏开发",
+      "val": 5,
+      "path": "/posts/游戏开发/Unreal/Render/初探UE材质系统",
+      "summary": "梳理 Unreal 中材质、材质实例、Shader 和参数之间的关系。",
+      "tags": [
+        "Unreal 材质",
+        "材质实例",
+        "Shader"
+      ]
+    },
+    {
+      "id": "Toon Shader",
+      "title": "Toon Shader",
+      "group": "游戏开发",
+      "val": 6,
+      "path": "/posts/游戏开发/Unreal/Render/Toon-Shader",
+      "summary": "修改 Lambert 与 Blinn–Phong 等光照模型，实现分段明暗和高光的卡通渲染效果。",
+      "tags": [
+        "卡通渲染",
+        "光照模型",
+        "Shader"
+      ]
+    },
+    {
+      "id": "UE 材质蓝图",
+      "title": "UE 材质蓝图",
+      "group": "游戏开发",
+      "val": 2,
+      "path": "/posts/游戏开发/Unreal/Render/UE-材质蓝图",
+      "summary": "介绍 Unreal 材质蓝图的节点式 Shader 编辑方式和常用表达节点。",
+      "tags": [
+        "材质蓝图",
+        "Shader Graph",
+        "节点编辑器"
+      ]
+    },
+    {
+      "id": "Rider 踩坑",
+      "title": "Rider 踩坑",
+      "group": "游戏开发",
+      "val": 2,
+      "path": "/posts/游戏开发/Unreal/Rider踩坑",
+      "summary": "记录 Unreal 工程在 Rider 中出现索引和版本追踪异常时的排查方法。",
+      "tags": [
+        "Unreal 开发",
+        "Rider",
+        "工程索引"
+      ]
+    },
+    {
+      "id": "基础控制",
+      "title": "基础控制",
+      "group": "游戏开发",
+      "val": 8,
+      "path": "/posts/游戏开发/Unreal/Third-Person-Controller/01-基础控制",
+      "summary": "基于 CharacterMovementComponent 实现第三人称角色的基础移动与参数调校。",
+      "tags": [
+        "第三人称控制器",
+        "输入与控制",
+        "基础控制"
+      ]
+    },
+    {
+      "id": "摄像机优化",
+      "title": "摄像机优化",
+      "group": "游戏开发",
+      "val": 8,
+      "path": "/posts/游戏开发/Unreal/Third-Person-Controller/02-摄像机优化",
+      "summary": "为移动、冲刺和闪避等状态加入平滑且具有表现力的第三人称摄像机变化。",
+      "tags": [
+        "第三人称控制器",
+        "输入与控制",
+        "摄像机优化"
+      ]
+    },
+    {
+      "id": "锁定系统",
+      "title": "锁定系统",
+      "group": "游戏开发",
+      "val": 8,
+      "path": "/posts/游戏开发/Unreal/Third-Person-Controller/03-锁定系统",
+      "summary": "实现目标筛选、锁定状态和角色朝向控制组成的第三人称锁敌系统。",
+      "tags": [
+        "第三人称控制器",
+        "输入与控制",
+        "锁定系统"
+      ]
+    },
+    {
+      "id": "第三人称控制器总目标总览",
+      "title": "第三人称控制器总目标总览",
+      "group": "游戏开发",
+      "val": 8,
+      "path": "/posts/游戏开发/Unreal/Third-Person-Controller/第三人称控制器总目标总览",
+      "summary": "规划第三人称控制器的基础移动、摄像机和目标锁定三个实现阶段。",
+      "tags": [
+        "第三人称控制器",
+        "输入与控制",
+        "控制器设计"
+      ]
+    },
+    {
+      "id": "UE 反射机制",
+      "title": "UE 反射机制",
+      "group": "游戏开发",
+      "val": 3,
+      "path": "/posts/游戏开发/Unreal/UE反射",
+      "summary": "UE反射机制是Unreal引擎的核心技术之一，通过宏定义标记和UHT工具收集处理，在编译时生成必要的代码以支持运行时的自我检查和各种系统功能。",
+      "tags": [
+        "UE引擎",
+        "反射机制",
+        "UHT工具"
+      ]
+    },
+    {
+      "id": "UE 接口",
+      "title": "UE 接口",
+      "group": "游戏开发",
+      "val": 4,
+      "path": "/posts/游戏开发/Unreal/UE接口",
+      "summary": "说明 Unreal 反射、蓝图和序列化体系下 UInterface 的声明与实现方式。",
+      "tags": [
+        "Unreal 反射",
+        "接口",
+        "蓝图"
+      ]
+    },
+    {
+      "id": "UE 输入系统",
+      "title": "UE 输入系统",
+      "group": "游戏开发",
+      "val": 2,
+      "path": "/posts/游戏开发/Unreal/UE输入系统",
+      "summary": "UE输入系统实现解耦，通过IMC映射物理按键信号到抽象引擎信号，IA定义动作类型，Blueprint隔离数据逻辑，C++处理具体逻辑。",
+      "tags": [
+        "UE",
+        "Input System",
+        "IMC",
+        "IA"
       ]
     }
   ],
   "links": [
     {
-      "source": "傅里叶变换",
-      "target": "傅里叶",
+      "source": "材质",
+      "target": "BRDF",
+      "type": "soft",
+      "reason": "语义关联 (Shared: BRDF)"
+    },
+    {
+      "source": "抽象和接口的思考",
+      "target": "工厂模式",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 面向对象)"
+    },
+    {
+      "source": "抽象和接口的思考",
+      "target": "鸭子类型",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 面向对象)"
+    },
+    {
+      "source": "抽象和接口的思考",
+      "target": "UE 接口",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 接口)"
+    },
+    {
+      "source": "初探UE材质系统",
+      "target": "Toon Shader",
+      "type": "soft",
+      "reason": "语义关联 (Shared: Shader)"
+    },
+    {
+      "source": "单调栈",
+      "target": "二叉搜索树",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 数据结构)"
+    },
+    {
+      "source": "单调栈",
+      "target": "拓扑排序",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 数据结构, 算法)"
+    },
+    {
+      "source": "对象池",
+      "target": "Audio Manager",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 游戏开发)"
+    },
+    {
+      "source": "二叉搜索树",
+      "target": "拓扑排序",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 数据结构)"
+    },
+    {
+      "source": "反射简述",
+      "target": "引用和值传递",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C#)"
+    },
+    {
+      "source": "反射简述",
+      "target": "值类型和引用类型",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C#)"
+    },
+    {
+      "source": "傅里叶",
+      "target": "傅里叶变换",
       "type": "soft",
       "reason": "语义关联 (Shared: 傅里叶变换)"
+    },
+    {
+      "source": "傅里叶",
+      "target": "傅里叶级数",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 傅里叶级数)"
     },
     {
       "source": "傅里叶级数",
@@ -1517,34 +2252,22 @@
       "reason": "语义关联 (Shared: 欧拉公式)"
     },
     {
-      "source": "傅里叶级数",
-      "target": "傅里叶",
+      "source": "工厂模式",
+      "target": "观察者模式",
       "type": "soft",
-      "reason": "语义关联 (Shared: 傅里叶级数)"
+      "reason": "语义关联 (Shared: 设计模式)"
     },
     {
-      "source": "单调栈",
-      "target": "拓扑排序",
+      "source": "工厂模式",
+      "target": "装饰器模式",
       "type": "soft",
-      "reason": "语义关联 (Shared: 算法, 数据结构)"
+      "reason": "语义关联 (Shared: 设计模式)"
     },
     {
-      "source": "单调栈",
-      "target": "二叉搜索树",
+      "source": "工厂模式",
+      "target": "组合模式",
       "type": "soft",
-      "reason": "语义关联 (Shared: 数据结构)"
-    },
-    {
-      "source": "单调栈",
-      "target": "基础概念与使用",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 数据结构)"
-    },
-    {
-      "source": "关于什么是游戏引擎的乱想",
-      "target": "Utilities-Audio Manager",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 游戏开发)"
+      "reason": "语义关联 (Shared: 设计模式)"
     },
     {
       "source": "关于什么是游戏引擎的乱想",
@@ -1553,94 +2276,634 @@
       "reason": "语义关联 (Shared: 游戏开发)"
     },
     {
-      "source": "ECS",
-      "target": "环境安装踩坑",
+      "source": "关于什么是游戏引擎的乱想",
+      "target": "Audio Manager",
       "type": "soft",
-      "reason": "语义关联 (Shared: Unity)"
+      "reason": "语义关联 (Shared: 游戏开发)"
     },
     {
-      "source": "Games104反射机制",
-      "target": "UE反射",
+      "source": "观察者模式",
+      "target": "装饰器模式",
       "type": "soft",
-      "reason": "语义关联 (Shared: 反射机制)"
+      "reason": "语义关联 (Shared: 设计模式)"
     },
     {
-      "source": "Games104反射机制",
+      "source": "观察者模式",
+      "target": "组合模式",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 设计模式)"
+    },
+    {
+      "source": "基础概念",
+      "target": "单调栈",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 数据结构)"
+    },
+    {
+      "source": "基础概念",
+      "target": "二叉搜索树",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 数据结构)"
+    },
+    {
+      "source": "基础概念",
+      "target": "拓扑排序",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 数据结构)"
+    },
+    {
+      "source": "基础控制",
+      "target": "第三人称控制器总目标总览",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 第三人称控制器, 输入与控制)"
+    },
+    {
+      "source": "基础控制",
+      "target": "摄像机优化",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 第三人称控制器, 输入与控制)"
+    },
+    {
+      "source": "基础控制",
+      "target": "锁定系统",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 第三人称控制器, 输入与控制)"
+    },
+    {
+      "source": "类的内存布局",
+      "target": "抽象和接口的思考",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 多态)"
+    },
+    {
+      "source": "类的内存布局",
       "target": "模板元编程",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "类的内存布局",
+      "target": "指针",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 多态, C++)"
+    },
+    {
+      "source": "类的内存布局",
+      "target": "资源传递 移动和转发",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "类的内存布局",
+      "target": "左值右值",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "类的内存布局",
+      "target": "const",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "类的内存布局",
+      "target": "Effective C++ Item 11",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "类的内存布局",
+      "target": "Google Benchmark",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "类的内存布局",
+      "target": "Lambda",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "类的内存布局",
+      "target": "Libclang Python",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "类的内存布局",
+      "target": "RAII",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "类的内存布局",
+      "target": "Type Traits",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "临界区和临界资源",
+      "target": "锁 · 计算机系统/操作系统与并发",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发控制, 互斥锁)"
+    },
+    {
+      "source": "临界区和临界资源",
+      "target": "条件变量",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 线程同步)"
+    },
+    {
+      "source": "模板元编程",
+      "target": "指针",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "模板元编程",
+      "target": "资源传递 移动和转发",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "模板元编程",
+      "target": "左值右值",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "模板元编程",
+      "target": "const",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "模板元编程",
+      "target": "Effective C++ Item 11",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "模板元编程",
+      "target": "Games104 反射机制",
       "type": "soft",
       "reason": "语义关联 (Shared: 编译器)"
     },
     {
-      "source": "Games104反射机制",
-      "target": "LibclangPython",
+      "source": "模板元编程",
+      "target": "Google Benchmark",
       "type": "soft",
-      "reason": "语义关联 (Shared: AST)"
+      "reason": "语义关联 (Shared: C++)"
     },
     {
-      "source": "拓扑排序",
-      "target": "二叉搜索树",
+      "source": "模板元编程",
+      "target": "Lambda",
       "type": "soft",
-      "reason": "语义关联 (Shared: 数据结构)"
+      "reason": "语义关联 (Shared: C++)"
     },
     {
-      "source": "拓扑排序",
-      "target": "基础概念与使用",
+      "source": "模板元编程",
+      "target": "Libclang Python",
       "type": "soft",
-      "reason": "语义关联 (Shared: 数据结构)"
+      "reason": "语义关联 (Shared: C++)"
     },
     {
-      "source": "二叉搜索树",
-      "target": "基础概念与使用",
+      "source": "模板元编程",
+      "target": "RAII",
       "type": "soft",
-      "reason": "语义关联 (Shared: 数据结构)"
+      "reason": "语义关联 (Shared: C++)"
     },
     {
-      "source": "Renderer",
-      "target": "PhysicalDevice",
+      "source": "模板元编程",
+      "target": "Type Traits",
       "type": "soft",
-      "reason": "语义关联 (Shared: GPU)"
+      "reason": "语义关联 (Shared: 模板元编程, C++)"
     },
     {
-      "source": "窗口Resize解决方案",
-      "target": "PhysicalDevice",
+      "source": "魔卡少女樱",
+      "target": "无法驻留的冬天",
       "type": "soft",
-      "reason": "语义关联 (Shared: Vulkan)"
+      "reason": "语义关联 (Shared: 作品随笔)"
     },
     {
-      "source": "窗口Resize解决方案",
-      "target": "Pipeline",
+      "source": "摄像机优化",
+      "target": "第三人称控制器总目标总览",
       "type": "soft",
-      "reason": "语义关联 (Shared: Vulkan)"
+      "reason": "语义关联 (Shared: 第三人称控制器, 输入与控制)"
     },
     {
-      "source": "窗口Resize解决方案",
-      "target": "Vulkan渲染流程",
+      "source": "摄像机优化",
+      "target": "锁定系统",
       "type": "soft",
-      "reason": "语义关联 (Shared: Vulkan)"
+      "reason": "语义关联 (Shared: 第三人称控制器, 输入与控制)"
     },
     {
-      "source": "窗口Resize解决方案",
-      "target": "Why Vulkan",
+      "source": "生命周期",
+      "target": "Ownership",
       "type": "soft",
-      "reason": "语义关联 (Shared: Vulkan)"
+      "reason": "语义关联 (Shared: Rust)"
     },
     {
-      "source": "Core-State Machine",
-      "target": "状态机",
+      "source": "锁 · 编程语言/C++/并发模型",
+      "target": "类的内存布局",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "锁 · 编程语言/C++/并发模型",
+      "target": "临界区和临界资源",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 互斥锁)"
+    },
+    {
+      "source": "锁 · 编程语言/C++/并发模型",
+      "target": "模板元编程",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "锁 · 编程语言/C++/并发模型",
+      "target": "锁 · 计算机系统/操作系统与并发",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 互斥锁)"
+    },
+    {
+      "source": "锁 · 编程语言/C++/并发模型",
+      "target": "指针",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "锁 · 编程语言/C++/并发模型",
+      "target": "资源传递 移动和转发",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "锁 · 编程语言/C++/并发模型",
+      "target": "左值右值",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "锁 · 编程语言/C++/并发模型",
+      "target": "const",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "锁 · 编程语言/C++/并发模型",
+      "target": "Effective C++ Item 11",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "锁 · 编程语言/C++/并发模型",
+      "target": "Google Benchmark",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "锁 · 编程语言/C++/并发模型",
+      "target": "Lambda",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "锁 · 编程语言/C++/并发模型",
+      "target": "Libclang Python",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "锁 · 编程语言/C++/并发模型",
+      "target": "RAII",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "锁 · 编程语言/C++/并发模型",
+      "target": "Thread 基础语法",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "锁 · 编程语言/C++/并发模型",
+      "target": "Type Traits",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "锁定系统",
+      "target": "第三人称控制器总目标总览",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 第三人称控制器, 输入与控制)"
+    },
+    {
+      "source": "条件变量",
+      "target": "线程行为",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程, 多线程)"
+    },
+    {
+      "source": "条件变量",
+      "target": "线程状态",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 多线程)"
+    },
+    {
+      "source": "条件变量",
+      "target": "原子操作",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "线程活性问题",
+      "target": "条件变量",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "线程活性问题",
+      "target": "线程行为",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "线程活性问题",
+      "target": "原子操作",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "线程行为",
+      "target": "线程状态",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 多线程)"
+    },
+    {
+      "source": "线程行为",
+      "target": "原子操作",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "渲染",
+      "target": "Depth testing",
+      "type": "soft",
+      "reason": "语义关联 (Shared: Z-Buffer)"
+    },
+    {
+      "source": "渲染",
+      "target": "OpenGL 逻辑简述",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 渲染管线)"
+    },
+    {
+      "source": "渲染",
+      "target": "Render Dependency Graph",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 渲染管线)"
+    },
+    {
+      "source": "渲染",
+      "target": "Vulkan 渲染流程",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 渲染管线)"
+    },
+    {
+      "source": "鸭子类型",
+      "target": "工厂模式",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 面向对象)"
+    },
+    {
+      "source": "异常处理",
+      "target": "Test",
+      "type": "soft",
+      "reason": "语义关联 (Shared: Golang)"
+    },
+    {
+      "source": "引用和值传递",
+      "target": "值类型和引用类型",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 引用类型, C#)"
+    },
+    {
+      "source": "指针",
+      "target": "抽象和接口的思考",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 多态)"
+    },
+    {
+      "source": "指针",
+      "target": "资源传递 移动和转发",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "指针",
+      "target": "左值右值",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "指针",
+      "target": "const",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "指针",
+      "target": "Effective C++ Item 11",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "指针",
+      "target": "Google Benchmark",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "指针",
+      "target": "Lambda",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "指针",
+      "target": "Libclang Python",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "指针",
+      "target": "RAII",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "指针",
+      "target": "Type Traits",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "装饰器模式",
+      "target": "组合模式",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 设计模式)"
+    },
+    {
+      "source": "状态机",
+      "target": "State Machine",
       "type": "soft",
       "reason": "语义关联 (Shared: 状态机)"
     },
     {
-      "source": "Utilities-Audio Manager",
-      "target": "对象池",
+      "source": "资源传递 移动和转发",
+      "target": "左值右值",
       "type": "soft",
-      "reason": "语义关联 (Shared: 游戏开发)"
+      "reason": "语义关联 (Shared: 移动语义, C++)"
     },
     {
-      "source": "对象池",
+      "source": "资源传递 移动和转发",
+      "target": "const",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "资源传递 移动和转发",
+      "target": "Effective C++ Item 11",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "资源传递 移动和转发",
+      "target": "Google Benchmark",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "资源传递 移动和转发",
+      "target": "Lambda",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "资源传递 移动和转发",
+      "target": "Libclang Python",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "资源传递 移动和转发",
       "target": "RAII",
       "type": "soft",
-      "reason": "语义关联 (Shared: 资源管理)"
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "资源传递 移动和转发",
+      "target": "Type Traits",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "字符串前缀和哈希",
+      "target": "KMP",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 字符串匹配)"
+    },
+    {
+      "source": "组合模式",
+      "target": "EventBus",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 解耦)"
+    },
+    {
+      "source": "左值右值",
+      "target": "const",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "左值右值",
+      "target": "Effective C++ Item 11",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "左值右值",
+      "target": "Google Benchmark",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "左值右值",
+      "target": "Lambda",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "左值右值",
+      "target": "Libclang Python",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "左值右值",
+      "target": "RAII",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "左值右值",
+      "target": "Type Traits",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "Agent 综述",
+      "target": "KV Cache",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 大语言模型)"
+    },
+    {
+      "source": "Agent 综述",
+      "target": "RAG",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 大语言模型)"
+    },
+    {
+      "source": "Agent 综述",
+      "target": "YokoDevAgent",
+      "type": "soft",
+      "reason": "语义关联 (Shared: AI Agent)"
+    },
+    {
+      "source": "Benchmark · 编程语言/Golang",
+      "target": "Google Benchmark",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能测试)"
+    },
+    {
+      "source": "Benchmark 场景数据和 Seed",
+      "target": "Benchmark · 游戏开发/ChikaEngine",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能基准)"
+    },
+    {
+      "source": "BRDF",
+      "target": "Toon Shader",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 光照模型)"
+    },
+    {
+      "source": "CDO",
+      "target": "UE 接口",
+      "type": "soft",
+      "reason": "语义关联 (Shared: Unreal 反射)"
     },
     {
       "source": "const",
@@ -1650,37 +2913,85 @@
     },
     {
       "source": "const",
+      "target": "Google Benchmark",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "const",
+      "target": "Lambda",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "const",
+      "target": "Libclang Python",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "const",
       "target": "RAII",
       "type": "soft",
       "reason": "语义关联 (Shared: C++)"
     },
     {
       "source": "const",
-      "target": "指针",
+      "target": "Type Traits",
       "type": "soft",
       "reason": "语义关联 (Shared: C++)"
     },
     {
-      "source": "const",
-      "target": "模板元编程",
+      "source": "CPU和GPU加速计算",
+      "target": "硬件相关",
       "type": "soft",
-      "reason": "语义关联 (Shared: C++)"
+      "reason": "语义关联 (Shared: SIMD)"
     },
     {
-      "source": "const",
-      "target": "类的内存布局",
+      "source": "Depth testing",
+      "target": "Shadow Map",
       "type": "soft",
-      "reason": "语义关联 (Shared: C++)"
+      "reason": "语义关联 (Shared: 计算机图形学)"
     },
     {
-      "source": "const",
+      "source": "Descriptor相关",
+      "target": "初探UE材质系统",
+      "type": "soft",
+      "reason": "语义关联 (Shared: Shader)"
+    },
+    {
+      "source": "Descriptor相关",
+      "target": "Toon Shader",
+      "type": "soft",
+      "reason": "语义关联 (Shared: Shader)"
+    },
+    {
+      "source": "Descriptor相关",
+      "target": "Vulkan 渲染流程",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 图形编程)"
+    },
+    {
+      "source": "ECS",
+      "target": "Mac OS 环境安装踩坑",
+      "type": "soft",
+      "reason": "语义关联 (Shared: Unity)"
+    },
+    {
+      "source": "Effective C++ Item 11",
       "target": "Google Benchmark",
       "type": "soft",
       "reason": "语义关联 (Shared: C++)"
     },
     {
-      "source": "const",
-      "target": "LibclangPython",
+      "source": "Effective C++ Item 11",
+      "target": "Lambda",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "Effective C++ Item 11",
+      "target": "Libclang Python",
       "type": "soft",
       "reason": "语义关联 (Shared: C++)"
     },
@@ -1692,153 +3003,33 @@
     },
     {
       "source": "Effective C++ Item 11",
-      "target": "指针",
+      "target": "Type Traits",
       "type": "soft",
       "reason": "语义关联 (Shared: C++)"
     },
     {
-      "source": "Effective C++ Item 11",
-      "target": "模板元编程",
+      "source": "G-P-M调度模型",
+      "target": "条件变量",
       "type": "soft",
-      "reason": "语义关联 (Shared: C++)"
+      "reason": "语义关联 (Shared: 并发编程)"
     },
     {
-      "source": "Effective C++ Item 11",
-      "target": "类的内存布局",
+      "source": "G-P-M调度模型",
+      "target": "线程活性问题",
       "type": "soft",
-      "reason": "语义关联 (Shared: C++)"
+      "reason": "语义关联 (Shared: 并发编程)"
     },
     {
-      "source": "Effective C++ Item 11",
-      "target": "Google Benchmark",
+      "source": "G-P-M调度模型",
+      "target": "线程行为",
       "type": "soft",
-      "reason": "语义关联 (Shared: C++)"
+      "reason": "语义关联 (Shared: 并发编程)"
     },
     {
-      "source": "Effective C++ Item 11",
-      "target": "LibclangPython",
+      "source": "G-P-M调度模型",
+      "target": "原子操作",
       "type": "soft",
-      "reason": "语义关联 (Shared: C++)"
-    },
-    {
-      "source": "RAII",
-      "target": "指针",
-      "type": "soft",
-      "reason": "语义关联 (Shared: C++)"
-    },
-    {
-      "source": "RAII",
-      "target": "模板元编程",
-      "type": "soft",
-      "reason": "语义关联 (Shared: C++)"
-    },
-    {
-      "source": "RAII",
-      "target": "类的内存布局",
-      "type": "soft",
-      "reason": "语义关联 (Shared: C++)"
-    },
-    {
-      "source": "RAII",
-      "target": "Google Benchmark",
-      "type": "soft",
-      "reason": "语义关联 (Shared: C++)"
-    },
-    {
-      "source": "RAII",
-      "target": "LibclangPython",
-      "type": "soft",
-      "reason": "语义关联 (Shared: C++)"
-    },
-    {
-      "source": "指针",
-      "target": "模板元编程",
-      "type": "soft",
-      "reason": "语义关联 (Shared: C++)"
-    },
-    {
-      "source": "指针",
-      "target": "类的内存布局",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 多态, C++)"
-    },
-    {
-      "source": "指针",
-      "target": "Google Benchmark",
-      "type": "soft",
-      "reason": "语义关联 (Shared: C++)"
-    },
-    {
-      "source": "指针",
-      "target": "LibclangPython",
-      "type": "soft",
-      "reason": "语义关联 (Shared: C++)"
-    },
-    {
-      "source": "指针",
-      "target": "抽象和接口的思考",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 多态)"
-    },
-    {
-      "source": "模板元编程",
-      "target": "类的内存布局",
-      "type": "soft",
-      "reason": "语义关联 (Shared: C++)"
-    },
-    {
-      "source": "模板元编程",
-      "target": "Google Benchmark",
-      "type": "soft",
-      "reason": "语义关联 (Shared: C++)"
-    },
-    {
-      "source": "模板元编程",
-      "target": "LibclangPython",
-      "type": "soft",
-      "reason": "语义关联 (Shared: C++)"
-    },
-    {
-      "source": "类的内存布局",
-      "target": "Google Benchmark",
-      "type": "soft",
-      "reason": "语义关联 (Shared: C++)"
-    },
-    {
-      "source": "类的内存布局",
-      "target": "LibclangPython",
-      "type": "soft",
-      "reason": "语义关联 (Shared: C++)"
-    },
-    {
-      "source": "类的内存布局",
-      "target": "抽象和接口的思考",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 多态)"
-    },
-    {
-      "source": "值类型和引用类型",
-      "target": "反射简述",
-      "type": "soft",
-      "reason": "语义关联 (Shared: C#)"
-    },
-    {
-      "source": "值类型和引用类型",
-      "target": "引用和值传递",
-      "type": "soft",
-      "reason": "语义关联 (Shared: C#, 引用类型)"
-    },
-    {
-      "source": "反射简述",
-      "target": "引用和值传递",
-      "type": "soft",
-      "reason": "语义关联 (Shared: C#)"
-    },
-    {
-      "source": "Benchmark",
-      "target": "Google Benchmark",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 性能测试)"
+      "reason": "语义关联 (Shared: 并发编程)"
     },
     {
       "source": "G-P-M调度模型",
@@ -1848,7 +3039,7 @@
     },
     {
       "source": "G-P-M调度模型",
-      "target": "select 语句",
+      "target": "select语句",
       "type": "soft",
       "reason": "语义关联 (Shared: 并发编程, Go语言)"
     },
@@ -1865,26 +3056,44 @@
       "reason": "语义关联 (Shared: Go语言)"
     },
     {
-      "source": "G-P-M调度模型",
-      "target": "原子操作",
+      "source": "Games104 反射机制",
+      "target": "UE 反射机制",
       "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
+      "reason": "语义关联 (Shared: 反射机制)"
     },
     {
-      "source": "G-P-M调度模型",
-      "target": "并发活性问题",
+      "source": "Golang 结构体",
+      "target": "异常处理",
       "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
+      "reason": "语义关联 (Shared: Golang)"
     },
     {
-      "source": "G-P-M调度模型",
+      "source": "Golang 结构体",
+      "target": "Test",
+      "type": "soft",
+      "reason": "语义关联 (Shared: Golang)"
+    },
+    {
+      "source": "Golang 协程通道",
       "target": "条件变量",
       "type": "soft",
       "reason": "语义关联 (Shared: 并发编程)"
     },
     {
-      "source": "G-P-M调度模型",
+      "source": "Golang 协程通道",
+      "target": "线程活性问题",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "Golang 协程通道",
       "target": "线程行为",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "Golang 协程通道",
+      "target": "原子操作",
       "type": "soft",
       "reason": "语义关联 (Shared: 并发编程)"
     },
@@ -1896,7 +3105,7 @@
     },
     {
       "source": "Golang 协程通道",
-      "target": "select 语句",
+      "target": "select语句",
       "type": "soft",
       "reason": "语义关联 (Shared: 并发编程)"
     },
@@ -1908,273 +3117,111 @@
     },
     {
       "source": "Golang 协程通道",
-      "target": "原子操作",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
-    },
-    {
-      "source": "Golang 协程通道",
-      "target": "并发活性问题",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
-    },
-    {
-      "source": "Golang 协程通道",
-      "target": "条件变量",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
-    },
-    {
-      "source": "Golang 协程通道",
-      "target": "线程行为",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
-    },
-    {
-      "source": "Golang 协程通道",
       "target": "WebChatRoom 总述",
       "type": "soft",
       "reason": "语义关联 (Shared: golang)"
-    },
-    {
-      "source": "Golang 异常处理",
-      "target": "Golang 结构体",
-      "type": "soft",
-      "reason": "语义关联 (Shared: Golang)"
-    },
-    {
-      "source": "Golang 异常处理",
-      "target": "Test",
-      "type": "soft",
-      "reason": "语义关联 (Shared: Golang)"
-    },
-    {
-      "source": "Golang 结构体",
-      "target": "Test",
-      "type": "soft",
-      "reason": "语义关联 (Shared: Golang)"
-    },
-    {
-      "source": "map",
-      "target": "WaitGroup",
-      "type": "soft",
-      "reason": "语义关联 (Shared: golang)"
-    },
-    {
-      "source": "map",
-      "target": "WebChatRoom 总述",
-      "type": "soft",
-      "reason": "语义关联 (Shared: golang)"
-    },
-    {
-      "source": "select 语句",
-      "target": "WaitGroup",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
-    },
-    {
-      "source": "select 语句",
-      "target": "WorkerPool",
-      "type": "soft",
-      "reason": "语义关联 (Shared: Go语言)"
-    },
-    {
-      "source": "select 语句",
-      "target": "原子操作",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
-    },
-    {
-      "source": "select 语句",
-      "target": "并发活性问题",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
-    },
-    {
-      "source": "select 语句",
-      "target": "条件变量",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
-    },
-    {
-      "source": "select 语句",
-      "target": "线程行为",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
-    },
-    {
-      "source": "WaitGroup",
-      "target": "原子操作",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
-    },
-    {
-      "source": "WaitGroup",
-      "target": "并发活性问题",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
-    },
-    {
-      "source": "WaitGroup",
-      "target": "条件变量",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
-    },
-    {
-      "source": "WaitGroup",
-      "target": "线程行为",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
-    },
-    {
-      "source": "WaitGroup",
-      "target": "WebChatRoom 总述",
-      "type": "soft",
-      "reason": "语义关联 (Shared: golang)"
-    },
-    {
-      "source": "Rust Lifetime",
-      "target": "Rust Ownership",
-      "type": "soft",
-      "reason": "语义关联 (Shared: Rust)"
-    },
-    {
-      "source": "Rust Lifetime",
-      "target": "Rust 中的闭包",
-      "type": "soft",
-      "reason": "语义关联 (Shared: Rust)"
-    },
-    {
-      "source": "Rust Ownership",
-      "target": "Rust 中的闭包",
-      "type": "soft",
-      "reason": "语义关联 (Shared: Rust)"
-    },
-    {
-      "source": "Rust Ownership",
-      "target": "OpenGL逻辑简述",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 内存管理)"
-    },
-    {
-      "source": "Rust 中的闭包",
-      "target": "简述函数式编程",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 函数式编程)"
-    },
-    {
-      "source": "临界区和临界资源",
-      "target": "条件变量",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 线程同步)"
-    },
-    {
-      "source": "原子操作",
-      "target": "并发活性问题",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
-    },
-    {
-      "source": "原子操作",
-      "target": "条件变量",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
-    },
-    {
-      "source": "原子操作",
-      "target": "线程行为",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
-    },
-    {
-      "source": "并发活性问题",
-      "target": "条件变量",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
-    },
-    {
-      "source": "并发活性问题",
-      "target": "线程行为",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程)"
-    },
-    {
-      "source": "条件变量",
-      "target": "线程状态",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 多线程)"
-    },
-    {
-      "source": "条件变量",
-      "target": "线程行为",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 并发编程, 多线程)"
-    },
-    {
-      "source": "线程状态",
-      "target": "线程行为",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 多线程)"
     },
     {
       "source": "Google Benchmark",
-      "target": "LibclangPython",
+      "target": "Libclang Python",
       "type": "soft",
       "reason": "语义关联 (Shared: C++)"
     },
     {
-      "source": "CPU和GPU加速计算",
-      "target": "硬件相关",
+      "source": "KV Cache",
+      "target": "RAG",
       "type": "soft",
-      "reason": "语义关联 (Shared: SIMD)"
+      "reason": "语义关联 (Shared: 大语言模型)"
     },
     {
-      "source": "Shader 和 Material",
-      "target": "Descriptor相关",
+      "source": "Lambda",
+      "target": "Google Benchmark",
       "type": "soft",
-      "reason": "语义关联 (Shared: 图形编程, Shader)"
+      "reason": "语义关联 (Shared: C++)"
     },
     {
-      "source": "Shader 和 Material",
-      "target": "Vulkan渲染流程",
+      "source": "Lambda",
+      "target": "Libclang Python",
       "type": "soft",
-      "reason": "语义关联 (Shared: 图形编程)"
+      "reason": "语义关联 (Shared: C++)"
     },
     {
-      "source": "Depth testing",
-      "target": "Shadow Map",
+      "source": "Lambda",
+      "target": "RAII",
       "type": "soft",
-      "reason": "语义关联 (Shared: 计算机图形学)"
+      "reason": "语义关联 (Shared: C++)"
     },
     {
-      "source": "Depth testing",
-      "target": "渲染",
+      "source": "Lambda",
+      "target": "Rust 中的闭包",
       "type": "soft",
-      "reason": "语义关联 (Shared: Z-Buffer)"
+      "reason": "语义关联 (Shared: 闭包)"
     },
     {
-      "source": "OpenGL逻辑简述",
-      "target": "渲染",
+      "source": "Lambda",
+      "target": "Type Traits",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "Leetcode-214",
+      "target": "KMP",
+      "type": "soft",
+      "reason": "语义关联 (Shared: KMP)"
+    },
+    {
+      "source": "Leetcode-214",
+      "target": "Manacher",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 回文串, 字符串算法)"
+    },
+    {
+      "source": "Libclang Python",
+      "target": "Games104 反射机制",
+      "type": "soft",
+      "reason": "语义关联 (Shared: AST)"
+    },
+    {
+      "source": "Linear",
+      "target": "Transformation",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 线性代数)"
+    },
+    {
+      "source": "map",
+      "target": "WaitGroup",
+      "type": "soft",
+      "reason": "语义关联 (Shared: golang)"
+    },
+    {
+      "source": "map",
+      "target": "WebChatRoom 总述",
+      "type": "soft",
+      "reason": "语义关联 (Shared: golang)"
+    },
+    {
+      "source": "OpenGL 逻辑简述",
+      "target": "Render Dependency Graph",
       "type": "soft",
       "reason": "语义关联 (Shared: 渲染管线)"
     },
     {
-      "source": "OpenGL逻辑简述",
-      "target": "Vulkan渲染流程",
+      "source": "OpenGL 逻辑简述",
+      "target": "Vulkan 渲染流程",
       "type": "soft",
       "reason": "语义关联 (Shared: 渲染管线)"
     },
     {
-      "source": "渲染",
-      "target": "Vulkan渲染流程",
+      "source": "Ownership",
+      "target": "OpenGL 逻辑简述",
       "type": "soft",
-      "reason": "语义关联 (Shared: 渲染管线)"
+      "reason": "语义关联 (Shared: 内存管理)"
     },
     {
-      "source": "Descriptor相关",
-      "target": "Vulkan渲染流程",
+      "source": "PhysicalDevice",
+      "target": "窗口Resize解决方案",
       "type": "soft",
-      "reason": "语义关联 (Shared: 图形编程)"
+      "reason": "语义关联 (Shared: Vulkan)"
     },
     {
       "source": "PhysicalDevice",
@@ -2184,7 +3231,13 @@
     },
     {
       "source": "PhysicalDevice",
-      "target": "Vulkan渲染流程",
+      "target": "Renderer",
+      "type": "soft",
+      "reason": "语义关联 (Shared: GPU)"
+    },
+    {
+      "source": "PhysicalDevice",
+      "target": "Vulkan 渲染流程",
       "type": "soft",
       "reason": "语义关联 (Shared: Vulkan)"
     },
@@ -2196,7 +3249,13 @@
     },
     {
       "source": "Pipeline",
-      "target": "Vulkan渲染流程",
+      "target": "窗口Resize解决方案",
+      "type": "soft",
+      "reason": "语义关联 (Shared: Vulkan)"
+    },
+    {
+      "source": "Pipeline",
+      "target": "Vulkan 渲染流程",
       "type": "soft",
       "reason": "语义关联 (Shared: Vulkan)"
     },
@@ -2207,70 +3266,442 @@
       "reason": "语义关联 (Shared: Vulkan)"
     },
     {
-      "source": "Vulkan渲染流程",
+      "source": "Profiler01-宏定义",
+      "target": "Profiler02-RAII",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler01-宏定义",
+      "target": "Profiler03-NameRegistry",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler01-宏定义",
+      "target": "Profiler04-Event 数据",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler01-宏定义",
+      "target": "Profiler05-Session 字段定义",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler01-宏定义",
+      "target": "Profiler06-Session Event",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler01-宏定义",
+      "target": "Profiler07-ThreadRegistry",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler02-RAII",
+      "target": "Profiler03-NameRegistry",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler02-RAII",
+      "target": "Profiler04-Event 数据",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler02-RAII",
+      "target": "Profiler05-Session 字段定义",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler02-RAII",
+      "target": "Profiler06-Session Event",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler02-RAII",
+      "target": "Profiler07-ThreadRegistry",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler03-NameRegistry",
+      "target": "Profiler04-Event 数据",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler03-NameRegistry",
+      "target": "Profiler05-Session 字段定义",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler03-NameRegistry",
+      "target": "Profiler06-Session Event",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler03-NameRegistry",
+      "target": "Profiler07-ThreadRegistry",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler04-Event 数据",
+      "target": "Profiler05-Session 字段定义",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler04-Event 数据",
+      "target": "Profiler06-Session Event",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler04-Event 数据",
+      "target": "Profiler07-ThreadRegistry",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler05-Session 字段定义",
+      "target": "Profiler06-Session Event",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler05-Session 字段定义",
+      "target": "Profiler07-ThreadRegistry",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Profiler06-Session Event",
+      "target": "Profiler07-ThreadRegistry",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 性能分析, Profiler)"
+    },
+    {
+      "source": "Python DTO 与 dataclass",
+      "target": "Libclang Python",
+      "type": "soft",
+      "reason": "语义关联 (Shared: Python)"
+    },
+    {
+      "source": "RAII",
+      "target": "对象池",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 资源管理)"
+    },
+    {
+      "source": "RAII",
+      "target": "Google Benchmark",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "RAII",
+      "target": "Libclang Python",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "RAII",
+      "target": "Profiler02-RAII",
+      "type": "soft",
+      "reason": "语义关联 (Shared: RAII)"
+    },
+    {
+      "source": "RAII",
+      "target": "Type Traits",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "Rust 中的闭包",
+      "target": "简述函数式编程",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 函数式编程)"
+    },
+    {
+      "source": "Rust 中的闭包",
+      "target": "生命周期",
+      "type": "soft",
+      "reason": "语义关联 (Shared: Rust)"
+    },
+    {
+      "source": "Rust 中的闭包",
+      "target": "Ownership",
+      "type": "soft",
+      "reason": "语义关联 (Shared: Rust)"
+    },
+    {
+      "source": "select语句",
+      "target": "条件变量",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "select语句",
+      "target": "线程活性问题",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "select语句",
+      "target": "线程行为",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "select语句",
+      "target": "原子操作",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "select语句",
+      "target": "WaitGroup",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "select语句",
+      "target": "WorkerPool",
+      "type": "soft",
+      "reason": "语义关联 (Shared: Go语言)"
+    },
+    {
+      "source": "Shader 和 Material",
+      "target": "初探UE材质系统",
+      "type": "soft",
+      "reason": "语义关联 (Shared: Shader)"
+    },
+    {
+      "source": "Shader 和 Material",
+      "target": "Descriptor相关",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 图形编程, Shader)"
+    },
+    {
+      "source": "Shader 和 Material",
+      "target": "Toon Shader",
+      "type": "soft",
+      "reason": "语义关联 (Shared: Shader)"
+    },
+    {
+      "source": "Shader 和 Material",
+      "target": "Vulkan 渲染流程",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 图形编程)"
+    },
+    {
+      "source": "Test",
+      "target": "TDD",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 单元测试)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "类的内存布局",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "模板元编程",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "条件变量",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "线程和进程",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 线程)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "线程活性问题",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "线程行为",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "原子操作",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "指针",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "资源传递 移动和转发",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "左值右值",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "const",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "Effective C++ Item 11",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "G-P-M调度模型",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "Golang 协程通道",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "Google Benchmark",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "Lambda",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "Libclang Python",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "RAII",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "select语句",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "Type Traits",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "Thread 基础语法",
+      "target": "WaitGroup",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 并发编程)"
+    },
+    {
+      "source": "Type Traits",
+      "target": "Google Benchmark",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "Type Traits",
+      "target": "Libclang Python",
+      "type": "soft",
+      "reason": "语义关联 (Shared: C++)"
+    },
+    {
+      "source": "Vulkan 渲染流程",
+      "target": "窗口Resize解决方案",
+      "type": "soft",
+      "reason": "语义关联 (Shared: Vulkan)"
+    },
+    {
+      "source": "Vulkan 渲染流程",
+      "target": "Render Dependency Graph",
+      "type": "soft",
+      "reason": "语义关联 (Shared: 渲染管线)"
+    },
+    {
+      "source": "Vulkan 渲染流程",
       "target": "Why Vulkan",
       "type": "soft",
       "reason": "语义关联 (Shared: Vulkan)"
     },
     {
-      "source": "Linear",
-      "target": "Transformation",
+      "source": "WaitGroup",
+      "target": "条件变量",
       "type": "soft",
-      "reason": "语义关联 (Shared: 线性代数)"
+      "reason": "语义关联 (Shared: 并发编程)"
     },
     {
-      "source": "工厂模式",
-      "target": "装饰器模式",
+      "source": "WaitGroup",
+      "target": "线程活性问题",
       "type": "soft",
-      "reason": "语义关联 (Shared: 设计模式)"
+      "reason": "语义关联 (Shared: 并发编程)"
     },
     {
-      "source": "工厂模式",
-      "target": "观察者模式",
+      "source": "WaitGroup",
+      "target": "线程行为",
       "type": "soft",
-      "reason": "语义关联 (Shared: 设计模式)"
+      "reason": "语义关联 (Shared: 并发编程)"
     },
     {
-      "source": "工厂模式",
-      "target": "组合模式",
+      "source": "WaitGroup",
+      "target": "原子操作",
       "type": "soft",
-      "reason": "语义关联 (Shared: 设计模式)"
+      "reason": "语义关联 (Shared: 并发编程)"
     },
     {
-      "source": "工厂模式",
-      "target": "抽象和接口的思考",
+      "source": "WaitGroup",
+      "target": "WebChatRoom 总述",
       "type": "soft",
-      "reason": "语义关联 (Shared: 面向对象)"
+      "reason": "语义关联 (Shared: golang)"
     },
     {
-      "source": "工厂模式",
-      "target": "鸭子类型",
+      "source": "Why Vulkan",
+      "target": "窗口Resize解决方案",
       "type": "soft",
-      "reason": "语义关联 (Shared: 面向对象)"
-    },
-    {
-      "source": "装饰器模式",
-      "target": "观察者模式",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 设计模式)"
-    },
-    {
-      "source": "装饰器模式",
-      "target": "组合模式",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 设计模式)"
-    },
-    {
-      "source": "观察者模式",
-      "target": "组合模式",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 设计模式)"
-    },
-    {
-      "source": "抽象和接口的思考",
-      "target": "鸭子类型",
-      "type": "soft",
-      "reason": "语义关联 (Shared: 面向对象)"
+      "reason": "语义关联 (Shared: Vulkan)"
     }
   ]
 }
