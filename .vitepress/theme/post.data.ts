@@ -54,6 +54,6 @@ export default createContentLoader("posts/**/*.md", {
                 };
             })
             .sort((a, b) => b.date - a.date)
-            .slice(0, 6);
+            .slice(0, 8);
     },
 });
