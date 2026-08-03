@@ -9,13 +9,13 @@ tags:
 
 ## 总述
 
-通道（Channel）用于协程之间的数据通信，保证了同步性，不会发生竞态等问题。通道本质上是一个队列（FIFO）
+通道（Channel）用于协程之间的数据通信，通道操作自身可安全地并发使用，并为对应的发送和接收提供同步关系，但不会自动消除其他共享状态的数据竞态。通道本质上是一个队列（FIFO）
 
 我们可以使用如下语法来声明一个通道
 ```go
 var ch chan int
 ```
-其中`int`可以换成其他不同的数据类型，甚至可以是空接口`interface`或者通道`chan`
+其中 `int` 可以换成其他不同的数据类型，甚至可以是空接口 `interface{}` 或者通道 `chan int`
 
 接着实例化这个通道：
 ```go
@@ -34,25 +34,20 @@ ch := make(chan int)
 例子：
 ```go
 func SendData(ch chan string) {
-    ch <- "first Data"
-    ch <- "Second Data"
-    ch <- "3rd Data"
+    defer close(ch)
+    ch <- "first Data"
+    ch <- "Second Data"
+    ch <- "3rd Data"
 }
 func OutputData(ch chan string) {
-    var data string
-    for {
-        data = <-ch
-        if data == "" {
-            break
-        }
-        fmt.Println(data)
-    }
+    for data := range ch {
+        fmt.Println(data)
+    }
 }
 func main() {
-    ch := make(chan string)
-    go SendData(ch)
-    go OutputData(ch)
-    time.Sleep(2 * time.Second)
+    ch := make(chan string)
+    go SendData(ch)
+    OutputData(ch)
 }
 ```
 
@@ -72,25 +67,24 @@ channel 的阻塞，就好像是线下交易，一手交钱一手交货，必须
 
 ```go
 func NoBufChannelSender(ch chan int) {
-    fmt.Println("Data Preparing")
-    ch <- 86
-    fmt.Println("Data already been sent")
+    fmt.Println("Data Preparing")
+    ch <- 86
+    fmt.Println("Data already been sent")
 }
 func ChannelDataReceiver(ch chan int) {
-    time.Sleep(time.Second) // 假设复杂操作使得线程停留 1s
-    fmt.Println("准备接收")
-    fmt.Println(<-ch)
-    fmt.Println("接收结束")
+    time.Sleep(time.Second) // 假设复杂操作使得协程停留 1s
+    fmt.Println("准备接收")
+    fmt.Println(<-ch)
+    fmt.Println("接收结束")
 }
 func main() {
-    ch := make(chan int)
-    go NoBufChannelSender(ch)
-    go ChannelDataReceiver(ch)
-    time.Sleep(2 * time.Second)
+    ch := make(chan int)
+    go NoBufChannelSender(ch)
+    ChannelDataReceiver(ch)
 }
 ```
 
-执行结果：
+执行结果（可能的一种，收发完成后的输出交错由调度决定）：
 ```text
 Data Preparing
 准备接收
@@ -102,12 +96,12 @@ Data already been sent
 执行顺序：
 1. `Sender`输出准备数据，并被阻塞在`ch <- 86`
 2. `Receiver`在`Sleep`后输出`准备接收`，并在`<-ch`准备就绪
-3. 数据读取结束后，因为目前正在调度的是`Reveiver`，所以此协程继续执行，数据`接收结束`
-4. 最后调度到`Sender`，输出`Data alreary...`这个语句\
+3. 数据读取结束后，`Sender` 和 `Receiver` 都可以继续执行，具体顺序由调度决定
+4. 所以 `Data already been sent` 可能出现在 `86` 之前，也可能出现在 `接收结束` 之后
 
 所以可以看出
 - 发送方 `ch <- data` 会阻塞，直到有接收方 `data := <-ch` 准备就绪。
-- 接收方 `data := <-data` 会阻塞，直到有发送方 `ch <- data` 发来数据。
+- 接收方 `data := <-ch` 会阻塞，直到有发送方 `ch <- data` 发来数据。
 
 ### 有缓
 
@@ -122,8 +116,8 @@ func main() {
     fmt.Println("Main: 放入 B")
     ch <- "B"                                // 不阻塞
     go func() {
-      time.Sleep(300 * time.Millisecond)
-      fmt.Println("Goroutine: 接收", <-ch)    // 取出 A，空出一个 slot
+        time.Sleep(300 * time.Millisecond)
+        fmt.Println("Goroutine: 接收", <-ch) // 取出 A，空出一个 slot
     }()
     
     fmt.Println("Main: 放入 C（会阻塞直到有接收）")
@@ -132,7 +126,7 @@ func main() {
 }
 ```
 
-执行结果：
+执行结果（可能的一种）：
 ```text
 Main: 放入 A
 Main: 放入 B
@@ -141,8 +135,8 @@ Goroutine: 接收 A
 Main: C 已放入
 ```
 
-假如此时`ch`是一个无缓的通道，那么在往其中写入`A`数据的时候就已经会出现死锁了（因为线程一直阻塞在这里，没有一个数据的接收者）
+假如此时 `ch` 是一个无缓冲的通道，那么在往其中写入 `A` 数据的时候就已经会出现死锁了（因为当前协程一直阻塞在这里，没有一个数据的接收者）
 
 ### 非阻塞尝试与超时控制
 
-可以使用`select`或者`time.After`来实现非阻塞的超时
+可以使用 `select` 的 `default` 分支实现非阻塞尝试，或者使用 `time.After` 实现超时控制

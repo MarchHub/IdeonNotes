@@ -212,12 +212,12 @@
       ]
     },
     {
-      "id": "content 语句",
-      "title": "content 语句",
+      "id": "context 语句",
+      "title": "context 语句",
       "group": "编程语言",
       "val": 2,
-      "path": "/posts/编程语言/Golang/content-语句",
-      "summary": "Content是一种Go协程的上下文管理机制，用于处理跨goroutine的取消信号与超时管理、请求级别元数据传递及避免全局变量。",
+      "path": "/posts/编程语言/Golang/context-语句",
+      "summary": "Context 是一种 Go 协程的上下文协调机制，用于处理跨 goroutine 的取消信号与超时管理、请求级别元数据传递及避免全局变量。",
       "tags": [
         "Go协程",
         "Context",
@@ -282,7 +282,7 @@
       "group": "编程语言",
       "val": 13,
       "path": "/posts/编程语言/Golang/Golang-协程通道",
-      "summary": "Golang通道用于协程间通信，保证同步。支持无缓冲和有缓冲模式，数据通过‘<-’操作符进行流动，且可利用select或time包实现非阻塞与超时控制。",
+      "summary": "Golang 通道用于协程间通信，为对应的发送和接收提供同步关系。支持无缓冲和有缓冲模式，且可利用 select 或 time 包实现非阻塞与超时控制。",
       "tags": [
         "golang",
         "协程",
@@ -296,7 +296,7 @@
       "group": "编程语言",
       "val": 4,
       "path": "/posts/编程语言/Golang/Golang-异常处理",
-      "summary": "Golang中错误处理通过返回error类型，使用errors.New和fmt.Errorf创建错误；Panic用于异常立即退出程序，Recover捕获panic使程序继续运行。",
+      "summary": "Golang 中错误处理通过返回 error 类型，使用 errors.New 和 fmt.Errorf 创建错误；panic 会展开当前 goroutine 的调用栈，recover 可在延迟函数中停止展开。",
       "tags": [
         "Golang",
         "Error Handling",
@@ -322,7 +322,7 @@
       "group": "编程语言",
       "val": 5,
       "path": "/posts/编程语言/Golang/map",
-      "summary": "Go语言中的map采用哈希表实现，非并发安全。每个bucket存储最多8组键值对并有溢出处理机制。",
+      "summary": "Go 语言中的 map 采用哈希表实现，未同步的并发读写不安全；Go 1.24 起使用基于 Swiss Table 的实现。",
       "tags": [
         "golang",
         "hash-table",
@@ -362,7 +362,7 @@
       "group": "编程语言",
       "val": 13,
       "path": "/posts/编程语言/Golang/WaitGroup",
-      "summary": "Go语言中的WaitGroup本质上是信号量，用于协调goroutine同步。通过Add添加任务，Done标记完成，Wait阻塞等待。",
+      "summary": "Go 语言中的 WaitGroup 是任务计数同步原语，通过 Add 增加计数、Done 减少计数，Wait 阻塞到计数归零。",
       "tags": [
         "golang",
         "waitgroup",
