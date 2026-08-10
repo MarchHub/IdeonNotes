@@ -13,18 +13,11 @@ import { data as categories } from "../category.data";
                         KNOWLEDGE_AREAS
                         <span class="category-title-cn">知识分类</span>
                     </h2>
-                    <p class="category-lead">
-                        按主题进入知识库，先了解目录范围，再继续浏览文章。
-                    </p>
                 </div>
             </div>
 
             <div class="category-grid">
-                <article
-                    v-for="(category, index) in categories"
-                    :key="category.name"
-                    class="category-card"
-                >
+                <article v-for="(category, index) in categories" :key="category.name" class="category-card">
                     <div class="category-card-line"></div>
                     <div class="category-card-meta">
                         <span class="category-index">
@@ -35,10 +28,7 @@ import { data as categories } from "../category.data";
                         </span>
                     </div>
                     <h3 class="category-card-title">
-                        <a
-                            :href="withBase(category.url)"
-                            class="category-card-link"
-                        >
+                        <a :href="withBase(category.url)" class="category-card-link">
                             {{ category.title }}
                         </a>
                     </h3>
@@ -74,8 +64,8 @@ import { data as categories } from "../category.data";
 
 .category-heading-deco {
     flex: 0 0 auto;
+    align-self: stretch;
     width: 4px;
-    height: 48px;
     background: var(--y-grad);
     box-shadow: 0 0 10px var(--y-accent);
 }
@@ -241,10 +231,6 @@ import { data as categories } from "../category.data";
         font-size: 21px;
     }
 
-    .category-heading-deco {
-        height: 60px;
-    }
-
     .category-grid {
         grid-template-columns: 1fr;
     }
@@ -255,6 +241,7 @@ import { data as categories } from "../category.data";
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .category-card,
     .category-card-line,
     .category-action span {

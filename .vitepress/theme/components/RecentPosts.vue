@@ -23,9 +23,6 @@ const formatDateTime = (timestamp: number) => {
                         RECENT_UPDATES
                         <span class="cn-title">最近更新</span>
                     </h2>
-                    <p class="title-lead">
-                        查看近期新增与修订的内容，快速了解知识库的最新变化。
-                    </p>
                 </div>
             </div>
             <div class="grid">
@@ -96,8 +93,8 @@ html.dark {
 }
 
 .title-deco {
+    align-self: stretch;
     width: 4px;
-    height: 48px;
     background: var(--y-grad);
     box-shadow: 0 0 10px var(--y-accent);
 }
