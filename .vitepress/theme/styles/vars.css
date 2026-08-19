@@ -2,6 +2,7 @@
     --yuuka-blue-1: #8ecbff;
     --yuuka-blue-2: #5ab0ff;
     --yuuka-blue-3: #2f8ae8;
+    --yuuka-blue-4: #2475ca;
 
     --yuuka-purple-1: #c7b5ff;
     --yuuka-purple-2: #b49aff;
@@ -28,7 +29,18 @@
     --vp-c-brand-1: var(--yuuka-blue-2);
     --vp-c-brand-2: var(--yuuka-blue-3);
     --vp-c-brand-3: var(--yuuka-blue-3);
+
+    --vp-button-brand-bg: var(--yuuka-blue-2);
+    --vp-button-brand-hover-bg: #50a8f8;
+    --vp-button-brand-active-bg: #469ff1;
 }
+
+.dark {
+    --vp-button-brand-bg: var(--yuuka-blue-3);
+    --vp-button-brand-hover-bg: #3993eb;
+    --vp-button-brand-active-bg: #449cef;
+}
+
 .VPHero {
     text-align: left !important;
 }
@@ -66,28 +78,4 @@
     font-weight: 500;
     letter-spacing: 0.5px;
     color: var(--yuuka-purple-2);
-}
-
-.VPButton.brand {
-    background-color: var(--vp-c-brand-1);
-    border-color: var(--vp-c-brand-1);
-    color: white !important;
-    transition:
-        background-color 0.25s ease,
-        border-color 0.25s ease;
-}
-
-.VPButton.brand:hover {
-    background-color: var(--vp-c-brand-2) !important;
-    border-color: var(--vp-c-brand-2) !important;
-
-    box-shadow:
-        0 0 10px rgba(90, 176, 255, 0.55),
-        0 0 18px rgba(90, 176, 255, 0.35),
-        0 0 28px rgba(90, 176, 255, 0.25);
-}
-
-.VPButton.alt:hover {
-    color: var(--vp-c-brand-2) !important;
-    border-color: var(--vp-c-brand-2) !important;
 }
