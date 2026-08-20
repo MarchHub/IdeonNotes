@@ -1,3 +1,9 @@
+---
+tags:
+  - 软件工程
+  - 软件架构
+---
+
 # SDD
 
 Spec-Driven Development, 规范驱动开发, 现在在 Vibe Coding 的使用中经常提及的一个开发模式
