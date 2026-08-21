@@ -71,3 +71,18 @@ private:
 与此同时,在修改部分代码的时候,可以减少编译的文件数量 —— 比如修改了 Socket 的内容,传统写法会认为 main -> Database -> Socket 导致全部进行重编译,即所有调用 Database 的都会因为底层 Socket 的修改而重新编译,这很坏. 而新玩法会让 main -> Database; Database -> Socket; 这样对于这个依赖链来说,通常只需要重新编译直接依赖 `Socket` 的 `Database.cpp`, 十分甚至九分的不赖
 
 此外,也有助于保持 ABI 稳定 —— 如果直接给 `Database` 增删成员，其 `sizeof`、alignment 或成员布局可能发生变化，使已经按旧布局编译的调用方与新版动态库产生不一致,而使用 PImpl 后,变化主要发生在指针后的 `Impl` 中,而公开的 `Database` 对象布局可以保持不变,因此内部成员调整通常不会直接破坏调用方依赖的 object ABI
+
+## Bridge
+
+写法上感觉有点像是 Bridge 模式 —— 因为两者都会在外层对象和真正实现之间加入一层间接关系
+
+```C++
+class Renderer
+{
+	std::unique_ptr<RenderBackend> _backend;
+}
+```
+
+然后可以在构造的时候传入不同的实现,比如Vulkan/DX12/OpenGL等
+
+也是隐藏了具体实现细节,某种程度上还是有点像的(
