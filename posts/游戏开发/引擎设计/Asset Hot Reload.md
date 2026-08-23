@@ -80,7 +80,7 @@ int main()
 
 用 Dirty 来进行标记之后,可以直接 Rebuild, 不过也有个比较常见的做法,就是 Lazy Rebuild —— 比如修改了一个 Shader 但是有 1m 个 Pipeline 需要重建,那每次修改也太贵了,于是就可以仅仅标记 Dirty 之后在使用到的时候进行一个 Check 然后重建即可,不赖.
 
-不过还是严谨的说下,资产哪怕有依赖也不一定就是要求重建,这边借用一下 [Bevy]() 的说明
+不过还是严谨的说下,资产哪怕有依赖也不一定就是要求重建,这边借用一下 [Bevy](https://github.com/bevyengine/bevy) 的说明
 
 > - normal dependencies: dependencies that must be loaded as part of this asset load (ex: assets a given asset has handles to).
 > - Loader dependencies: dependencies whose actual asset values are used during the load process
