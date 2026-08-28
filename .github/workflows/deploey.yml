@@ -40,6 +40,12 @@ jobs:
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
 
+            - name: Prepare stable share IDs
+              run: pnpm share-links:prepare
+
+            - name: Require generated IDs to be committed
+              run: git diff --exit-code -- .vitepress/data/share-links.json
+
             - name: Check committed secrets
               run: pnpm check:secrets
 
@@ -53,7 +59,7 @@ jobs:
               run: pnpm test
 
     build:
-        name: Build VitePress site
+        name: Build YuuFrag and short-link artifacts
         if: github.event_name != 'pull_request'
         needs: quality
         runs-on: ubuntu-latest
@@ -84,7 +90,21 @@ jobs:
             - name: Build with VitePress
               run: pnpm docs:build
 
-            - name: Upload artifact
+            - name: Verify stable registry remains clean
+              run: git diff --exit-code -- .vitepress/data/share-links.json
+
+            - name: Verify both share-link artifacts
+              run: pnpm share-links:artifacts:check
+
+            - name: Upload standalone short-link archive
+              uses: actions/upload-artifact@v4
+              with:
+                  name: yuufrag-shortlinks
+                  path: .shortlink-dist
+                  if-no-files-found: error
+                  retention-days: 30
+
+            - name: Upload YuuFrag Pages artifact
               uses: actions/upload-pages-artifact@v4
               with:
                   path: .vitepress/dist

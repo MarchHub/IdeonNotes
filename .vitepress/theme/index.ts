@@ -15,6 +15,7 @@ import { useRoute } from "vitepress";
 import TagList from "./components/TagList.vue";
 import CategoryCards from "./components/CategoryCards.vue";
 import RecentPosts from "./components/RecentPosts.vue";
+import ShareButton from "./components/ShareButton.vue";
 export default {
     Layout: () => {
         return h(DefaultTheme.Layout, null, {
@@ -86,5 +87,6 @@ export default {
         app.component("ArticleMetadata", ArticleMetadata);
         app.component("Contributors", Contributors);
         app.component("AboutTeam", AboutTeam);
+        app.component("ShareButton", ShareButton);
     },
 } satisfies Theme;

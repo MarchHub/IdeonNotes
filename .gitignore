@@ -12,6 +12,7 @@
 .vitepress/dist
 .vitepress/.temp
 .vitepress/generated/
+.shortlink-dist/
 public/contributors/
 dist
 cache

@@ -20,8 +20,9 @@ import {
     writeLegacyPageRedirects,
 } from "./utilities/page-route-plugin";
 import { createPageRouteRewriter } from "./utilities/route-paths";
+import { ShareLinkManifestPlugin } from "./utilities/share-link-manifest-plugin";
+import { baseUrl } from "./shared/site-config";
 
-const baseUrl = "https://yuufrag.machillka.com";
 const feedUrl = `${baseUrl}/feed.rss`;
 const contributorIndex = await prepareGithubContributors(contributorsConfig);
 
@@ -124,6 +125,7 @@ export default defineConfig({
                 text: "分类",
                 items: ScanCurrentDir("../../posts/", "posts"),
             },
+            { component: "ShareButton" },
         ],
         sidebar: {
             "/guide/": [
@@ -151,6 +153,9 @@ export default defineConfig({
     vite: {
         plugins: [
             PageRoutePlugin(),
+            ShareLinkManifestPlugin({
+                manifestFile: ".vitepress/generated/share-links-manifest.json",
+            }),
             RssPlugin(RSS),
             RssAssetPlugin({ baseUrl, filename: "feed.rss" }),
         ],
