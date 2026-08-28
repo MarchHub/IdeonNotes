@@ -1,3 +1,10 @@
+---
+tags:
+  - ChikaEngine
+  - 并发编程
+  - 异步与调度
+---
+
 # JobStorage
 
 存储Job数据的地方(看名字也非常显然), 看 API 非常好理解其用法用途, 不过还是稍微说下其中的一些设计
@@ -71,4 +78,3 @@ uint32_t index = JobHandle::InvalidIndex;
 接着再看其中的 memory_order 的设计, 对于普通的什么 `remainingDependencies` `unfinishedWork` 等都是使用 `relaxed`, 而 `state` 却是 `release`
 
 那么也就是说, 上面那些变量其实只是正常的初始化而已, 自己之间并没有强烈的什么同步关系. 但是 `state` 却被认作是Slot 已经初始化完成的发布点. 也就是当其他线程执行 `slot.state.load(std::memory_order_acquire);` 并且读取到 `Created` 的话, 可以证明当前的 Slot 是在 Storage 层是初始化完成的了. (之后注册 dependency 之类的后面再说, 至少说完成了基础的初始化)
-

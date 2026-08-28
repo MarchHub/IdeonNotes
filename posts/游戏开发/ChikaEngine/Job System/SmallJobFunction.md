@@ -1,3 +1,10 @@
+---
+tags:
+  - ChikaEngine
+  - C++
+  - 性能分析
+---
+
 # SmallJobFunction
 
 实现一个简单的 Function Wrapper, 让传给 Job System 的 Callable 在 Runtime 打包

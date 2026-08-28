@@ -1,3 +1,9 @@
+---
+tags:
+  - 编译与工具链
+  - 计算机底层
+---
+
 # lldb
 
 日常 debug —— 古法在想要的断点处输出点什么 ( ~~比如 f-word ~~
@@ -231,4 +237,3 @@ thread 和 frame 非常的像,比如`thread list`,就是列出当前 Process 中
 ```
 
 然后 `*` 表示 lldb 现在选择的是 Main Thread 进行观察, 然后也可以借助 `thread select` 来进行切换.切换之后再执行`bt`的话就是查看当前所在的线程的上下文了
-

@@ -1,3 +1,9 @@
+---
+tags:
+  - C++
+  - 错误处理
+---
+
 # Exception
 
 Error 是问题 (~~废话~~), 那么一般来说可以分为编译期发现的和运行期间发现的. 此处简单说下 C++ 提供的一套在 Runtime 的时候对于 Error 的捕获,传播,处理等的机制 —— 也就是 Exception Handling
