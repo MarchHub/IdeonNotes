@@ -22,7 +22,8 @@ export {
 } from "../shared/share-link-contract.ts";
 
 export interface ShareLinkFilePaths {
-    registryFile: string;
+    baseRegistryFile: string;
+    generatedRegistryFile: string;
     generatedManifestFile: string;
 }
 
@@ -32,7 +33,7 @@ export interface PrepareShareLinkFilesInput extends ShareLinkFilePaths {
 }
 
 export interface PrepareShareLinkFilesResult extends PrepareShareLinksResult {
-    registryChanged: boolean;
+    generatedRegistryChanged: boolean;
     manifestChanged: boolean;
     manifest: ShareLinkManifest;
 }
@@ -192,14 +193,14 @@ function createManifest(registry: ShareLinkRegistry, registryHash: string): Shar
 export async function prepareShareLinkFiles(
     input: PrepareShareLinkFilesInput,
 ): Promise<PrepareShareLinkFilesResult> {
-    const releaseLock = await acquireRegistryLock(input.registryFile);
+    const releaseLock = await acquireRegistryLock(input.generatedRegistryFile);
 
     try {
         const readText = input.readTextIfExists ?? readTextIfExists;
-        const initialRegistryContent = await readText(input.registryFile);
+        const initialRegistryContent = await readText(input.baseRegistryFile);
         const initialRegistryHash = hashContent(initialRegistryContent ?? "");
         const existingRegistry = await loadShareLinkRegistryFromReader(
-            input.registryFile,
+            input.baseRegistryFile,
             readText,
         );
         const prepared = prepareShareLinks({
@@ -208,16 +209,16 @@ export async function prepareShareLinkFiles(
         });
         const registryContent = serializeJson(prepared.registry);
 
-        const beforeWriteRegistryContent = await readText(input.registryFile);
+        const beforeWriteRegistryContent = await readText(input.baseRegistryFile);
 
         if (hashContent(beforeWriteRegistryContent ?? "") !== initialRegistryHash) {
             throw new Error(
-                `分享注册表在 prepare 期间已被修改，拒绝覆盖：${input.registryFile}`,
+                `基础分享注册表在 prepare 期间已被修改，拒绝生成：${input.baseRegistryFile}`,
             );
         }
 
-        const registryChanged = await writeTextAtomicallyIfChanged(
-            input.registryFile,
+        const generatedRegistryChanged = await writeTextAtomicallyIfChanged(
+            input.generatedRegistryFile,
             registryContent,
         );
         const manifest = createManifest(
@@ -231,7 +232,7 @@ export async function prepareShareLinkFiles(
 
         return {
             ...prepared,
-            registryChanged,
+            generatedRegistryChanged,
             manifestChanged,
             manifest,
         };

@@ -9,7 +9,7 @@ import {
 } from "../utilities/short-link-pages.ts";
 
 const projectRoot = path.resolve(import.meta.dirname, "../..");
-const registryFile = path.join(projectRoot, ".vitepress/data/share-links.json");
+const registryFile = path.join(projectRoot, ".vitepress/generated/share-links.json");
 const manifestFile = path.join(projectRoot, ".vitepress/generated/share-links-manifest.json");
 const contentDistDir = path.join(projectRoot, ".vitepress/dist");
 const outputDir = path.join(projectRoot, ".shortlink-dist");
