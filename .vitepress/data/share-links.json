@@ -45,6 +45,10 @@
       "pageId": "posts/软件工程/项目实践/web-chatroom/数据库基础实现.md",
       "status": "active"
     },
+    "3rtjedpyur": {
+      "pageId": "posts/MCU/index.md",
+      "status": "active"
+    },
     "3u5wcdtqhr": {
       "pageId": "posts/计算机图形学/课程笔记-GAMES101/Depth testing.md",
       "status": "active"
@@ -505,6 +509,10 @@
       "pageId": "posts/游戏开发/Unity/Unity Framework/项目管理.md",
       "status": "active"
     },
+    "q8geyxwn8m": {
+      "pageId": "posts/MCU/状态机.md",
+      "status": "active"
+    },
     "qav5rhfq4g": {
       "pageId": "posts/软件工程/设计模式/状态机.md",
       "status": "active"
@@ -727,6 +735,10 @@
     },
     "z2amzqz6xt": {
       "pageId": "posts/计算机图形学/课程笔记-GAMES101/Ray Tracing.md",
+      "status": "active"
+    },
+    "z2kcyxz4c5": {
+      "pageId": "posts/MCU/PID.md",
       "status": "active"
     },
     "z7ktx6a7kh": {
