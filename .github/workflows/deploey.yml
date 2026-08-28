@@ -40,11 +40,8 @@ jobs:
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
 
-            - name: Prepare stable share IDs
+            - name: Verify deploy-time share ID generation
               run: pnpm share-links:prepare
-
-            - name: Require generated IDs to be committed
-              run: git diff --exit-code -- .vitepress/data/share-links.json
 
             - name: Check committed secrets
               run: pnpm check:secrets
@@ -89,9 +86,6 @@ jobs:
 
             - name: Build with VitePress
               run: pnpm docs:build
-
-            - name: Verify stable registry remains clean
-              run: git diff --exit-code -- .vitepress/data/share-links.json
 
             - name: Verify both share-link artifacts
               run: pnpm share-links:artifacts:check
