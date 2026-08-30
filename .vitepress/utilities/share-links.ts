@@ -13,7 +13,6 @@ export {
     isShareId,
     type ShareId,
 } from "../shared/share-link-contract.ts";
-export const SHARE_ID_MAX_ATTEMPTS = 1024;
 
 const SHARE_ID_SPACE = BigInt(SHARE_ID_ALPHABET.length) ** BigInt(SHARE_ID_LENGTH);
 export type ShareLinkStatus = "active" | "gone";
@@ -33,10 +32,9 @@ export interface ShareLinkIndex {
     byPageId: ReadonlyMap<string, ShareId>;
 }
 
-export interface PrepareShareLinksResult {
+export interface GenerateShareLinksResult {
     registry: ShareLinkRegistry;
-    added: ReadonlyArray<{ id: ShareId; pageId: string }>;
-    unchangedCount: number;
+    generatedCount: number;
 }
 
 export function normalizeSharePageId(pageId: string): string {
@@ -59,12 +57,6 @@ function compareStrings(left: string, right: string): number {
     return 0;
 }
 
-function assertSafeAttempt(attempt: number): void {
-    if (!Number.isSafeInteger(attempt) || attempt < 0) {
-        throw new Error(`短 ID attempt 必须是非负安全整数：${attempt}`);
-    }
-}
-
 function encodeFixedBase31(value: bigint): ShareId {
     const radix = BigInt(SHARE_ID_ALPHABET.length);
     const output = new Array<string>(SHARE_ID_LENGTH);
@@ -82,15 +74,12 @@ function encodeFixedBase31(value: bigint): ShareId {
     return output.join("");
 }
 
-export function generateStaticShareId(input: {
-    pageId: string;
-    attempt: number;
-}): ShareId {
-    const pageId = normalizeSharePageId(input.pageId);
-    assertSafeAttempt(input.attempt);
+export function generateStaticShareId(pageIdInput: string): ShareId {
+    const pageId = normalizeSharePageId(pageIdInput);
 
     const digest = createHash("sha256")
-        .update(`yuufrag-share-v1\0${pageId}\0${input.attempt}`, "utf8")
+        // Keep the former attempt=0 payload so existing paths retain their IDs.
+        .update(`yuufrag-share-v1\0${pageId}\0${0}`, "utf8")
         .digest("hex");
     const value = BigInt(`0x${digest}`) % SHARE_ID_SPACE;
 
@@ -228,51 +217,23 @@ function createRegistryCopy(registry: ShareLinkRegistry): ShareLinkRegistry {
     return { version: 1, records };
 }
 
-export function prepareShareLinks(input: {
-    registry: ShareLinkRegistry;
+export function generateShareLinks(input: {
     pageIds: Iterable<string>;
-}): PrepareShareLinksResult {
+}): GenerateShareLinksResult {
     const currentPageIds = normalizeCurrentPageIds(input.pageIds);
-    const existingIndex = createShareLinkIndex(input.registry);
-    const currentPageIdSet = new Set(currentPageIds);
-
-    for (const [pageId, shareId] of existingIndex.byPageId) {
-        if (!currentPageIdSet.has(pageId)) {
-            throw new Error(
-                `active 分享 ID 指向不存在页面：${shareId} -> ${pageId}`,
-            );
-        }
-    }
-
-    const registry = createRegistryCopy(input.registry);
-    const claimedIds = new Set<ShareId>(existingIndex.byId.keys());
-    const assignedPageIds = new Set<string>(existingIndex.byPageId.keys());
-    const added: Array<{ id: ShareId; pageId: string }> = [];
+    const registry: ShareLinkRegistry = { version: 1, records: {} };
 
     for (const pageId of currentPageIds) {
-        if (assignedPageIds.has(pageId)) continue;
+        const shareId = generateStaticShareId(pageId);
+        const existingRecord = registry.records[shareId];
 
-        let shareId: ShareId | undefined;
-
-        for (let attempt = 0; attempt < SHARE_ID_MAX_ATTEMPTS; attempt += 1) {
-            const candidate = generateStaticShareId({ pageId, attempt });
-
-            if (claimedIds.has(candidate)) continue;
-
-            shareId = candidate;
-            break;
-        }
-
-        if (shareId === undefined) {
+        if (existingRecord !== undefined) {
             throw new Error(
-                `短 ID 分配超过最大尝试次数：${pageId}（${SHARE_ID_MAX_ATTEMPTS}）`,
+                `确定性短 ID 碰撞：${shareId}\n- ${existingRecord.pageId}\n- ${pageId}`,
             );
         }
 
-        claimedIds.add(shareId);
-        assignedPageIds.add(pageId);
         registry.records[shareId] = { pageId, status: "active" };
-        added.push({ id: shareId, pageId });
     }
 
     const sortedRegistry = createRegistryCopy(registry);
@@ -280,8 +241,7 @@ export function prepareShareLinks(input: {
 
     return {
         registry: sortedRegistry,
-        added,
-        unchangedCount: currentPageIds.length - added.length,
+        generatedCount: currentPageIds.length,
     };
 }
 

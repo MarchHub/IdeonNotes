@@ -7,11 +7,9 @@ import {
 } from "../shared/share-link-contract.ts";
 import {
     createShareLinkIndex,
-    isShareId,
-    prepareShareLinks,
+    generateShareLinks,
     resolveCanonicalHref,
-    validateShareLinkRegistry,
-    type PrepareShareLinksResult,
+    type GenerateShareLinksResult,
     type ShareId,
     type ShareLinkRegistry,
 } from "./share-links.ts";
@@ -22,24 +20,21 @@ export {
 } from "../shared/share-link-contract.ts";
 
 export interface ShareLinkFilePaths {
-    baseRegistryFile: string;
     generatedRegistryFile: string;
     generatedManifestFile: string;
 }
 
 export interface PrepareShareLinkFilesInput extends ShareLinkFilePaths {
     pageIds: Iterable<string>;
-    readTextIfExists?: (file: string) => Promise<string | undefined>;
 }
 
-export interface PrepareShareLinkFilesResult extends PrepareShareLinksResult {
+export interface PrepareShareLinkFilesResult extends GenerateShareLinksResult {
     generatedRegistryChanged: boolean;
     manifestChanged: boolean;
     manifest: ShareLinkManifest;
 }
 
 export interface CheckShareLinkFilesInput {
-    registryFile: string;
     pageIds: Iterable<string>;
 }
 
@@ -83,14 +78,13 @@ async function readTextIfExists(file: string): Promise<string | undefined> {
 export async function loadShareLinkRegistry(
     registryFile: string,
 ): Promise<ShareLinkRegistry> {
-    return loadShareLinkRegistryFromReader(registryFile, readTextIfExists);
+    return loadShareLinkRegistryFromReader(registryFile);
 }
 
 async function loadShareLinkRegistryFromReader(
     registryFile: string,
-    readText: (file: string) => Promise<string | undefined>,
 ): Promise<ShareLinkRegistry> {
-    const content = await readText(registryFile);
+    const content = await readTextIfExists(registryFile);
 
     if (content === undefined) return defaultRegistry();
 
@@ -196,26 +190,8 @@ export async function prepareShareLinkFiles(
     const releaseLock = await acquireRegistryLock(input.generatedRegistryFile);
 
     try {
-        const readText = input.readTextIfExists ?? readTextIfExists;
-        const initialRegistryContent = await readText(input.baseRegistryFile);
-        const initialRegistryHash = hashContent(initialRegistryContent ?? "");
-        const existingRegistry = await loadShareLinkRegistryFromReader(
-            input.baseRegistryFile,
-            readText,
-        );
-        const prepared = prepareShareLinks({
-            registry: existingRegistry,
-            pageIds: input.pageIds,
-        });
+        const prepared = generateShareLinks({ pageIds: input.pageIds });
         const registryContent = serializeJson(prepared.registry);
-
-        const beforeWriteRegistryContent = await readText(input.baseRegistryFile);
-
-        if (hashContent(beforeWriteRegistryContent ?? "") !== initialRegistryHash) {
-            throw new Error(
-                `基础分享注册表在 prepare 期间已被修改，拒绝生成：${input.baseRegistryFile}`,
-            );
-        }
 
         const generatedRegistryChanged = await writeTextAtomicallyIfChanged(
             input.generatedRegistryFile,
@@ -244,20 +220,6 @@ export async function prepareShareLinkFiles(
 export async function checkShareLinkFiles(
     input: CheckShareLinkFilesInput,
 ): Promise<CheckShareLinkFilesResult> {
-    const registry = await loadShareLinkRegistry(input.registryFile);
-    validateShareLinkRegistry(registry, input.pageIds);
-
-    let activeCount = 0;
-    let goneCount = 0;
-
-    for (const [id, record] of Object.entries(registry.records)) {
-        if (!isShareId(id)) {
-            throw new Error(`非法分享 ID：${id}`);
-        }
-
-        if (record.status === "active") activeCount += 1;
-        if (record.status === "gone") goneCount += 1;
-    }
-
-    return { activeCount, goneCount };
+    const { generatedCount } = generateShareLinks({ pageIds: input.pageIds });
+    return { activeCount: generatedCount, goneCount: 0 };
 }

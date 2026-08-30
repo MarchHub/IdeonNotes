@@ -7,10 +7,10 @@ import {
     SHARE_ID_ALPHABET,
     SHARE_ID_LENGTH,
     createShareLinkIndex,
+    generateShareLinks,
     generateStaticShareId,
     isShareId,
     normalizeSharePageId,
-    prepareShareLinks,
     resolveCanonicalHref,
     validateShareLinkRegistry,
     type ShareLinkRegistry,
@@ -44,51 +44,41 @@ test("accepts only the fixed share id alphabet and length", () => {
 });
 
 test("generates deterministic fixed-width share ids", () => {
-    const input = { pageId: "posts/软件工程/设计.md", attempt: 0 };
-    const first = generateStaticShareId(input);
-    const second = generateStaticShareId(input);
+    const pageId = "posts/软件工程/设计.md";
+    const first = generateStaticShareId(pageId);
+    const second = generateStaticShareId(pageId);
 
     assert.equal(first, second);
     assert.equal(first.length, SHARE_ID_LENGTH);
     assert.equal(isShareId(first), true);
-    assert.notEqual(
-        first,
-        generateStaticShareId({ ...input, attempt: 1 }),
+    assert.notEqual(first, generateStaticShareId("posts/软件工程/其他.md"));
+    assert.equal(
+        generateStaticShareId(
+            "posts/游戏开发/ChikaEngine/Job System/JobStorage.md",
+        ),
+        "xjhcvhed3c",
     );
 });
 
-test("prepares missing pages in stable order without mutating input", () => {
-    const input = registry({});
+test("generates the same registry regardless of page scan order", () => {
     const pageIds = ["posts/B.md", "posts/中文.md", "posts/A.md"];
-    const first = prepareShareLinks({ registry: input, pageIds });
-    const second = prepareShareLinks({
-        registry: input,
-        pageIds: [...pageIds].reverse(),
-    });
+    const first = generateShareLinks({ pageIds });
+    const second = generateShareLinks({ pageIds: [...pageIds].reverse() });
 
     assert.deepEqual(first.registry, second.registry);
-    assert.deepEqual(input, registry({}));
-    assert.equal(first.added.length, 3);
-    assert.equal(first.unchangedCount, 0);
+    assert.equal(first.generatedCount, 3);
     assert.doesNotThrow(() => validateShareLinkRegistry(first.registry, pageIds));
 });
 
-test("retries a claimed candidate instead of overwriting it", () => {
-    const pageId = "posts/碰撞.md";
-    const firstCandidate = generateStaticShareId({ pageId, attempt: 0 });
-    const nextCandidate = generateStaticShareId({ pageId, attempt: 1 });
-    const input = registry({
-        [firstCandidate]: { pageId: "posts/已有.md", status: "active" },
-    });
+test("removing a page does not change another page's deterministic id", () => {
+    const pageId = "posts/B.md";
+    const before = generateShareLinks({ pageIds: ["posts/A.md", pageId] });
+    const after = generateShareLinks({ pageIds: [pageId] });
 
-    const result = prepareShareLinks({
-        registry: input,
-        pageIds: ["posts/已有.md", pageId],
-    });
-
-    assert.equal(result.registry.records[firstCandidate].pageId, "posts/已有.md");
-    assert.equal(result.registry.records[nextCandidate].pageId, pageId);
-    assert.deepEqual(result.added, [{ id: nextCandidate, pageId }]);
+    assert.equal(
+        createShareLinkIndex(before.registry).byPageId.get(pageId),
+        createShareLinkIndex(after.registry).byPageId.get(pageId),
+    );
 });
 
 test("rejects multiple active ids for one page", () => {
@@ -122,15 +112,10 @@ test("allows gone ids without allowing them to resolve", () => {
     const input = registry({
         [shareId]: { pageId: "posts/已删除.md", status: "gone" },
     });
-    const result = prepareShareLinks({
-        registry: input,
-        pageIds: ["posts/当前.md"],
-    });
-    const index = createShareLinkIndex(result.registry);
+    const index = createShareLinkIndex(input);
 
     assert.equal(resolveCanonicalHref(shareId, index), undefined);
     assert.equal(index.byId.get(shareId)?.status, "gone");
-    assert.equal(result.added.length, 1);
 });
 
 test("resolves active ids through the canonical route utility", () => {
@@ -156,8 +141,8 @@ test("current posts inventory can be assigned unique active ids", async () => {
         cwd: projectRoot,
         onlyFiles: true,
     });
-    const result = prepareShareLinks({ registry: registry({}), pageIds });
+    const result = generateShareLinks({ pageIds });
 
-    assert.equal(result.added.length, pageIds.length);
+    assert.equal(result.generatedCount, pageIds.length);
     assert.doesNotThrow(() => validateShareLinkRegistry(result.registry, pageIds));
 });
