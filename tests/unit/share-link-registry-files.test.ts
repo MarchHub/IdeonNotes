@@ -1,5 +1,4 @@
 import assert from "node:assert/strict";
-import { createHash } from "node:crypto";
 import { promises as fs } from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -10,11 +9,10 @@ import {
     loadShareLinkRegistry,
     prepareShareLinkFiles,
 } from "../../.vitepress/utilities/share-link-registry-files.ts";
+import { generateStaticShareId } from "../../.vitepress/utilities/share-links.ts";
 
 async function withTemporaryFiles(
     callback: (input: {
-        root: string;
-        baseRegistryFile: string;
         generatedRegistryFile: string;
         manifestFile: string;
     }) => Promise<void>,
@@ -23,8 +21,6 @@ async function withTemporaryFiles(
 
     try {
         await callback({
-            root,
-            baseRegistryFile: path.join(root, "data/share-links.json"),
             generatedRegistryFile: path.join(root, "generated/share-links.json"),
             manifestFile: path.join(root, "generated/share-links-manifest.json"),
         });
@@ -33,32 +29,25 @@ async function withTemporaryFiles(
     }
 }
 
-function hash(value: string): string {
-    return createHash("sha256").update(value, "utf8").digest("hex");
-}
-
-test("prepare derives missing ids without modifying the base registry", async () => {
-    await withTemporaryFiles(async ({
-        baseRegistryFile,
-        generatedRegistryFile,
-        manifestFile,
-    }) => {
-        const pageIds = ["posts/B.md", "posts/中文.md", "posts/A.md"];
-        const baseRegistryContent = `${JSON.stringify(
-            {
+test("prepare rebuilds the registry from current pages only", async () => {
+    await withTemporaryFiles(async ({ generatedRegistryFile, manifestFile }) => {
+        await fs.mkdir(path.dirname(generatedRegistryFile), { recursive: true });
+        await fs.writeFile(
+            generatedRegistryFile,
+            JSON.stringify({
                 version: 1,
                 records: {
-                    k7m2p9x4qd: { pageId: "posts/A.md", status: "active" },
+                    k7m2p9x4qd: {
+                        pageId: "posts/已删除.md",
+                        status: "active",
+                    },
                 },
-            },
-            null,
-            2,
-        )}\n`;
-        await fs.mkdir(path.dirname(baseRegistryFile), { recursive: true });
-        await fs.writeFile(baseRegistryFile, baseRegistryContent, "utf8");
+            }),
+            "utf8",
+        );
 
-        const first = await prepareShareLinkFiles({
-            baseRegistryFile,
+        const pageIds = ["posts/B.md", "posts/中文.md", "posts/A.md"];
+        const result = await prepareShareLinkFiles({
             generatedRegistryFile,
             generatedManifestFile: manifestFile,
             pageIds,
@@ -69,40 +58,30 @@ test("prepare derives missing ids without modifying the base registry", async ()
             shortOrigin: string;
         };
 
-        assert.equal(first.added.length, 2);
-        assert.equal(first.unchangedCount, 1);
-        assert.equal(first.generatedRegistryChanged, true);
-        assert.equal(first.manifestChanged, true);
+        assert.equal(result.generatedCount, 3);
+        assert.equal(result.generatedRegistryChanged, true);
         assert.equal(Object.keys(registry.records).length, 3);
+        assert.equal(registry.records.k7m2p9x4qd, undefined);
+        assert.equal(
+            registry.records[generateStaticShareId("posts/A.md")].pageId,
+            "posts/A.md",
+        );
         assert.equal(Object.keys(manifest.byCanonicalPath).length, 3);
         assert.equal(manifest.shortOrigin, "https://yuufrag.machillka.com");
-        assert.ok(manifest.byCanonicalPath["/posts/中文"]);
-        assert.equal(registry.records.k7m2p9x4qd.pageId, "posts/A.md");
-        assert.equal(await fs.readFile(baseRegistryFile, "utf8"), baseRegistryContent);
     });
 });
 
 test("repeated prepare is stable and does not rewrite unchanged files", async () => {
-    await withTemporaryFiles(async ({
-        baseRegistryFile,
-        generatedRegistryFile,
-        manifestFile,
-    }) => {
-        const pageIds = ["posts/A.md"];
-        await prepareShareLinkFiles({
-            baseRegistryFile,
+    await withTemporaryFiles(async ({ generatedRegistryFile, manifestFile }) => {
+        const input = {
             generatedRegistryFile,
             generatedManifestFile: manifestFile,
-            pageIds,
-        });
+            pageIds: ["posts/A.md"],
+        };
+        await prepareShareLinkFiles(input);
         const registryBefore = await fs.readFile(generatedRegistryFile, "utf8");
         const manifestBefore = await fs.readFile(manifestFile, "utf8");
-        const second = await prepareShareLinkFiles({
-            baseRegistryFile,
-            generatedRegistryFile,
-            generatedManifestFile: manifestFile,
-            pageIds,
-        });
+        const second = await prepareShareLinkFiles(input);
 
         assert.equal(second.generatedRegistryChanged, false);
         assert.equal(second.manifestChanged, false);
@@ -111,38 +90,19 @@ test("repeated prepare is stable and does not rewrite unchanged files", async ()
     });
 });
 
-test("check is read-only", async () => {
-    await withTemporaryFiles(async ({
-        baseRegistryFile,
-        generatedRegistryFile,
-        manifestFile,
-    }) => {
-        const pageIds = ["posts/A.md"];
-        await prepareShareLinkFiles({
-            baseRegistryFile,
-            generatedRegistryFile,
-            generatedManifestFile: manifestFile,
-            pageIds,
-        });
-        const before = await fs.readFile(generatedRegistryFile, "utf8");
-
-        const result = await checkShareLinkFiles({
-            registryFile: generatedRegistryFile,
-            pageIds,
-        });
+test("check validates deterministic generation without writing files", async () => {
+    await withTemporaryFiles(async ({ generatedRegistryFile, manifestFile }) => {
+        const result = await checkShareLinkFiles({ pageIds: ["posts/A.md"] });
 
         assert.equal(result.activeCount, 1);
         assert.equal(result.goneCount, 0);
-        assert.equal(await fs.readFile(generatedRegistryFile, "utf8"), before);
+        await assert.rejects(() => fs.access(generatedRegistryFile));
+        await assert.rejects(() => fs.access(manifestFile));
     });
 });
 
-test("prepare refuses to run while the registry lock exists", async () => {
-    await withTemporaryFiles(async ({
-        baseRegistryFile,
-        generatedRegistryFile,
-        manifestFile,
-    }) => {
+test("prepare refuses to run while the generated registry lock exists", async () => {
+    await withTemporaryFiles(async ({ generatedRegistryFile, manifestFile }) => {
         await fs.mkdir(path.dirname(generatedRegistryFile), { recursive: true });
         await fs.writeFile(
             `${generatedRegistryFile}.lock`,
@@ -153,108 +113,12 @@ test("prepare refuses to run while the registry lock exists", async () => {
         await assert.rejects(
             () =>
                 prepareShareLinkFiles({
-                    baseRegistryFile,
                     generatedRegistryFile,
                     generatedManifestFile: manifestFile,
                     pageIds: ["posts/A.md"],
                 }),
             /分享注册表正被另一个进程更新/,
         );
-        await assert.rejects(() => fs.access(baseRegistryFile));
-        await assert.rejects(() => fs.access(generatedRegistryFile));
-    });
-});
-
-test("prepare refuses to replace a registry changed outside its lock", async () => {
-    await withTemporaryFiles(async ({
-        baseRegistryFile,
-        generatedRegistryFile,
-        manifestFile,
-    }) => {
-        await fs.mkdir(path.dirname(baseRegistryFile), { recursive: true });
-        await fs.writeFile(
-            baseRegistryFile,
-            JSON.stringify({ version: 1, records: {} }),
-            "utf8",
-        );
-
-        const changedContent = JSON.stringify({
-            version: 1,
-            records: {
-                k7m2p9x4qd: { pageId: "posts/A.md", status: "active" },
-            },
-        });
-        const originalReadFile = fs.readFile.bind(fs);
-        let registryReadCount = 0;
-
-        const readTextIfExists = async (file: string): Promise<string | undefined> => {
-            if (file === baseRegistryFile) {
-                registryReadCount += 1;
-                if (registryReadCount === 3) {
-                    await fs.writeFile(baseRegistryFile, changedContent, "utf8");
-                }
-            }
-
-            try {
-                return await originalReadFile(file, "utf8");
-            } catch (error) {
-                if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-                    return undefined;
-                }
-
-                throw error;
-            }
-        };
-
-        await assert.rejects(
-            () =>
-                prepareShareLinkFiles({
-                    baseRegistryFile,
-                    generatedRegistryFile,
-                    generatedManifestFile: manifestFile,
-                    pageIds: ["posts/A.md"],
-                    readTextIfExists,
-                }),
-            /基础分享注册表在 prepare 期间已被修改/,
-        );
-        assert.equal(
-            hash(await fs.readFile(baseRegistryFile, "utf8")),
-            hash(changedContent),
-        );
-        await assert.rejects(() => fs.access(generatedRegistryFile));
-    });
-});
-
-test("active records that no longer point to a page fail before writing", async () => {
-    await withTemporaryFiles(async ({
-        baseRegistryFile,
-        generatedRegistryFile,
-        manifestFile,
-    }) => {
-        await fs.mkdir(path.dirname(baseRegistryFile), { recursive: true });
-        await fs.writeFile(
-            baseRegistryFile,
-            JSON.stringify({
-                version: 1,
-                records: {
-                    k7m2p9x4qd: { pageId: "posts/旧页面.md", status: "active" },
-                },
-            }),
-            "utf8",
-        );
-        const before = await fs.readFile(baseRegistryFile, "utf8");
-
-        await assert.rejects(
-            () =>
-                prepareShareLinkFiles({
-                    baseRegistryFile,
-                    generatedRegistryFile,
-                    generatedManifestFile: manifestFile,
-                    pageIds: ["posts/新页面.md"],
-                }),
-            /active 分享 ID 指向不存在页面：k7m2p9x4qd -> posts\/旧页面\.md/,
-        );
-        assert.equal(await fs.readFile(baseRegistryFile, "utf8"), before);
         await assert.rejects(() => fs.access(generatedRegistryFile));
     });
 });
