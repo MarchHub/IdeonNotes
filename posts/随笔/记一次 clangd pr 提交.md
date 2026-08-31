@@ -102,8 +102,8 @@ auto f = []() -> void noexcept {} // 这样是语法错误, 只是渲染起来�
 再重新查看下 `FLT` 还有提供什么成员方法可以让我们的位置标定在 `noexcept` 之后 —— 有的 `getLocalRangeEnd()` 就是返回当前语句的末尾, 所以最终我们的这个 issue 修复只有一行
 
 ```C++
-607- TypeHintLoc = FTL.getRParenLoc();
-607+ TypeHintLoc = FTL.getLocalRangeEnd();
+TypeHintLoc = FTL.getRParenLoc();       //[!code --]
+TypeHintLoc = FTL.getLocalRangeEnd();   //[!code ++]
 ```
 
 上述是修复的心路历程, 论古法.
