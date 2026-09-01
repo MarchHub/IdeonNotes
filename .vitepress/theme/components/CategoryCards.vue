@@ -50,6 +50,20 @@ import { data as categories } from "../category.data";
     background-color: transparent;
 }
 
+@media (min-width: 640px) {
+    .home-categories {
+        padding-right: 48px;
+        padding-left: 48px;
+    }
+}
+
+@media (min-width: 960px) {
+    .home-categories {
+        padding-right: 64px;
+        padding-left: 64px;
+    }
+}
+
 .category-container {
     max-width: 1152px;
     margin: 0 auto;
@@ -95,19 +109,19 @@ import { data as categories } from "../category.data";
 
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 16px;
 }
 
 .category-card {
     position: relative;
     display: flex;
-    min-height: 176px;
     flex-direction: column;
     overflow: hidden;
-    padding: 20px;
+    padding: 24px;
+    height: 100%;
     border: 1px solid var(--y-border);
-    border-radius: 8px;
+    border-radius: 12px;
     background: var(--y-bg);
     backdrop-filter: blur(12px);
     transition:
@@ -171,7 +185,7 @@ import { data as categories } from "../category.data";
     position: absolute;
     z-index: 1;
     inset: 0;
-    border-radius: 8px;
+    border-radius: 12px;
     content: "";
 }
 
@@ -219,9 +233,9 @@ import { data as categories } from "../category.data";
     transform: translateX(4px);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 639px) {
     .home-categories {
-        padding: 36px 20px 0;
+        padding: 36px 24px 0;
     }
 
     .category-title {
@@ -234,9 +248,11 @@ import { data as categories } from "../category.data";
     .category-grid {
         grid-template-columns: 1fr;
     }
+}
 
-    .category-card {
-        min-height: 158px;
+@media (min-width: 640px) and (max-width: 959px) {
+    .category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
