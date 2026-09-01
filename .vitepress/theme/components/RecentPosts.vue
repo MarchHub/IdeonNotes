@@ -79,6 +79,20 @@ html.dark {
     background-color: transparent;
 }
 
+@media (min-width: 640px) {
+    .home-posts {
+        padding-right: 48px;
+        padding-left: 48px;
+    }
+}
+
+@media (min-width: 960px) {
+    .home-posts {
+        padding-right: 64px;
+        padding-left: 64px;
+    }
+}
+
 .container {
     max-width: 1152px;
     margin: 0 auto;
@@ -124,16 +138,17 @@ html.dark {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 28px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
 }
 
 .card {
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 32px 28px;
-    border-radius: 8px;
+    padding: 24px;
+    height: 100%;
+    border-radius: 12px;
     background: var(--y-bg);
     border: 1px solid var(--y-border);
     backdrop-filter: blur(12px);
@@ -152,7 +167,7 @@ html.dark {
     position: absolute;
     z-index: 1;
     inset: 0;
-    border-radius: 8px;
+    border-radius: 12px;
     content: '';
 }
 
@@ -294,5 +309,17 @@ html.dark {
 
 .card:hover .icon-arrow::after {
     border-color: var(--y-yellow);
+}
+
+@media (min-width: 640px) and (max-width: 959px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 639px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
