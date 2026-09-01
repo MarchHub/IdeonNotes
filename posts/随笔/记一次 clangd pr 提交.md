@@ -1,3 +1,10 @@
+---
+tags:
+  - 随笔
+  - 编译与工具链
+  - C++
+---
+
 # 记一次 clangd pr 提交
 
 很神奇的, 最近在重新在思考异常安全的时候忽然发现了在 vscode 中 `clangd` 进行 lambda 的 inlay hints 渲染时有一个小问题 —— 就是和草案规定的顺序不对应, 详细提交查看 [issue](https://github.com/clangd/clangd/issues/2696)
