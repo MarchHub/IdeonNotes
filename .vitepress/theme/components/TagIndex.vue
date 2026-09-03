@@ -23,7 +23,6 @@ const filteredTags = computed(() => {
             <div>
                 <p class="eyebrow">TAG_INDEX //</p>
                 <h1 id="tag-index-title">标签索引</h1>
-                <p class="lead">从一个方向出发，找到散落在不同目录中的相关笔记。</p>
             </div>
         </header>
 
@@ -70,7 +69,7 @@ const filteredTags = computed(() => {
         </section>
 
         <div v-else class="empty-state">
-            <p>没有找到匹配的标签。</p>
+            <p>没有找到匹配的标签</p>
             <button type="button" @click="query = ''">清空筛选</button>
         </div>
     </main>
@@ -296,11 +295,19 @@ const filteredTags = computed(() => {
 }
 
 .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
     padding: 48px 24px;
     border: 1px dashed var(--vp-c-divider);
     border-radius: 8px;
     color: var(--vp-c-text-2);
     text-align: center;
+}
+
+.empty-state p {
+    margin: 0;
 }
 
 .empty-state button {

@@ -10,8 +10,7 @@ import { data as categories } from "../category.data";
                 <div class="category-heading-deco"></div>
                 <div>
                     <h2 id="category-title" class="category-title">
-                        KNOWLEDGE_AREAS
-                        <span class="category-title-cn">知识分类</span>
+                        CATEGORIES
                     </h2>
                 </div>
             </div>

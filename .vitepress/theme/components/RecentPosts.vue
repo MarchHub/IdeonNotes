@@ -20,8 +20,7 @@ const formatDateTime = (timestamp: number) => {
                 <div class="title-deco"></div>
                 <div>
                     <h2 class="title">
-                        RECENT_UPDATES
-                        <span class="cn-title">最近更新</span>
+                        UPDATES
                     </h2>
                 </div>
             </div>
@@ -120,7 +119,7 @@ html.dark {
     color: var(--y-accent);
     margin: 0;
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 12px;
 }
 
