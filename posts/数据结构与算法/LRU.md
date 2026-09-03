@@ -1,3 +1,9 @@
+---
+tags:
+  - 数据结构与算法
+  - 资源管理
+---
+
 # LRU
 
 Least Recently Used —— 最近最少使用的数据, 踢走 (
@@ -47,4 +53,3 @@ Least Recently Used —— 最近最少使用的数据, 踢走 (
 `Key -> List Iterator -> List Node -> Value`
 
 不赖
-
